@@ -4,6 +4,12 @@ function OwnerHistory() {
   const [teams, setTeams] = useState([]);
   const [owner, setOwner] = useState("Ceraso");
 
+  const [sortField, setSortField] =
+    useState("season");
+
+  const [sortDirection, setSortDirection] =
+    useState("asc");
+
   useEffect(() => {
     fetch("/data/team-seasons.json")
       .then((response) => response.json())
@@ -64,13 +70,45 @@ function OwnerHistory() {
         ) / validFinishes.length
       : 0;
 
+  const handleSort = (field) => {
+    if (field === sortField) {
+      setSortDirection(
+        sortDirection === "asc"
+          ? "desc"
+          : "asc"
+      );
+    } else {
+      setSortField(field);
+      setSortDirection("asc");
+    }
+  };
+
+  const sortedOwnerTeams = [...ownerTeams].sort(
+    (a, b) => {
+      const aValue = a[sortField];
+      const bValue = b[sortField];
+
+      if (sortDirection === "asc") {
+        if (aValue > bValue) return 1;
+        if (aValue < bValue) return -1;
+        return 0;
+      }
+
+      if (aValue < bValue) return 1;
+      if (aValue > bValue) return -1;
+      return 0;
+    }
+  );
+
   return (
     <div>
       <h2>Owner History</h2>
 
       <select
         value={owner}
-        onChange={(e) => setOwner(e.target.value)}
+        onChange={(e) =>
+          setOwner(e.target.value)
+        }
       >
         {owners.map((ownerName) => (
           <option
@@ -89,56 +127,134 @@ function OwnerHistory() {
       </p>
 
       <p>
-        Career Record: {totalWins}-{totalLosses}
+        Career Record:
+        {" "}
+        {totalWins}-{totalLosses}
       </p>
 
       <p>
-        Win Percentage: {winPct.toFixed(3)}
+        Win Percentage:
+        {" "}
+        {winPct.toFixed(3)}
       </p>
 
       <p>
-        Championships: {championships}
+        Championships:
+        {" "}
+        {championships}
       </p>
 
       <p>
-        Best Finish: {bestFinish}
+        Best Finish:
+        {" "}
+        {bestFinish}
       </p>
 
       <p>
-        Average Finish: {averageFinish.toFixed(1)}
+        Average Finish:
+        {" "}
+        {averageFinish.toFixed(1)}
       </p>
 
       <p>
-        Career Points: {Math.round(totalPoints)}
+        Career Points:
+        {" "}
+        {Math.round(totalPoints)}
       </p>
 
       <table>
         <thead>
           <tr>
-            <th>Season</th>
-            <th>W</th>
-            <th>L</th>
-            <th>Finish</th>
+            <th
+              onClick={() =>
+                handleSort("season")
+              }
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              Season
+            </th>
+
+            <th
+              onClick={() =>
+                handleSort("wins")
+              }
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              W
+            </th>
+
+            <th
+              onClick={() =>
+                handleSort("losses")
+              }
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              L
+            </th>
+
+            <th
+              onClick={() =>
+                handleSort("pointsFor")
+              }
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              PF
+            </th>
+
+            <th
+              onClick={() =>
+                handleSort("finalStanding")
+              }
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              Finish
+            </th>
           </tr>
         </thead>
 
         <tbody>
-          {ownerTeams
-            .sort((a, b) => a.season - b.season)
-            .map((season) => (
+          {sortedOwnerTeams.map(
+            (season) => (
               <tr
                 key={`${season.ownerLast}-${season.season}`}
               >
-                <td>{season.season}</td>
-                <td>{season.wins}</td>
-                <td>{season.losses}</td>
                 <td>
-                  {season.finalStanding === 0
+                  {season.season}
+                </td>
+
+                <td>
+                  {season.wins}
+                </td>
+
+                <td>
+                  {season.losses}
+                </td>
+
+                <td>
+                  {Math.round(
+                    season.pointsFor
+                  )}
+                </td>
+
+                <td>
+                  {season.finalStanding ===
+                  0
                     ? "In Progress"
                     : season.finalStanding}
                 </td>
               </tr>
-            ))}
+            )
+          )}
         </tbody>
       </table>
     </div>

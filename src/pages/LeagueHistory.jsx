@@ -32,18 +32,21 @@ function LeagueHistory() {
   };
 
   const seasonTeams = [...teams]
-    .filter(
-      (team) => team.season === season
-    )
+    .filter((team) => team.season === season)
     .sort((a, b) => {
-      const valueA = a[sortField];
-      const valueB = b[sortField];
+      let aValue = a[sortField];
+      let bValue = b[sortField];
 
-      if (sortDirection === "asc") {
-        return valueA > valueB ? 1 : -1;
+      if (typeof aValue === "string") {
+        aValue = aValue.toLowerCase();
+        bValue = bValue.toLowerCase();
       }
 
-      return valueA < valueB ? 1 : -1;
+      if (sortDirection === "asc") {
+        return aValue > bValue ? 1 : -1;
+      }
+
+      return aValue < bValue ? 1 : -1;
     });
 
   return (
@@ -53,9 +56,7 @@ function LeagueHistory() {
       <select
         value={season}
         onChange={(e) =>
-          setSeason(
-            Number(e.target.value)
-          )
+          setSeason(Number(e.target.value))
         }
       >
         {[...Array(14)].map((_, i) => {
@@ -81,58 +82,48 @@ function LeagueHistory() {
         <thead>
           <tr>
             <th
+              style={{ cursor: "pointer" }}
               onClick={() =>
                 handleSort("ownerLast")
               }
-              style={{
-                cursor: "pointer",
-              }}
             >
               Owner
             </th>
 
             <th
+              style={{ cursor: "pointer" }}
               onClick={() =>
                 handleSort("wins")
               }
-              style={{
-                cursor: "pointer",
-              }}
             >
               W
             </th>
 
             <th
+              style={{ cursor: "pointer" }}
               onClick={() =>
                 handleSort("losses")
               }
-              style={{
-                cursor: "pointer",
-              }}
             >
               L
             </th>
 
             <th
+              style={{ cursor: "pointer" }}
               onClick={() =>
                 handleSort("pointsFor")
               }
-              style={{
-                cursor: "pointer",
-              }}
             >
               PF
             </th>
 
             <th
+              style={{ cursor: "pointer" }}
               onClick={() =>
                 handleSort(
                   "finalStanding"
                 )
               }
-              style={{
-                cursor: "pointer",
-              }}
             >
               Finish
             </th>
@@ -144,9 +135,7 @@ function LeagueHistory() {
             <tr
               key={`${team.season}-${team.teamId}`}
             >
-              <td>
-                {team.ownerLast}
-              </td>
+              <td>{team.ownerLast}</td>
 
               <td>{team.wins}</td>
 
