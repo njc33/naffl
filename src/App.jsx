@@ -11,9 +11,11 @@ import OwnerHistory from "./pages/OwnerHistory";
 import TeamRosterHistory from "./pages/TeamRosterHistory";
 import DraftHistory from "./pages/DraftHistory";
 import FaceOfFranchise from "./pages/FaceOfFranchise";
+import PlayerHistory from "./pages/PlayerHistory";
 import Records from "./pages/Records";
 
 import "./App.css";
+
 
 function App() {
   const getNavLinkClass = ({
@@ -43,6 +45,7 @@ function App() {
           >
             <NavLink
               to="/"
+              end
               className={
                 getNavLinkClass
               }
@@ -92,7 +95,16 @@ function App() {
                 getNavLinkClass
               }
             >
-              Face of the Franchise
+              Franchise
+            </NavLink>
+
+            <NavLink
+              to="/players"
+              className={
+                getNavLinkClass
+              }
+            >
+              Players
             </NavLink>
 
             <NavLink
@@ -145,6 +157,13 @@ function App() {
               path="/franchise"
               element={
                 <FaceOfFranchise />
+              }
+            />
+
+            <Route
+              path="/players"
+              element={
+                <PlayerHistory />
               }
             />
 

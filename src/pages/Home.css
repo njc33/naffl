@@ -1,0 +1,190 @@
+.home-page {
+  width: 100%;
+}
+
+.home-hero {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: #17365d;
+  box-shadow:
+    0 12px 30px
+    rgba(15, 23, 42, 0.18);
+}
+
+.home-hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 34px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.08)
+        15%,
+      rgba(15, 23, 42, 0.86)
+        100%
+    );
+}
+
+.home-hero-content {
+  max-width: 680px;
+  color: #ffffff;
+}
+
+.home-kicker {
+  margin-bottom: 8px;
+  color: #fbbf24;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.home-hero-content h1 {
+  margin: 0 0 9px;
+  color: #ffffff;
+  font-size:
+    clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.home-hero-content p {
+  max-width: 590px;
+  margin: 0;
+  color: #e2e8f0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.home-intro {
+  margin: 36px 0 20px;
+}
+
+.home-intro h2 {
+  margin-bottom: 7px;
+}
+
+.home-intro p {
+  max-width: 720px;
+  color: #536273;
+}
+
+.home-card-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(255px, 1fr)
+    );
+  gap: 14px;
+}
+
+.home-card {
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    auto 1fr auto;
+  gap: 14px;
+  align-items: center;
+  min-height: 145px;
+  padding: 20px;
+  border: 1px solid #d7dce3;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #253c56;
+  text-decoration: none;
+  box-shadow:
+    0 3px 10px
+    rgba(15, 23, 42, 0.06);
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.home-card:hover {
+  transform: translateY(-2px);
+  border-color: #8da0b5;
+  box-shadow:
+    0 9px 22px
+    rgba(15, 23, 42, 0.11);
+}
+
+.home-card:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.home-card-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 10px;
+  background-color: #eef2f6;
+  font-size: 1.55rem;
+}
+
+.home-card h3 {
+  margin: 0 0 6px;
+  color: #17365d;
+  font-size: 1rem;
+}
+
+.home-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.home-card-arrow {
+  color: #17365d;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .home-hero {
+    min-height: 300px;
+    border-radius: 10px;
+  }
+
+  .home-hero-overlay {
+    padding: 22px 18px;
+  }
+
+  .home-hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .home-intro {
+    margin-top: 27px;
+  }
+
+  .home-card-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .home-card {
+    min-height: 120px;
+    padding: 16px;
+  }
+
+  .home-card-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+  }
+}
