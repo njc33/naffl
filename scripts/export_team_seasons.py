@@ -4,14 +4,10 @@ from pathlib import Path
 import pandas as pd
 
 
-# Locate the Excel workbook.
 EXCEL_FILE = Path(
     r"C:\Users\njcer\Downloads\NAFFL_History_v3.xlsx"
 )
 
-# Locate the project folder based on this script's location.
-# export_team_seasons.py is inside:
-# C:\Projects\naffl-history\scripts
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 OUTPUT_FILE = (
@@ -22,26 +18,154 @@ OUTPUT_FILE = (
 )
 
 
-def normalize_owner_last(value):
-    """
-    Convert known variations of an owner's last name
-    into one consistent value.
-    """
+# Canonical owner information.
+#
+# The dictionary key is a lowercase version of the
+# Owner Last field from Excel.
+#
+# This allows differently capitalized versions such as
+# "falaras" and "Falaras" to resolve to the same owner.
+OWNER_MAP = {
+    "boudreau": {
+        "ownerId": "john-boudreau",
+        "ownerFirst": "John",
+        "ownerLast": "Boudreau",
+        "ownerName": "John Boudreau",
+    },
+    "burckhardt": {
+        "ownerId": "jake-burckhardt",
+        "ownerFirst": "Jake",
+        "ownerLast": "Burckhardt",
+        "ownerName": "Jake Burckhardt",
+    },
+    "ceraso": {
+        "ownerId": "nick-ceraso",
+        "ownerFirst": "Nick",
+        "ownerLast": "Ceraso",
+        "ownerName": "Nick Ceraso",
+    },
+    "chaff": {
+        "ownerId": "jake-chaff",
+        "ownerFirst": "Jake",
+        "ownerLast": "Chaff",
+        "ownerName": "Jake Chaff",
+    },
+    "diduca": {
+        "ownerId": "nick-diduca",
+        "ownerFirst": "Nick",
+        "ownerLast": "DiDuca",
+        "ownerName": "Nick DiDuca",
+    },
+    "falaras": {
+        "ownerId": "yanni-falaras",
+        "ownerFirst": "Yanni",
+        "ownerLast": "Falaras",
+        "ownerName": "Yanni Falaras",
+    },
+    "hitchcock": {
+        "ownerId": "luke-hitchcock",
+        "ownerFirst": "Luke",
+        "ownerLast": "Hitchcock",
+        "ownerName": "Luke Hitchcock",
+    },
+    "iacoviello": {
+        "ownerId": "matt-iacoviello",
+        "ownerFirst": "Matt",
+        "ownerLast": "Iacoviello",
+        "ownerName": "Matt Iacoviello",
+    },
+    "jordan": {
+        "ownerId": "owen-jordan",
+        "ownerFirst": "Owen",
+        "ownerLast": "Jordan",
+        "ownerName": "Owen Jordan",
+    },
+    "marcotte": {
+        "ownerId": "billy-marcotte",
+        "ownerFirst": "Billy",
+        "ownerLast": "Marcotte",
+        "ownerName": "Billy Marcotte",
+    },
 
-    owner_last = str(value).strip()
+    # John Severin and Andrew Severin are intentionally
+    # treated as one historical owner/franchise.
+    "severin": {
+        "ownerId": "andrew-severin",
+        "ownerFirst": "Andrew",
+        "ownerLast": "Severin",
+        "ownerName": "Andrew Severin",
+    },
 
-    # casefold() is a stronger case-insensitive comparison
-    # than lower().
-    normalized_key = owner_last.casefold()
+    # Matt and Matthew Wolfenden are intentionally
+    # treated as one historical owner.
+    "wolfenden": {
+        "ownerId": "matt-wolfenden",
+        "ownerFirst": "Matt",
+        "ownerLast": "Wolfenden",
+        "ownerName": "Matt Wolfenden",
+    },
+    "wolfgang": {
+        "ownerId": "patrick-wolfgang",
+        "ownerFirst": "Patrick",
+        "ownerLast": "Wolfgang",
+        "ownerName": "Patrick Wolfgang",
+    },
+}
 
-    owner_name_fixes = {
-        "falaras": "Falaras",
-    }
 
-    return owner_name_fixes.get(
-        normalized_key,
-        owner_last,
+def clean_text(value):
+    if pd.isna(value):
+        return ""
+
+    return str(value).strip()
+
+
+def create_owner_id(first_name, last_name):
+    clean_first = (
+        clean_text(first_name)
+        .casefold()
+        .replace(" ", "-")
     )
+
+    clean_last = (
+        clean_text(last_name)
+        .casefold()
+        .replace(" ", "-")
+    )
+
+    return f"{clean_first}-{clean_last}"
+
+
+def get_owner_data(row):
+    original_first = clean_text(
+        row["Owner First"]
+    )
+
+    original_last = clean_text(
+        row["Owner Last"]
+    )
+
+    owner_key = original_last.casefold()
+
+    if owner_key in OWNER_MAP:
+        return OWNER_MAP[owner_key]
+
+    # Safe fallback for an owner who may be added
+    # to the workbook in the future.
+    fallback_first = original_first.title()
+    fallback_last = original_last.title()
+
+    return {
+        "ownerId": create_owner_id(
+            fallback_first,
+            fallback_last,
+        ),
+        "ownerFirst": fallback_first,
+        "ownerLast": fallback_last,
+        "ownerName": (
+            f"{fallback_first} {fallback_last}"
+        ).strip(),
+    }
 
 
 df = pd.read_excel(
@@ -52,46 +176,54 @@ df = pd.read_excel(
 records = []
 
 for _, row in df.iterrows():
-    owner_last = normalize_owner_last(
-        row["Owner Last"]
-    )
+    owner = get_owner_data(row)
 
     record = {
         "season": int(row["Season"]),
         "teamId": int(row["Team ID"]),
-        "teamName": str(
+        "teamName": clean_text(
             row["Team Name"]
-        ).strip(),
-        "ownerFirst": str(
-            row["Owner First"]
-        ).strip(),
-        "ownerLast": owner_last,
-        "ownerDisplay": str(
+        ),
+
+        "ownerId": owner["ownerId"],
+        "ownerName": owner["ownerName"],
+        "ownerFirst": owner["ownerFirst"],
+        "ownerLast": owner["ownerLast"],
+
+        "ownerDisplay": clean_text(
             row["Owner Display"]
-        ).strip(),
+        ),
+
         "wins": int(row["Wins"]),
         "losses": int(row["Losses"]),
         "ties": int(row["Ties"]),
+
         "pointsFor": round(
             float(row["Points For"]),
             2,
         ),
+
         "pointsAgainst": round(
             float(row["Points Against"]),
             2,
         ),
+
         "regularSeasonStanding": int(
             row["Standing"]
         ),
+
         "finalStanding": int(
             row["Final Standing"]
         ),
+
         "acquisitions": int(
             row["Acquisitions"]
         ),
+
         "drops": int(
             row["Drops"]
         ),
+
         "trades": int(
             row["Trades"]
         ),
@@ -100,7 +232,6 @@ for _, row in df.iterrows():
     records.append(record)
 
 
-# Make sure the output folder exists.
 OUTPUT_FILE.parent.mkdir(
     parents=True,
     exist_ok=True,
@@ -118,18 +249,16 @@ with OUTPUT_FILE.open(
     )
 
 
-# Confirm that all casing variations were consolidated.
-falaras_records = [
-    record
-    for record in records
-    if record["ownerLast"] == "Falaras"
-]
-
-lowercase_falaras_records = [
-    record
-    for record in records
-    if record["ownerLast"] == "falaras"
-]
+unique_owners = sorted(
+    {
+        (
+            record["ownerId"],
+            record["ownerName"],
+        )
+        for record in records
+    },
+    key=lambda owner: owner[1],
+)
 
 
 print(
@@ -141,11 +270,17 @@ print(
 )
 
 print(
-    f"Falaras records after cleanup: "
-    f"{len(falaras_records)}"
+    f"Canonical owners: {len(unique_owners)}"
 )
 
-print(
-    f"Lowercase falaras records remaining: "
-    f"{len(lowercase_falaras_records)}"
-)
+for owner_id, owner_name in unique_owners:
+    owner_seasons = sum(
+        1
+        for record in records
+        if record["ownerId"] == owner_id
+    )
+
+    print(
+        f"- {owner_name}: "
+        f"{owner_seasons} seasons"
+    )
