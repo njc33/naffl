@@ -2,16 +2,20 @@ import { useEffect, useState } from "react";
 
 function OwnerHistory() {
   const [teams, setTeams] = useState([]);
-  const [ownerKey, setOwnerKey] = useState("ceraso");
-  const [sortField, setSortField] = useState("season");
-  const [sortDirection, setSortDirection] = useState("asc");
+  const [ownerId, setOwnerId] = useState(
+    "nick-ceraso"
+  );
+  const [sortField, setSortField] =
+    useState("season");
+  const [sortDirection, setSortDirection] =
+    useState("asc");
 
   useEffect(() => {
     fetch("/data/team-seasons.json")
       .then((response) => {
         if (!response.ok) {
           throw new Error(
-            "Could not load team-seasons.json"
+            "Could not load team season data."
           );
         }
 
@@ -19,89 +23,98 @@ function OwnerHistory() {
       })
       .then((data) => {
         setTeams(data);
+
+        const ownerExists = data.some(
+          (team) =>
+            team.ownerId ===
+            "nick-ceraso"
+        );
+
+        if (
+          !ownerExists &&
+          data.length > 0
+        ) {
+          setOwnerId(
+            data[0].ownerId
+          );
+        }
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
 
-  const normalizeOwnerKey = (ownerLast) =>
-    String(ownerLast)
-      .trim()
-      .toLocaleLowerCase();
-
   const ownerMap = new Map();
 
   teams.forEach((team) => {
-    const key = normalizeOwnerKey(
-      team.ownerLast
-    );
-
-    if (!ownerMap.has(key)) {
-      ownerMap.set(key, {
-        key,
-        displayName:
-          key === "falaras"
-            ? "Falaras"
-            : String(team.ownerLast).trim(),
+    if (
+      !ownerMap.has(team.ownerId)
+    ) {
+      ownerMap.set(team.ownerId, {
+        ownerId: team.ownerId,
+        ownerName: team.ownerName,
       });
     }
   });
 
   const owners = Array.from(
     ownerMap.values()
-  ).sort((a, b) =>
-    a.displayName.localeCompare(
-      b.displayName
+  ).sort((ownerA, ownerB) =>
+    ownerA.ownerName.localeCompare(
+      ownerB.ownerName
     )
   );
 
   const ownerTeams = teams.filter(
     (team) =>
-      normalizeOwnerKey(
-        team.ownerLast
-      ) === ownerKey
+      team.ownerId === ownerId
   );
 
   const selectedOwner =
-    ownerMap.get(ownerKey);
+    ownerMap.get(ownerId);
 
   const ownerName =
-    selectedOwner?.displayName ??
-    ownerKey;
+    selectedOwner?.ownerName ??
+    "Owner";
 
   const totalWins = ownerTeams.reduce(
-    (sum, season) =>
-      sum + Number(season.wins || 0),
+    (sum, team) =>
+      sum + Number(team.wins || 0),
     0
   );
 
   const totalLosses =
     ownerTeams.reduce(
-      (sum, season) =>
+      (sum, team) =>
         sum +
-        Number(season.losses || 0),
+        Number(team.losses || 0),
       0
     );
 
   const totalTies = ownerTeams.reduce(
-    (sum, season) =>
-      sum + Number(season.ties || 0),
+    (sum, team) =>
+      sum + Number(team.ties || 0),
     0
   );
 
   const totalPoints =
     ownerTeams.reduce(
-      (sum, season) =>
+      (sum, team) =>
         sum +
         Number(
-          season.pointsFor || 0
+          team.pointsFor || 0
         ),
       0
     );
 
   const seasonsPlayed =
     ownerTeams.length;
+
+  const averagePointsPerSeason =
+    seasonsPlayed > 0
+      ? totalPoints /
+        seasonsPlayed
+      : 0;
 
   const gamesPlayed =
     totalWins +
@@ -134,12 +147,17 @@ function OwnerHistory() {
       (finish) => finish === 1
     ).length;
 
+  const runnerUpFinishes =
+    validFinishes.filter(
+      (finish) => finish === 2
+    ).length;
+
   const bestFinish =
     validFinishes.length > 0
       ? Math.min(
           ...validFinishes
         )
-      : "N/A";
+      : null;
 
   const averageFinish =
     validFinishes.length > 0
@@ -149,7 +167,7 @@ function OwnerHistory() {
           0
         ) /
         validFinishes.length
-      : 0;
+      : null;
 
   const handleSort = (field) => {
     if (field === sortField) {
@@ -166,12 +184,11 @@ function OwnerHistory() {
         "wins",
         "losses",
         "pointsFor",
+        "pointsAgainst",
       ];
 
       setSortDirection(
-        descendingFields.includes(
-          field
-        )
+        descendingFields.includes(field)
           ? "desc"
           : "asc"
       );
@@ -227,34 +244,97 @@ function OwnerHistory() {
       : " ▼";
   };
 
+  const formatPoints = (points) =>
+    Number(points || 0).toLocaleString(
+      undefined,
+      {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }
+    );
+
+  const formatWinPct = (value) =>
+    value.toFixed(3).replace(
+      /^0/,
+      ""
+    );
+
+  const formatFinish = (finish) => {
+    const numericFinish =
+      Number(finish);
+
+    if (numericFinish === 0) {
+      return "In Progress";
+    }
+
+    const lastTwoDigits =
+      numericFinish % 100;
+
+    if (
+      lastTwoDigits >= 11 &&
+      lastTwoDigits <= 13
+    ) {
+      return `${numericFinish}th`;
+    }
+
+    const lastDigit =
+      numericFinish % 10;
+
+    if (lastDigit === 1) {
+      return `${numericFinish}st`;
+    }
+
+    if (lastDigit === 2) {
+      return `${numericFinish}nd`;
+    }
+
+    if (lastDigit === 3) {
+      return `${numericFinish}rd`;
+    }
+
+    return `${numericFinish}th`;
+  };
+
   const sortableHeaderStyle = {
     cursor: "pointer",
     userSelect: "none",
-    paddingRight: "14px",
     textAlign: "left",
+    paddingRight: "16px",
+    paddingBottom: "8px",
+  };
+
+  const cellStyle = {
+    paddingRight: "16px",
+    paddingBottom: "6px",
   };
 
   return (
     <div>
       <h2>Owner History</h2>
 
-      <select
-        value={ownerKey}
-        onChange={(event) =>
-          setOwnerKey(
-            event.target.value
-          )
-        }
-      >
-        {owners.map((owner) => (
-          <option
-            key={owner.key}
-            value={owner.key}
-          >
-            {owner.displayName}
-          </option>
-        ))}
-      </select>
+      <label>
+        Owner:{" "}
+        <select
+          value={ownerId}
+          onChange={(event) => {
+            setOwnerId(
+              event.target.value
+            );
+
+            setSortField("season");
+            setSortDirection("asc");
+          }}
+        >
+          {owners.map((owner) => (
+            <option
+              key={owner.ownerId}
+              value={owner.ownerId}
+            >
+              {owner.ownerName}
+            </option>
+          ))}
+        </select>
+      </label>
 
       <h3>{ownerName}</h3>
 
@@ -272,8 +352,8 @@ function OwnerHistory() {
       </p>
 
       <p>
-        Win Percentage:{" "}
-        {winPct.toFixed(3)}
+        Winning Percentage:{" "}
+        {formatWinPct(winPct)}
       </p>
 
       <p>
@@ -282,20 +362,38 @@ function OwnerHistory() {
       </p>
 
       <p>
+        Runner-Up Finishes:{" "}
+        {runnerUpFinishes}
+      </p>
+
+      <p>
         Best Finish:{" "}
-        {bestFinish}
+        {bestFinish === null
+          ? "N/A"
+          : formatFinish(
+              bestFinish
+            )}
       </p>
 
       <p>
         Average Finish:{" "}
-        {averageFinish.toFixed(1)}
+        {averageFinish === null
+          ? "N/A"
+          : averageFinish.toFixed(
+              1
+            )}
       </p>
 
       <p>
         Career Points:{" "}
-        {Math.round(
-          totalPoints
-        ).toLocaleString()}
+        {formatPoints(totalPoints)}
+      </p>
+
+      <p>
+        Average Points/Season:{" "}
+        {formatPoints(
+          averagePointsPerSeason
+        )}
       </p>
 
       <table
@@ -346,9 +444,7 @@ function OwnerHistory() {
               }
             >
               W
-              {sortIndicator(
-                "wins"
-              )}
+              {sortIndicator("wins")}
             </th>
 
             <th
@@ -369,6 +465,18 @@ function OwnerHistory() {
 
             <th
               onClick={() =>
+                handleSort("ties")
+              }
+              style={
+                sortableHeaderStyle
+              }
+            >
+              T
+              {sortIndicator("ties")}
+            </th>
+
+            <th
+              onClick={() =>
                 handleSort(
                   "pointsFor"
                 )
@@ -380,6 +488,22 @@ function OwnerHistory() {
               PF
               {sortIndicator(
                 "pointsFor"
+              )}
+            </th>
+
+            <th
+              onClick={() =>
+                handleSort(
+                  "pointsAgainst"
+                )
+              }
+              style={
+                sortableHeaderStyle
+              }
+            >
+              PA
+              {sortIndicator(
+                "pointsAgainst"
               )}
             </th>
 
@@ -403,45 +527,46 @@ function OwnerHistory() {
 
         <tbody>
           {sortedOwnerTeams.map(
-            (season) => (
+            (team) => (
               <tr
-                key={`${normalizeOwnerKey(
-                  season.ownerLast
-                )}-${season.season}`}
+                key={`${team.ownerId}-${team.season}`}
               >
-                <td>
-                  {season.season}
+                <td style={cellStyle}>
+                  {team.season}
                 </td>
 
-                <td>
-                  {season.teamName}
+                <td style={cellStyle}>
+                  {team.teamName}
                 </td>
 
-                <td>
-                  {season.wins}
+                <td style={cellStyle}>
+                  {team.wins}
                 </td>
 
-                <td>
-                  {season.losses}
+                <td style={cellStyle}>
+                  {team.losses}
                 </td>
 
-                <td>
-                  {Number(
-                    season.pointsFor
-                  ).toLocaleString(
-                    undefined,
-                    {
-                      maximumFractionDigits: 2,
-                    }
+                <td style={cellStyle}>
+                  {team.ties}
+                </td>
+
+                <td style={cellStyle}>
+                  {formatPoints(
+                    team.pointsFor
                   )}
                 </td>
 
-                <td>
-                  {Number(
-                    season.finalStanding
-                  ) === 0
-                    ? "In Progress"
-                    : season.finalStanding}
+                <td style={cellStyle}>
+                  {formatPoints(
+                    team.pointsAgainst
+                  )}
+                </td>
+
+                <td style={cellStyle}>
+                  {formatFinish(
+                    team.finalStanding
+                  )}
                 </td>
               </tr>
             )
