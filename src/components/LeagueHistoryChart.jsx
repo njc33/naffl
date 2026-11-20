@@ -1,4 +1,5 @@
 import {
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -250,8 +251,10 @@ function LeagueHistoryTooltip({
 function LeagueHistoryChart({
   teams,
 }) {
-  const [ownerId, setOwnerId] =
-    useState("all");
+  const [
+    selectedOwnerIds,
+    setSelectedOwnerIds,
+  ] = useState([]);
 
   const [metricKey, setMetricKey] =
     useState("pointsFor");
@@ -288,6 +291,28 @@ function LeagueHistoryChart({
       )
     );
   }, [teams]);
+
+
+  /*
+    Select every owner automatically
+    once the owner list has loaded.
+  */
+  useEffect(() => {
+    if (
+      owners.length > 0 &&
+      selectedOwnerIds.length === 0
+    ) {
+      setSelectedOwnerIds(
+        owners.map(
+          (owner) =>
+            owner.ownerId
+        )
+      );
+    }
+  }, [
+    owners,
+    selectedOwnerIds.length,
+  ]);
 
 
   const ownerMap = useMemo(() => {
@@ -379,13 +404,64 @@ function LeagueHistoryChart({
 
 
   const displayedOwners =
-    ownerId === "all"
-      ? owners
-      : owners.filter(
-          (owner) =>
-            owner.ownerId ===
-            ownerId
-        );
+    owners.filter(
+      (owner) =>
+        selectedOwnerIds.includes(
+          owner.ownerId
+        )
+    );
+
+
+  const allOwnersSelected =
+    owners.length > 0 &&
+    selectedOwnerIds.length ===
+      owners.length;
+
+
+  const someOwnersSelected =
+    selectedOwnerIds.length > 0 &&
+    !allOwnersSelected;
+
+
+  const handleSelectAll = () => {
+    if (allOwnersSelected) {
+      setSelectedOwnerIds([]);
+      return;
+    }
+
+    setSelectedOwnerIds(
+      owners.map(
+        (owner) =>
+          owner.ownerId
+      )
+    );
+  };
+
+
+  const handleOwnerToggle = (
+    toggledOwnerId
+  ) => {
+    setSelectedOwnerIds(
+      (currentOwnerIds) => {
+        if (
+          currentOwnerIds.includes(
+            toggledOwnerId
+          )
+        ) {
+          return currentOwnerIds.filter(
+            (currentOwnerId) =>
+              currentOwnerId !==
+              toggledOwnerId
+          );
+        }
+
+        return [
+          ...currentOwnerIds,
+          toggledOwnerId,
+        ];
+      }
+    );
+  };
 
 
   const allChartValues =
@@ -467,6 +543,35 @@ function LeagueHistoryChart({
   };
 
 
+  const chartHeading = () => {
+    if (allOwnersSelected) {
+      return "All Owners";
+    }
+
+    if (
+      selectedOwnerIds.length === 0
+    ) {
+      return "No Owners Selected";
+    }
+
+    if (
+      selectedOwnerIds.length === 1
+    ) {
+      return (
+        ownerMap.get(
+          selectedOwnerIds[0]
+        )?.ownerName ??
+        "Selected Owner"
+      );
+    }
+
+    return (
+      `${selectedOwnerIds.length} ` +
+      "Owners Selected"
+    );
+  };
+
+
   if (teams.length === 0) {
     return null;
   }
@@ -490,34 +595,177 @@ function LeagueHistoryChart({
           display: "flex",
           flexWrap: "wrap",
           gap: "12px",
-          alignItems: "center",
+          alignItems: "flex-start",
           marginBottom: "16px",
         }}
       >
-        <label>
-          Owner:{" "}
-          <select
-            value={ownerId}
-            onChange={(event) =>
-              setOwnerId(
-                event.target.value
-              )
-            }
+        <details
+          style={{
+            width: "min(100%, 420px)",
+            border:
+              "1px solid #cbd5e1",
+            borderRadius: "6px",
+            backgroundColor:
+              "#ffffff",
+          }}
+        >
+          <summary
+            style={{
+              cursor: "pointer",
+              padding: "9px 12px",
+              color: "#172b43",
+              fontSize: "0.9rem",
+              fontWeight: 700,
+              userSelect: "none",
+            }}
           >
-            <option value="all">
-              All Owners
-            </option>
+            Owners:{" "}
+            {allOwnersSelected
+              ? "All"
+              : `${selectedOwnerIds.length} selected`}
+          </summary>
 
-            {owners.map((owner) => (
-              <option
-                key={owner.ownerId}
-                value={owner.ownerId}
+          <div
+            style={{
+              padding:
+                "4px 12px 12px",
+              borderTop:
+                "1px solid #e2e8f0",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent:
+                  "space-between",
+                alignItems: "center",
+                gap: "12px",
+                padding: "9px 0",
+              }}
+            >
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  cursor: "pointer",
+                }}
               >
-                {owner.ownerName}
-              </option>
-            ))}
-          </select>
-        </label>
+                <input
+                  type="checkbox"
+                  checked={
+                    allOwnersSelected
+                  }
+                  ref={(checkbox) => {
+                    if (checkbox) {
+                      checkbox.indeterminate =
+                        someOwnersSelected;
+                    }
+                  }}
+                  onChange={
+                    handleSelectAll
+                  }
+                />
+
+                <strong>
+                  Select All
+                </strong>
+              </label>
+
+              <button
+                type="button"
+                onClick={() =>
+                  setSelectedOwnerIds(
+                    []
+                  )
+                }
+                style={{
+                  padding:
+                    "5px 9px",
+                  border:
+                    "1px solid #cbd5e1",
+                  borderRadius: "5px",
+                  backgroundColor:
+                    "#f8fafc",
+                  color: "#334155",
+                  fontSize: "0.75rem",
+                  cursor: "pointer",
+                }}
+              >
+                Clear All
+              </button>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns:
+                  "repeat(auto-fit, minmax(165px, 1fr))",
+                gap: "7px 12px",
+                maxHeight: "240px",
+                overflowY: "auto",
+                paddingTop: "4px",
+              }}
+            >
+              {owners.map((owner) => {
+                const ownerDetails =
+                  ownerMap.get(
+                    owner.ownerId
+                  );
+
+                return (
+                  <label
+                    key={owner.ownerId}
+                    style={{
+                      display: "flex",
+                      alignItems:
+                        "center",
+                      gap: "7px",
+                      cursor: "pointer",
+                      fontSize:
+                        "0.82rem",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={
+                        selectedOwnerIds.includes(
+                          owner.ownerId
+                        )
+                      }
+                      onChange={() =>
+                        handleOwnerToggle(
+                          owner.ownerId
+                        )
+                      }
+                    />
+
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        display:
+                          "inline-block",
+                        width: "10px",
+                        height: "10px",
+                        flexShrink: 0,
+                        borderRadius:
+                          "50%",
+                        backgroundColor:
+                          ownerDetails
+                            ?.color ??
+                          "#64748b",
+                      }}
+                    />
+
+                    <span>
+                      {owner.ownerName}
+                    </span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+        </details>
 
         <label>
           Graph Metric:{" "}
@@ -557,202 +805,222 @@ function LeagueHistoryChart({
           fontSize: "0.9rem",
         }}
       >
-        {ownerId === "all"
-          ? "All Owners"
-          : ownerMap.get(
-              ownerId
-            )?.ownerName ??
-            "Owner"}
-        : {metric.label} by season
+        {chartHeading()}:{" "}
+        {metric.label} by season
       </p>
 
-      <div
-        style={{
-          width: "100%",
-          height:
-            ownerId === "all"
-              ? "500px"
-              : "400px",
-          minHeight: "320px",
-        }}
-      >
-        <ResponsiveContainer
-          width="100%"
-          height="100%"
+      {selectedOwnerIds.length > 0 ? (
+        <div
+          style={{
+            width: "100%",
+            height:
+              selectedOwnerIds.length >
+              5
+                ? "500px"
+                : "410px",
+            minHeight: "320px",
+          }}
         >
-          <LineChart
-            data={chartData}
-            margin={{
-              top: 12,
-              right: 24,
-              bottom: 12,
-              left: 8,
-            }}
+          <ResponsiveContainer
+            width="100%"
+            height="100%"
           >
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="#d7dce3"
-            />
+            <LineChart
+              data={chartData}
+              margin={{
+                top: 12,
+                right: 24,
+                bottom: 12,
+                left: 8,
+              }}
+            >
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="#d7dce3"
+              />
 
-            <XAxis
-              dataKey="season"
-              type="category"
-              allowDuplicatedCategory={
-                false
-              }
-              tick={{
-                fill: "#536273",
-                fontSize: 12,
-              }}
-              tickLine={false}
-              axisLine={{
-                stroke: "#94a3b8",
-              }}
-            />
-
-            <YAxis
-              domain={yAxisDomain}
-              reversed={
-                metric.field ===
-                "finalStanding"
-              }
-              allowDecimals={
-                metric.field !==
-                "finalStanding"
-              }
-              tickFormatter={
-                yAxisFormatter
-              }
-              tick={{
-                fill: "#536273",
-                fontSize: 12,
-              }}
-              tickLine={false}
-              axisLine={{
-                stroke: "#94a3b8",
-              }}
-              width={
-                metric.field ===
-                "finalStanding"
-                  ? 50
-                  : 72
-              }
-            />
-
-            <Tooltip
-              content={
-                <LeagueHistoryTooltip
-                  metric={metric}
-                  ownerMap={ownerMap}
-                />
-              }
-            />
-
-            <Legend
-              verticalAlign="top"
-              height={
-                ownerId === "all"
-                  ? 72
-                  : 42
-              }
-              iconType="line"
-              wrapperStyle={{
-                fontSize: "0.75rem",
-                lineHeight: 1.4,
-              }}
-              formatter={(
-                value,
-                entry
-              ) => {
-                if (
-                  entry.dataKey ===
-                  "leagueAverage"
-                ) {
-                  return (
-                    "League Average"
-                  );
+              <XAxis
+                dataKey="season"
+                type="category"
+                allowDuplicatedCategory={
+                  false
                 }
+                tick={{
+                  fill: "#536273",
+                  fontSize: 12,
+                }}
+                tickLine={false}
+                axisLine={{
+                  stroke: "#94a3b8",
+                }}
+              />
 
-                return (
-                  ownerMap.get(
-                    entry.dataKey
-                  )?.ownerName ??
-                  value
-                );
-              }}
-            />
+              <YAxis
+                domain={yAxisDomain}
+                reversed={
+                  metric.field ===
+                  "finalStanding"
+                }
+                allowDecimals={
+                  metric.field !==
+                  "finalStanding"
+                }
+                tickFormatter={
+                  yAxisFormatter
+                }
+                tick={{
+                  fill: "#536273",
+                  fontSize: 12,
+                }}
+                tickLine={false}
+                axisLine={{
+                  stroke: "#94a3b8",
+                }}
+                width={
+                  metric.field ===
+                  "finalStanding"
+                    ? 50
+                    : 72
+                }
+              />
 
-            {displayedOwners.map(
-              (owner) => {
-                const ownerDetails =
-                  ownerMap.get(
-                    owner.ownerId
-                  );
-
-                return (
-                  <Line
-                    key={
-                      owner.ownerId
-                    }
-                    type="monotone"
-                    dataKey={
-                      owner.ownerId
-                    }
-                    name={
-                      owner.ownerName
-                    }
-                    stroke={
-                      ownerDetails
-                        ?.color ??
-                      "#17365d"
-                    }
-                    strokeWidth={
-                      ownerId === "all"
-                        ? 2
-                        : 3
-                    }
-                    dot={
-                      ownerId === "all"
-                        ? false
-                        : {
-                            r: 4,
-                            fill:
-                              ownerDetails
-                                ?.color ??
-                              "#17365d",
-                            stroke:
-                              "#ffffff",
-                            strokeWidth: 2,
-                          }
-                    }
-                    activeDot={{
-                      r: 5,
-                    }}
-                    connectNulls={
-                      false
+              <Tooltip
+                content={
+                  <LeagueHistoryTooltip
+                    metric={metric}
+                    ownerMap={
+                      ownerMap
                     }
                   />
-                );
-              }
-            )}
+                }
+              />
 
-            <Line
-              type="monotone"
-              dataKey="leagueAverage"
-              name="League Average"
-              stroke="#111827"
-              strokeWidth={2}
-              strokeDasharray="7 5"
-              dot={false}
-              activeDot={{
-                r: 5,
-                fill: "#111827",
-              }}
-              connectNulls={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
+              <Legend
+                verticalAlign="top"
+                height={
+                  selectedOwnerIds
+                    .length > 5
+                    ? 72
+                    : 42
+                }
+                iconType="line"
+                wrapperStyle={{
+                  fontSize:
+                    "0.75rem",
+                  lineHeight: 1.4,
+                }}
+                formatter={(
+                  value,
+                  entry
+                ) => {
+                  if (
+                    entry.dataKey ===
+                    "leagueAverage"
+                  ) {
+                    return (
+                      "League Average"
+                    );
+                  }
+
+                  return (
+                    ownerMap.get(
+                      entry.dataKey
+                    )?.ownerName ??
+                    value
+                  );
+                }}
+              />
+
+              {displayedOwners.map(
+                (owner) => {
+                  const ownerDetails =
+                    ownerMap.get(
+                      owner.ownerId
+                    );
+
+                  return (
+                    <Line
+                      key={
+                        owner.ownerId
+                      }
+                      type="monotone"
+                      dataKey={
+                        owner.ownerId
+                      }
+                      name={
+                        owner.ownerName
+                      }
+                      stroke={
+                        ownerDetails
+                          ?.color ??
+                        "#17365d"
+                      }
+                      strokeWidth={
+                        selectedOwnerIds
+                          .length > 5
+                          ? 2
+                          : 3
+                      }
+                      dot={
+                        selectedOwnerIds
+                          .length > 5
+                          ? false
+                          : {
+                              r: 4,
+                              fill:
+                                ownerDetails
+                                  ?.color ??
+                                "#17365d",
+                              stroke:
+                                "#ffffff",
+                              strokeWidth: 2,
+                            }
+                      }
+                      activeDot={{
+                        r: 5,
+                      }}
+                      connectNulls={
+                        false
+                      }
+                    />
+                  );
+                }
+              )}
+
+              <Line
+                type="monotone"
+                dataKey="leagueAverage"
+                name="League Average"
+                stroke="#111827"
+                strokeWidth={2}
+                strokeDasharray="7 5"
+                dot={false}
+                activeDot={{
+                  r: 5,
+                  fill: "#111827",
+                }}
+                connectNulls={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      ) : (
+        <div
+          style={{
+            padding: "32px 18px",
+            border:
+              "1px dashed #94a3b8",
+            borderRadius: "8px",
+            backgroundColor:
+              "#f8fafc",
+            color: "#475569",
+            textAlign: "center",
+          }}
+        >
+          Select at least one owner
+          to display the graph.
+        </div>
+      )}
 
       <p
         style={{
@@ -763,9 +1031,9 @@ function LeagueHistoryChart({
       >
         The dashed line represents the
         league average for each season.
-        Owners without a team in a
-        season are not included in that
-        season’s average.
+        Use the owner checkboxes to
+        compare any combination of
+        rivals.
       </p>
 
       {metric.field ===
