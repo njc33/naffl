@@ -49,8 +49,16 @@ def clean_number(value):
         return 0.0
 
 
-# These are the Player x Owner worksheet columns
-# and their corresponding canonical owners.
+def clean_optional_number(value):
+    if pd.isna(value) or value == "":
+        return None
+
+    try:
+        return round(float(value), 2)
+    except (TypeError, ValueError):
+        return None
+
+
 OWNER_COLUMN_MAP = {
     "Ceraso": "nick-ceraso",
     "DiDuca": "nick-diduca",
@@ -68,8 +76,7 @@ OWNER_COLUMN_MAP = {
 }
 
 
-# Load canonical owner names from the already-cleaned
-# team-season export.
+# Load canonical owner identities.
 with TEAM_SEASONS_FILE.open(
     "r",
     encoding="utf-8",
@@ -95,7 +102,7 @@ for team in team_seasons:
     ] = team["ownerId"]
 
 
-# Read the Player x Owner matrix.
+# Read the Player x Owner point matrix.
 player_owner_df = pd.read_excel(
     EXCEL_FILE,
     sheet_name="Player x Owner",
@@ -107,10 +114,7 @@ player_owner_df.columns = [
 ]
 
 
-# Build a season lookup from Season_Rosters.
-#
-# This captures historic seasons where a player appeared
-# on an owner's end-of-season roster.
+# Build the player-owner season lookup.
 player_owner_years = defaultdict(set)
 
 
@@ -118,6 +122,12 @@ season_rosters_df = pd.read_excel(
     EXCEL_FILE,
     sheet_name="Season_Rosters",
 )
+
+season_rosters_df.columns = [
+    clean_text(column)
+    for column in season_rosters_df.columns
+]
+
 
 for _, row in season_rosters_df.iterrows():
     player = clean_text(
@@ -150,14 +160,17 @@ for _, row in season_rosters_df.iterrows():
     ].add(season)
 
 
-# Add seasons from Player_Weeks_Export.
-#
-# This is useful when a player scored points for more than
-# one owner during the same season.
+# Add years from weekly player records.
 player_weeks_df = pd.read_excel(
     EXCEL_FILE,
     sheet_name="Player_Weeks_Export",
 )
+
+player_weeks_df.columns = [
+    clean_text(column)
+    for column in player_weeks_df.columns
+]
+
 
 weekly_points_by_player_owner_year = defaultdict(
     float
@@ -216,6 +229,70 @@ for (
         ].add(season)
 
 
+# Read draft-performance data.
+#
+# Sum Net vs Avg R by normalized player name
+# and canonical owner.
+cda_df = pd.read_excel(
+    EXCEL_FILE,
+    sheet_name="CDA_All",
+)
+
+cda_df.columns = [
+    clean_text(column)
+    for column in cda_df.columns
+]
+
+
+sum_net_points_by_player_owner = defaultdict(
+    float
+)
+
+net_value_count_by_player_owner = defaultdict(
+    int
+)
+
+
+for _, row in cda_df.iterrows():
+    player = clean_text(
+        row["Player"]
+    )
+
+    if not player:
+        continue
+
+    owner_last_key = normalize_text(
+        row["Owner Last"]
+    )
+
+    owner_id = owner_id_by_last_name.get(
+        owner_last_key
+    )
+
+    if not owner_id:
+        continue
+
+    net_value = clean_optional_number(
+        row["Net vs Avg R"]
+    )
+
+    if net_value is None:
+        continue
+
+    lookup_key = (
+        normalize_text(player),
+        owner_id,
+    )
+
+    sum_net_points_by_player_owner[
+        lookup_key
+    ] += net_value
+
+    net_value_count_by_player_owner[
+        lookup_key
+    ] += 1
+
+
 records = []
 
 
@@ -235,7 +312,10 @@ for _, row in player_owner_df.iterrows():
         worksheet_column,
         owner_id,
     ) in OWNER_COLUMN_MAP.items():
-        if worksheet_column not in row:
+        if (
+            worksheet_column
+            not in player_owner_df.columns
+        ):
             continue
 
         points = clean_number(
@@ -255,6 +335,30 @@ for _, row in player_owner_df.iterrows():
             )
         )
 
+        net_lookup_key = (
+            player_key,
+            owner_id,
+        )
+
+        net_value_count = (
+            net_value_count_by_player_owner.get(
+                net_lookup_key,
+                0,
+            )
+        )
+
+        sum_net_points = (
+            round(
+                sum_net_points_by_player_owner.get(
+                    net_lookup_key,
+                    0.0,
+                ),
+                2,
+            )
+            if net_value_count > 0
+            else None
+        )
+
         record = {
             "ownerId": owner_id,
 
@@ -267,6 +371,12 @@ for _, row in player_owner_df.iterrows():
             "player": player,
 
             "points": points,
+
+            "sumNetPoints":
+                sum_net_points,
+
+            "netDraftRecordCount":
+                net_value_count,
 
             "years": years,
 
@@ -286,7 +396,7 @@ for _, row in player_owner_df.iterrows():
         records.append(record)
 
 
-# Assign rank within each owner's franchise.
+# Assign rank within each franchise.
 records_by_owner = defaultdict(list)
 
 for record in records:
@@ -326,8 +436,7 @@ for owner_records in records_by_owner.values():
         )
 
 
-# Assign an all-time rank among every player-owner
-# point combination.
+# Assign all-time player-owner rank.
 all_time_sorted = sorted(
     records,
     key=lambda record: (
@@ -360,7 +469,6 @@ for index, record in enumerate(
     )
 
 
-# Return the JSON in owner/rank order.
 records.sort(
     key=lambda record: (
         record["ownerName"],
@@ -387,6 +495,21 @@ with OUTPUT_FILE.open(
     )
 
 
+records_with_net_points = sum(
+    1
+    for record in records
+    if record["sumNetPoints"]
+    is not None
+)
+
+records_without_net_points = sum(
+    1
+    for record in records
+    if record["sumNetPoints"]
+    is None
+)
+
+
 print(
     f"Exported {len(records)} "
     f"player-owner records"
@@ -395,6 +518,16 @@ print(
 print(
     f"Owners represented: "
     f"{len(records_by_owner)}"
+)
+
+print(
+    f"Records with Sum Net Pts: "
+    f"{records_with_net_points}"
+)
+
+print(
+    f"Records displaying N/A: "
+    f"{records_without_net_points}"
 )
 
 print(

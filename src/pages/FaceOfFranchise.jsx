@@ -135,6 +135,7 @@ function FaceOfFranchise() {
 
     const descendingFields = [
       "points",
+      "sumNetPoints",
       "yearCount",
     ];
 
@@ -196,10 +197,43 @@ function FaceOfFranchise() {
   const sortedRecords = [
     ...ownerRecords,
   ].sort((recordA, recordB) => {
+    const valueA =
+      recordA[sortField];
+
+    const valueB =
+      recordB[sortField];
+
+    const valueAIsMissing =
+      valueA === null ||
+      valueA === undefined;
+
+    const valueBIsMissing =
+      valueB === null ||
+      valueB === undefined;
+
+    /*
+      Missing values always remain at
+      the bottom in either direction.
+    */
+    if (
+      valueAIsMissing &&
+      valueBIsMissing
+    ) {
+      return 0;
+    }
+
+    if (valueAIsMissing) {
+      return 1;
+    }
+
+    if (valueBIsMissing) {
+      return -1;
+    }
+
     const comparison =
       compareValues(
-        recordA[sortField],
-        recordB[sortField]
+        valueA,
+        valueB
       );
 
     return sortDirection === "asc"
@@ -225,6 +259,63 @@ function FaceOfFranchise() {
         maximumFractionDigits: 2,
       }
     );
+
+  const formatNetPoints = (value) => {
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return "N/A";
+    }
+
+    const numericValue =
+      Number(value);
+
+    const formattedValue =
+      Math.abs(
+        numericValue
+      ).toLocaleString(
+        undefined,
+        {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }
+      );
+
+    if (numericValue > 0) {
+      return `+${formattedValue}`;
+    }
+
+    if (numericValue < 0) {
+      return `-${formattedValue}`;
+    }
+
+    return "0.00";
+  };
+
+  const getNetPointsColor = (
+    value
+  ) => {
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return undefined;
+    }
+
+    const numericValue =
+      Number(value);
+
+    if (numericValue > 0) {
+      return "#15803d";
+    }
+
+    if (numericValue < 0) {
+      return "#b91c1c";
+    }
+
+    return undefined;
+  };
 
   const getOrdinal = (number) => {
     const numericValue =
@@ -327,6 +418,28 @@ function FaceOfFranchise() {
       0
     );
 
+  const totalOwnerNetPoints =
+    ownerRecords.reduce(
+      (sum, record) => {
+        if (
+          record.sumNetPoints ===
+            null ||
+          record.sumNetPoints ===
+            undefined
+        ) {
+          return sum;
+        }
+
+        return (
+          sum +
+          Number(
+            record.sumNetPoints
+          )
+        );
+      },
+      0
+    );
+
   const activePlayerCount =
     ownerRecords.filter(
       (record) =>
@@ -417,6 +530,26 @@ function FaceOfFranchise() {
 
       <p>
         <strong>
+          Sum Net Pts:
+        </strong>{" "}
+        <span
+          style={{
+            color:
+              getNetPointsColor(
+                totalOwnerNetPoints
+              ),
+
+            fontWeight: 700,
+          }}
+        >
+          {formatNetPoints(
+            totalOwnerNetPoints
+          )}
+        </span>
+      </p>
+
+      <p>
+        <strong>
           Active Players:
         </strong>{" "}
         {activePlayerCount}
@@ -494,6 +627,22 @@ function FaceOfFranchise() {
             </th>
 
             <th
+              onClick={() =>
+                handleSort(
+                  "sumNetPoints"
+                )
+              }
+              style={
+                sortableHeaderStyle
+              }
+            >
+              Sum Net Pts
+              {sortIndicator(
+                "sumNetPoints"
+              )}
+            </th>
+
+            <th
               style={
                 standardHeaderStyle
               }
@@ -557,6 +706,7 @@ function FaceOfFranchise() {
                       ? {
                           backgroundColor:
                             "#f4f5f7",
+
                           fontWeight:
                             700,
                         }
@@ -584,6 +734,33 @@ function FaceOfFranchise() {
                   <td style={cellStyle}>
                     {formatPoints(
                       record.points
+                    )}
+                  </td>
+
+                  <td
+                    style={{
+                      ...cellStyle,
+
+                      color:
+                        getNetPointsColor(
+                          record
+                            .sumNetPoints
+                        ),
+
+                      fontWeight:
+                        record
+                          .sumNetPoints !==
+                          null &&
+                        record
+                          .sumNetPoints !==
+                          undefined
+                          ? 700
+                          : undefined,
+                    }}
+                  >
+                    {formatNetPoints(
+                      record
+                        .sumNetPoints
                     )}
                   </td>
 
@@ -623,15 +800,16 @@ function FaceOfFranchise() {
           fontSize: "0.8rem",
         }}
       >
-        Bold, shaded rows identify
-        players associated with an
-        owner in the latest season.
-        All-Time Rank compares every
-        player-owner points combination
-        in league history. A player may
-        therefore appear more than once
-        if he scored points for multiple
-        owners.
+        Sum Net Pts adds the player’s
+        Net vs Avg R values for draft
+        records associated with the
+        selected owner. Positive values
+        indicate above-average draft
+        production for the applicable
+        rounds. Bold, shaded rows
+        identify players associated
+        with an owner in the latest
+        season.
       </p>
     </div>
   );
