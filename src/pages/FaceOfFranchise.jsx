@@ -247,15 +247,59 @@ function FaceOfFranchise() {
 
 
   const formatYears = (years) => {
+  if (
+    !years ||
+    years.length === 0
+  ) {
+    return "N/A";
+  }
+
+  const sortedYears = [
+    ...new Set(
+      years.map(Number)
+    ),
+  ].sort((a, b) => a - b);
+
+  const ranges = [];
+  let rangeStart = sortedYears[0];
+  let previousYear = sortedYears[0];
+
+  for (
+    let index = 1;
+    index < sortedYears.length;
+    index += 1
+  ) {
+    const currentYear =
+      sortedYears[index];
+
     if (
-      !years
-      || years.length === 0
+      currentYear ===
+      previousYear + 1
     ) {
-      return "N/A";
+      previousYear =
+        currentYear;
+
+      continue;
     }
 
-    return years.join(", ");
-  };
+    ranges.push(
+      rangeStart === previousYear
+        ? `${rangeStart}`
+        : `${rangeStart}-${previousYear}`
+    );
+
+    rangeStart = currentYear;
+    previousYear = currentYear;
+  }
+
+  ranges.push(
+    rangeStart === previousYear
+      ? `${rangeStart}`
+      : `${rangeStart}-${previousYear}`
+  );
+
+  return ranges.join(", ");
+};
 
 
   const totalOwnerPoints =
