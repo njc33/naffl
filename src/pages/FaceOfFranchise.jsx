@@ -1,8 +1,10 @@
 import {
+  Fragment,
   useEffect,
   useMemo,
   useState,
 } from "react";
+
 
 function FaceOfFranchise() {
   const [records, setRecords] =
@@ -16,6 +18,17 @@ function FaceOfFranchise() {
 
   const [sortDirection, setSortDirection] =
     useState("desc");
+
+  const [
+    hoveredRecordKey,
+    setHoveredRecordKey,
+  ] = useState(null);
+
+  const [
+    expandedRecordKey,
+    setExpandedRecordKey,
+  ] = useState(null);
+
 
   useEffect(() => {
     fetch(
@@ -54,6 +67,36 @@ function FaceOfFranchise() {
       });
   }, []);
 
+
+  useEffect(() => {
+    const handleEscape = (
+      event
+    ) => {
+      if (event.key === "Escape") {
+        setExpandedRecordKey(
+          null
+        );
+
+        setHoveredRecordKey(
+          null
+        );
+      }
+    };
+
+    window.addEventListener(
+      "keydown",
+      handleEscape
+    );
+
+    return () => {
+      window.removeEventListener(
+        "keydown",
+        handleEscape
+      );
+    };
+  }, []);
+
+
   const owners = useMemo(() => {
     const ownerMap = new Map();
 
@@ -89,6 +132,7 @@ function FaceOfFranchise() {
       );
   }, [records]);
 
+
   const ownerRecords = useMemo(() => {
     if (ownerId === "all") {
       return records;
@@ -99,6 +143,7 @@ function FaceOfFranchise() {
         record.ownerId === ownerId
     );
   }, [records, ownerId]);
+
 
   const latestSeason = useMemo(() => {
     const allYears = records.flatMap(
@@ -113,11 +158,13 @@ function FaceOfFranchise() {
       : null;
   }, [records]);
 
+
   const selectedOwner =
     owners.find(
       (owner) =>
         owner.ownerId === ownerId
     );
+
 
   const handleSort = (field) => {
     if (field === sortField) {
@@ -145,6 +192,7 @@ function FaceOfFranchise() {
         : "asc"
     );
   };
+
 
   const compareValues = (
     valueA,
@@ -194,6 +242,7 @@ function FaceOfFranchise() {
     );
   };
 
+
   const sortedRecords = [
     ...ownerRecords,
   ].sort((recordA, recordB) => {
@@ -211,10 +260,6 @@ function FaceOfFranchise() {
       valueB === null ||
       valueB === undefined;
 
-    /*
-      Missing values always remain at
-      the bottom in either direction.
-    */
     if (
       valueAIsMissing &&
       valueBIsMissing
@@ -241,6 +286,7 @@ function FaceOfFranchise() {
       : -comparison;
   });
 
+
   const sortIndicator = (field) => {
     if (sortField !== field) {
       return "";
@@ -251,16 +297,30 @@ function FaceOfFranchise() {
       : " ▼";
   };
 
-  const formatPoints = (points) =>
-    Number(points || 0).toLocaleString(
+
+  const formatPoints = (points) => {
+    if (
+      points === null ||
+      points === undefined
+    ) {
+      return "N/A";
+    }
+
+    return Number(
+      points
+    ).toLocaleString(
       undefined,
       {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       }
     );
+  };
 
-  const formatNetPoints = (value) => {
+
+  const formatNetPoints = (
+    value
+  ) => {
     if (
       value === null ||
       value === undefined
@@ -293,6 +353,7 @@ function FaceOfFranchise() {
     return "0.00";
   };
 
+
   const getNetPointsColor = (
     value
   ) => {
@@ -316,6 +377,7 @@ function FaceOfFranchise() {
 
     return undefined;
   };
+
 
   const getOrdinal = (number) => {
     const numericValue =
@@ -348,6 +410,7 @@ function FaceOfFranchise() {
 
     return `${numericValue}th`;
   };
+
 
   const formatYears = (years) => {
     if (
@@ -408,6 +471,7 @@ function FaceOfFranchise() {
     return ranges.join(", ");
   };
 
+
   const totalOwnerPoints =
     ownerRecords.reduce(
       (sum, record) =>
@@ -418,27 +482,6 @@ function FaceOfFranchise() {
       0
     );
 
-  const totalOwnerNetPoints =
-    ownerRecords.reduce(
-      (sum, record) => {
-        if (
-          record.sumNetPoints ===
-            null ||
-          record.sumNetPoints ===
-            undefined
-        ) {
-          return sum;
-        }
-
-        return (
-          sum +
-          Number(
-            record.sumNetPoints
-          )
-        );
-      },
-      0
-    );
 
   const activePlayerCount =
     ownerRecords.filter(
@@ -452,6 +495,7 @@ function FaceOfFranchise() {
           .includes(latestSeason)
     ).length;
 
+
   const sortableHeaderStyle = {
     cursor: "pointer",
     userSelect: "none",
@@ -460,16 +504,25 @@ function FaceOfFranchise() {
     paddingBottom: "8px",
   };
 
+
   const standardHeaderStyle = {
     textAlign: "left",
     paddingRight: "16px",
     paddingBottom: "8px",
   };
 
+
   const cellStyle = {
     paddingRight: "16px",
     paddingBottom: "6px",
   };
+
+
+  const visibleColumnCount =
+    ownerId === "all"
+      ? 8
+      : 7;
+
 
   return (
     <div>
@@ -488,6 +541,12 @@ function FaceOfFranchise() {
 
             setSortField("points");
             setSortDirection("desc");
+            setExpandedRecordKey(
+              null
+            );
+            setHoveredRecordKey(
+              null
+            );
           }}
         >
           <option value="all">
@@ -526,26 +585,6 @@ function FaceOfFranchise() {
         {formatPoints(
           totalOwnerPoints
         )}
-      </p>
-
-      <p>
-        <strong>
-          Sum Net Pts:
-        </strong>{" "}
-        <span
-          style={{
-            color:
-              getNetPointsColor(
-                totalOwnerNetPoints
-              ),
-
-            fontWeight: 700,
-          }}
-        >
-          {formatNetPoints(
-            totalOwnerNetPoints
-          )}
-        </span>
       </p>
 
       <p>
@@ -687,6 +726,9 @@ function FaceOfFranchise() {
         <tbody>
           {sortedRecords.map(
             (record) => {
+              const recordKey =
+                `${record.ownerId}-${record.player}`;
+
               const isActive =
                 latestSeason !== null &&
                 Array.isArray(
@@ -698,100 +740,389 @@ function FaceOfFranchise() {
                     latestSeason
                   );
 
+              const isExpanded =
+                expandedRecordKey ===
+                  recordKey ||
+                (
+                  expandedRecordKey ===
+                    null &&
+                  hoveredRecordKey ===
+                    recordKey
+                );
+
+              const seasonDetails =
+                Array.isArray(
+                  record.seasonDetails
+                )
+                  ? record.seasonDetails
+                  : [];
+
               return (
-                <tr
-                  key={`${record.ownerId}-${record.player}`}
-                  style={
-                    isActive
-                      ? {
-                          backgroundColor:
-                            "#f4f5f7",
-
-                          fontWeight:
-                            700,
-                        }
-                      : undefined
-                  }
+                <Fragment
+                  key={recordKey}
                 >
-                  <td style={cellStyle}>
-                    {getOrdinal(
-                      record.ownerRank
-                    )}
-                  </td>
-
-                  <td style={cellStyle}>
-                    {record.player}
-                  </td>
-
-                  {ownerId === "all" && (
+                  <tr
+                    onMouseEnter={() =>
+                      setHoveredRecordKey(
+                        recordKey
+                      )
+                    }
+                    onMouseLeave={() =>
+                      setHoveredRecordKey(
+                        null
+                      )
+                    }
+                    style={
+                      isActive
+                        ? {
+                            backgroundColor:
+                              "#f4f5f7",
+                            fontWeight:
+                              700,
+                          }
+                        : undefined
+                    }
+                  >
                     <td
                       style={cellStyle}
                     >
-                      {record.ownerName}
+                      {getOrdinal(
+                        record.ownerRank
+                      )}
                     </td>
-                  )}
 
-                  <td style={cellStyle}>
-                    {formatPoints(
-                      record.points
+                    <td
+                      style={cellStyle}
+                    >
+                      <button
+                        type="button"
+                        aria-expanded={
+                          isExpanded
+                        }
+                        aria-controls={
+                          `history-${recordKey}`
+                        }
+                        onFocus={() =>
+                          setHoveredRecordKey(
+                            recordKey
+                          )
+                        }
+                        onBlur={() =>
+                          setHoveredRecordKey(
+                            null
+                          )
+                        }
+                        onClick={() =>
+                          setExpandedRecordKey(
+                            (
+                              currentKey
+                            ) =>
+                              currentKey ===
+                              recordKey
+                                ? null
+                                : recordKey
+                          )
+                        }
+                        style={{
+                          padding: 0,
+                          border: "none",
+                          borderBottom:
+                            "1px dotted currentColor",
+                          background:
+                            "transparent",
+                          color: "#17365d",
+                          font: "inherit",
+                          fontWeight:
+                            "inherit",
+                          textAlign:
+                            "left",
+                          cursor:
+                            "pointer",
+                        }}
+                      >
+                        {record.player}
+                      </button>
+                    </td>
+
+                    {ownerId ===
+                      "all" && (
+                      <td
+                        style={cellStyle}
+                      >
+                        {
+                          record.ownerName
+                        }
+                      </td>
                     )}
-                  </td>
 
-                  <td
-                    style={{
-                      ...cellStyle,
+                    <td
+                      style={cellStyle}
+                    >
+                      {formatPoints(
+                        record.points
+                      )}
+                    </td>
 
-                      color:
-                        getNetPointsColor(
+                    <td
+                      style={{
+                        ...cellStyle,
+                        color:
+                          getNetPointsColor(
+                            record
+                              .sumNetPoints
+                          ),
+                        fontWeight:
                           record
-                            .sumNetPoints
-                        ),
-
-                      fontWeight:
+                            .sumNetPoints !==
+                            null &&
+                          record
+                            .sumNetPoints !==
+                            undefined
+                            ? 700
+                            : undefined,
+                      }}
+                    >
+                      {formatNetPoints(
                         record
-                          .sumNetPoints !==
-                          null &&
-                        record
-                          .sumNetPoints !==
-                          undefined
-                          ? 700
-                          : undefined,
-                    }}
-                  >
-                    {formatNetPoints(
-                      record
-                        .sumNetPoints
-                    )}
-                  </td>
+                          .sumNetPoints
+                      )}
+                    </td>
 
-                  <td style={cellStyle}>
-                    {formatYears(
-                      record.years
-                    )}
-                  </td>
+                    <td
+                      style={cellStyle}
+                    >
+                      {formatYears(
+                        record.years
+                      )}
+                    </td>
 
-                  <td style={cellStyle}>
-                    {record.yearCount}
-                  </td>
+                    <td
+                      style={cellStyle}
+                    >
+                      {record.yearCount}
+                    </td>
 
-                  <td style={cellStyle}>
-                    {getOrdinal(
-                      record.allTimeRank
-                    )}
-                  </td>
-                </tr>
+                    <td
+                      style={cellStyle}
+                    >
+                      {getOrdinal(
+                        record.allTimeRank
+                      )}
+                    </td>
+                  </tr>
+
+                  {isExpanded && (
+                    <tr
+                      id={
+                        `history-${recordKey}`
+                      }
+                    >
+                      <td
+                        colSpan={
+                          visibleColumnCount
+                        }
+                        style={{
+                          padding:
+                            "10px 14px 14px",
+                          borderBottom:
+                            "1px solid #cbd5e1",
+                          backgroundColor:
+                            "#f8fafc",
+                        }}
+                      >
+                        <div
+                          style={{
+                            display:
+                              "flex",
+                            justifyContent:
+                              "space-between",
+                            alignItems:
+                              "center",
+                            gap: "12px",
+                            marginBottom:
+                              "8px",
+                          }}
+                        >
+                          <strong
+                            style={{
+                              color:
+                                "#172b43",
+                              fontSize:
+                                "0.88rem",
+                            }}
+                          >
+                            {
+                              record.player
+                            }{" "}
+                            season history
+                          </strong>
+
+                          {expandedRecordKey ===
+                            recordKey && (
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setExpandedRecordKey(
+                                  null
+                                )
+                              }
+                              style={{
+                                padding:
+                                  "4px 8px",
+                                border:
+                                  "1px solid #cbd5e1",
+                                borderRadius:
+                                  "5px",
+                                backgroundColor:
+                                  "#ffffff",
+                                color:
+                                  "#334155",
+                                fontSize:
+                                  "0.72rem",
+                                cursor:
+                                  "pointer",
+                              }}
+                            >
+                              Close
+                            </button>
+                          )}
+                        </div>
+
+                        {seasonDetails.length >
+                        0 ? (
+                          <div
+                            style={{
+                              overflowX:
+                                "auto",
+                              WebkitOverflowScrolling:
+                                "touch",
+                            }}
+                          >
+                            <table
+                              style={{
+                                width:
+                                  "max-content",
+                                minWidth:
+                                  "100%",
+                                borderCollapse:
+                                  "collapse",
+                              }}
+                            >
+                              <thead>
+                                <tr>
+                                  <th>
+                                    Year
+                                  </th>
+
+                                  <th>
+                                    Rd
+                                  </th>
+
+                                  <th>
+                                    Pick
+                                  </th>
+
+                                  <th>
+                                    Pts
+                                  </th>
+
+                                  <th>
+                                    Net Pts
+                                  </th>
+
+                                  <th>
+                                    Kpr
+                                  </th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                {seasonDetails.map(
+                                  (
+                                    detail,
+                                    index
+                                  ) => (
+                                    <tr
+                                      key={`${recordKey}-${detail.season}-${detail.round}-${detail.pick}-${index}`}
+                                    >
+                                      <td>
+                                        {
+                                          detail.season
+                                        }
+                                      </td>
+
+                                      <td>
+                                        {detail.round ??
+                                          "N/A"}
+                                      </td>
+
+                                      <td>
+                                        {detail.pick ??
+                                          "N/A"}
+                                      </td>
+
+                                      <td>
+                                        {formatPoints(
+                                          detail.points
+                                        )}
+                                      </td>
+
+                                      <td
+                                        style={{
+                                          color:
+                                            getNetPointsColor(
+                                              detail.netPoints
+                                            ),
+                                          fontWeight:
+                                            detail.netPoints !==
+                                              null &&
+                                            detail.netPoints !==
+                                              undefined
+                                              ? 700
+                                              : undefined,
+                                        }}
+                                      >
+                                        {formatNetPoints(
+                                          detail.netPoints
+                                        )}
+                                      </td>
+
+                                      <td>
+                                        {detail.keeper
+                                          ? "Y"
+                                          : ""}
+                                      </td>
+                                    </tr>
+                                  )
+                                )}
+                              </tbody>
+                            </table>
+                          </div>
+                        ) : (
+                          <p
+                            style={{
+                              margin: 0,
+                              color:
+                                "#64748b",
+                              fontSize:
+                                "0.8rem",
+                            }}
+                          >
+                            No
+                            season-level
+                            details were
+                            found.
+                          </p>
+                        )}
+                      </td>
+                    </tr>
+                  )}
+                </Fragment>
               );
             }
           )}
         </tbody>
       </table>
-
-      {ownerRecords.length === 0 && (
-        <p>
-          No player point records
-          were found for this owner.
-        </p>
-      )}
 
       <p
         style={{
@@ -800,16 +1131,12 @@ function FaceOfFranchise() {
           fontSize: "0.8rem",
         }}
       >
-        Sum Net Pts adds the player’s
-        Net vs Avg R values for draft
-        records associated with the
-        selected owner. Positive values
-        indicate above-average draft
-        production for the applicable
-        rounds. Bold, shaded rows
-        identify players associated
-        with an owner in the latest
-        season.
+        Hover over a player on desktop
+        or tap a player on mobile to
+        view season-level draft and
+        point details. Tap again, use
+        Close, or press Escape to
+        dismiss a pinned panel.
       </p>
     </div>
   );
