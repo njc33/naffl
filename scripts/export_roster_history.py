@@ -92,6 +92,15 @@ def clean_number(value):
     return cleaned_value
 
 
+def normalize_position(value):
+    position = clean_text(value).upper().replace("DST", "D/ST")
+    if position in {"DEF", "D", "D/ST"}:
+        return "D/ST"
+    if position in {"QB", "RB", "WR", "TE", "K"}:
+        return position
+    return ""
+
+
 def clean_keeper(value):
     if pd.isna(value):
         return False

@@ -520,8 +520,8 @@ function FaceOfFranchise() {
 
   const visibleColumnCount =
     ownerId === "all"
-      ? 8
-      : 7;
+      ? 9
+      : 8;
 
 
   return (
@@ -619,6 +619,15 @@ function FaceOfFranchise() {
               )}
             </th>
 
+            <th
+              onClick={() =>
+                handleSort("position")
+              }
+              style={sortableHeaderStyle}
+            >
+              Pos
+              {sortIndicator("position")}
+            </th>
             <th
               onClick={() =>
                 handleSort("player")
@@ -791,6 +800,9 @@ function FaceOfFranchise() {
                       )}
                     </td>
 
+                    <td style={cellStyle}>
+                      {record.position || "N/A"}
+                    </td>
                     <td
                       style={cellStyle}
                     >
@@ -1015,6 +1027,9 @@ function FaceOfFranchise() {
                                   </th>
 
                                   <th>
+                                    Pos
+                                  </th>
+                                  <th>
                                     Rd
                                   </th>
 
@@ -1049,6 +1064,9 @@ function FaceOfFranchise() {
                                         {
                                           detail.season
                                         }
+                                      </td>
+                                      <td>
+                                        {detail.position || record.position || "N/A"}
                                       </td>
 
                                       <td>

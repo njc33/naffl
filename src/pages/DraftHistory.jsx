@@ -642,6 +642,15 @@ function DraftHistory() {
 
             <th
               onClick={() =>
+                handleSort("position")
+              }
+              style={sortableHeaderStyle}
+            >
+              Pos
+              {sortIndicator("position")}
+            </th>
+            <th
+              onClick={() =>
                 handleSort("player")
               }
               style={
@@ -767,6 +776,9 @@ function DraftHistory() {
                   )}
                 </td>
 
+                <td style={cellStyle}>
+                  {record.position || "N/A"}
+                </td>
                 <td style={cellStyle}>
                   {record.player}
                 </td>

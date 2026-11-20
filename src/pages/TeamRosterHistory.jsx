@@ -799,21 +799,6 @@ function TeamRosterHistory() {
         >
           <thead>
             <tr>
-              <th
-                onClick={() =>
-                  handleSort(
-                    "player"
-                  )
-                }
-                style={
-                  sortableHeaderStyle
-                }
-              >
-                Player
-                {sortIndicator(
-                  "player"
-                )}
-              </th>
 
               <th
                 onClick={() =>
@@ -828,6 +813,21 @@ function TeamRosterHistory() {
                 Pos
                 {sortIndicator(
                   "position"
+                )}
+              </th>
+              <th
+                onClick={() =>
+                  handleSort(
+                    "player"
+                  )
+                }
+                style={
+                  sortableHeaderStyle
+                }
+              >
+                Player
+                {sortIndicator(
+                  "player"
                 )}
               </th>
 
@@ -928,13 +928,6 @@ function TeamRosterHistory() {
                 <tr
                   key={`${player.season}-${player.ownerId}-${player.playerId}-${player.player}-${index}`}
                 >
-                  <td
-                    style={
-                      cellStyle
-                    }
-                  >
-                    {player.player}
-                  </td>
 
                   <td
                     style={
@@ -944,6 +937,13 @@ function TeamRosterHistory() {
                     {
                       player.position
                     }
+                  </td>
+                  <td
+                    style={
+                      cellStyle
+                    }
+                  >
+                    {player.player}
                   </td>
 
                   <td
