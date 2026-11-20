@@ -102,6 +102,18 @@ function FaceOfFranchise() {
     [records, ownerId]
   );
 
+  const latestSeason = useMemo(() => {
+  const allYears = records.flatMap(
+    (record) =>
+      Array.isArray(record.years)
+        ? record.years.map(Number)
+        : []
+  );
+
+  return allYears.length > 0
+    ? Math.max(...allYears)
+    : null;
+    }, [records]);
 
   const selectedOwner =
     owners.find(
@@ -481,7 +493,18 @@ function FaceOfFranchise() {
             (record) => (
               <tr
                 key={`${record.ownerId}-${record.player}`}
-              >
+                style={
+                    latestSeason !== null &&
+                    record.years
+                        .map(Number)
+                        .includes(latestSeason)
+                        ? {
+                            backgroundColor: "#f4f5f7",
+                            fontWeight: 700,
+                        }
+                    : undefined
+                    }
+                >
                 <td style={cellStyle}>
                   {getOrdinal(
                     record.ownerRank
