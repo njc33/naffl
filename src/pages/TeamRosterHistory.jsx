@@ -222,13 +222,27 @@ function TeamRosterHistory() {
     valueB
   ) => {
     if (
+      valueA === null ||
+      valueA === undefined
+    ) {
+      return 1;
+    }
+
+    if (
+      valueB === null ||
+      valueB === undefined
+    ) {
+      return -1;
+    }
+
+    if (
       typeof valueA === "string" ||
       typeof valueB === "string"
     ) {
       return String(
-        valueA ?? ""
+        valueA
       ).localeCompare(
-        String(valueB ?? ""),
+        String(valueB),
         undefined,
         {
           sensitivity: "base",
@@ -237,8 +251,8 @@ function TeamRosterHistory() {
     }
 
     return (
-      Number(valueA || 0) -
-      Number(valueB || 0)
+      Number(valueA) -
+      Number(valueB)
     );
   };
 
@@ -274,6 +288,33 @@ function TeamRosterHistory() {
         maximumFractionDigits: 2,
       }
     );
+
+  const selectedSummary = {
+    drafted: selectedRoster.filter(
+      (record) =>
+        record.acquisitionType ===
+        "draft"
+    ).length,
+
+    keepers: selectedRoster.filter(
+      (record) =>
+        record.acquisitionType ===
+        "keeper"
+    ).length,
+
+    differentOwner:
+      selectedRoster.filter(
+        (record) =>
+          record.acquisitionType ===
+          "differentDraftOwner"
+      ).length,
+
+    inSeason: selectedRoster.filter(
+      (record) =>
+        record.acquisitionType ===
+        "inSeasonAcquisition"
+    ).length,
+  };
 
   const sortableHeaderStyle = {
     cursor: "pointer",
@@ -368,6 +409,24 @@ function TeamRosterHistory() {
           Rostered Players:
         </strong>{" "}
         {selectedRoster.length}
+      </p>
+
+      <p>
+        <strong>Drafted:</strong>{" "}
+        {selectedSummary.drafted}
+        {" | "}
+        <strong>Keepers:</strong>{" "}
+        {selectedSummary.keepers}
+        {" | "}
+        <strong>
+          Drafted by Another Owner:
+        </strong>{" "}
+        {selectedSummary.differentOwner}
+        {" | "}
+        <strong>
+          Undrafted/In-Season:
+        </strong>{" "}
+        {selectedSummary.inSeason}
       </p>
 
       <table
@@ -466,6 +525,22 @@ function TeamRosterHistory() {
                 "projectedTotalPoints"
               )}
             </th>
+
+            <th
+              onClick={() =>
+                handleSort(
+                  "howAcquired"
+                )
+              }
+              style={
+                sortableHeaderStyle
+              }
+            >
+              How Acquired
+              {sortIndicator(
+                "howAcquired"
+              )}
+            </th>
           </tr>
         </thead>
 
@@ -504,6 +579,10 @@ function TeamRosterHistory() {
                     player.projectedTotalPoints
                   )}
                 </td>
+
+                <td style={cellStyle}>
+                  {player.howAcquired}
+                </td>
               </tr>
             )
           )}
@@ -516,6 +595,23 @@ function TeamRosterHistory() {
           for this owner and season.
         </p>
       )}
+
+      <p
+        style={{
+          marginTop: "14px",
+          color: "#64748b",
+          fontSize: "0.8rem",
+        }}
+      >
+        Version 1 uses draft history.
+        “Drafted by another owner”
+        means the player finished the
+        season on this roster but was
+        originally drafted by someone
+        else. That could represent a
+        trade, waiver claim, or another
+        in-season transaction.
+      </p>
     </div>
   );
 }
