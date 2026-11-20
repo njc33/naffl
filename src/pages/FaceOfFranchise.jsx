@@ -4,7 +4,6 @@ import {
   useState,
 } from "react";
 
-
 function FaceOfFranchise() {
   const [records, setRecords] =
     useState([]);
@@ -17,7 +16,6 @@ function FaceOfFranchise() {
 
   const [sortDirection, setSortDirection] =
     useState("desc");
-
 
   useEffect(() => {
     fetch(
@@ -43,8 +41,8 @@ function FaceOfFranchise() {
           );
 
         if (
-          !defaultOwnerExists
-          && data.length > 0
+          !defaultOwnerExists &&
+          data.length > 0
         ) {
           setOwnerId(
             data[0].ownerId
@@ -55,7 +53,6 @@ function FaceOfFranchise() {
         console.error(error);
       });
   }, []);
-
 
   const owners = useMemo(() => {
     const ownerMap = new Map();
@@ -92,35 +89,35 @@ function FaceOfFranchise() {
       );
   }, [records]);
 
+  const ownerRecords = useMemo(() => {
+    if (ownerId === "all") {
+      return records;
+    }
 
-  const ownerRecords = useMemo(
-    () =>
-      records.filter(
-        (record) =>
-          record.ownerId === ownerId
-      ),
-    [records, ownerId]
-  );
+    return records.filter(
+      (record) =>
+        record.ownerId === ownerId
+    );
+  }, [records, ownerId]);
 
   const latestSeason = useMemo(() => {
-  const allYears = records.flatMap(
-    (record) =>
-      Array.isArray(record.years)
-        ? record.years.map(Number)
-        : []
-  );
+    const allYears = records.flatMap(
+      (record) =>
+        Array.isArray(record.years)
+          ? record.years.map(Number)
+          : []
+    );
 
-  return allYears.length > 0
-    ? Math.max(...allYears)
-    : null;
-    }, [records]);
+    return allYears.length > 0
+      ? Math.max(...allYears)
+      : null;
+  }, [records]);
 
   const selectedOwner =
     owners.find(
       (owner) =>
         owner.ownerId === ownerId
     );
-
 
   const handleSort = (field) => {
     if (field === sortField) {
@@ -148,28 +145,36 @@ function FaceOfFranchise() {
     );
   };
 
-
   const compareValues = (
     valueA,
     valueB
   ) => {
+    const valueAIsMissing =
+      valueA === null ||
+      valueA === undefined;
+
+    const valueBIsMissing =
+      valueB === null ||
+      valueB === undefined;
+
     if (
-      valueA === null
-      || valueA === undefined
+      valueAIsMissing &&
+      valueBIsMissing
     ) {
+      return 0;
+    }
+
+    if (valueAIsMissing) {
       return 1;
     }
 
-    if (
-      valueB === null
-      || valueB === undefined
-    ) {
+    if (valueBIsMissing) {
       return -1;
     }
 
     if (
-      typeof valueA === "string"
-      || typeof valueB === "string"
+      typeof valueA === "string" ||
+      typeof valueB === "string"
     ) {
       return String(
         valueA
@@ -183,11 +188,10 @@ function FaceOfFranchise() {
     }
 
     return (
-      Number(valueA)
-      - Number(valueB)
+      Number(valueA) -
+      Number(valueB)
     );
   };
-
 
   const sortedRecords = [
     ...ownerRecords,
@@ -203,7 +207,6 @@ function FaceOfFranchise() {
       : -comparison;
   });
 
-
   const sortIndicator = (field) => {
     if (sortField !== field) {
       return "";
@@ -214,7 +217,6 @@ function FaceOfFranchise() {
       : " ▼";
   };
 
-
   const formatPoints = (points) =>
     Number(points || 0).toLocaleString(
       undefined,
@@ -224,7 +226,6 @@ function FaceOfFranchise() {
       }
     );
 
-
   const getOrdinal = (number) => {
     const numericValue =
       Number(number);
@@ -233,8 +234,8 @@ function FaceOfFranchise() {
       numericValue % 100;
 
     if (
-      lastTwoDigits >= 11
-      && lastTwoDigits <= 13
+      lastTwoDigits >= 11 &&
+      lastTwoDigits <= 13
     ) {
       return `${numericValue}th`;
     }
@@ -257,41 +258,54 @@ function FaceOfFranchise() {
     return `${numericValue}th`;
   };
 
-
   const formatYears = (years) => {
-  if (
-    !years ||
-    years.length === 0
-  ) {
-    return "N/A";
-  }
-
-  const sortedYears = [
-    ...new Set(
-      years.map(Number)
-    ),
-  ].sort((a, b) => a - b);
-
-  const ranges = [];
-  let rangeStart = sortedYears[0];
-  let previousYear = sortedYears[0];
-
-  for (
-    let index = 1;
-    index < sortedYears.length;
-    index += 1
-  ) {
-    const currentYear =
-      sortedYears[index];
-
     if (
-      currentYear ===
-      previousYear + 1
+      !years ||
+      years.length === 0
     ) {
-      previousYear =
-        currentYear;
+      return "N/A";
+    }
 
-      continue;
+    const sortedYears = [
+      ...new Set(
+        years.map(Number)
+      ),
+    ].sort((a, b) => a - b);
+
+    const ranges = [];
+
+    let rangeStart =
+      sortedYears[0];
+
+    let previousYear =
+      sortedYears[0];
+
+    for (
+      let index = 1;
+      index < sortedYears.length;
+      index += 1
+    ) {
+      const currentYear =
+        sortedYears[index];
+
+      if (
+        currentYear ===
+        previousYear + 1
+      ) {
+        previousYear =
+          currentYear;
+
+        continue;
+      }
+
+      ranges.push(
+        rangeStart === previousYear
+          ? `${rangeStart}`
+          : `${rangeStart}-${previousYear}`
+      );
+
+      rangeStart = currentYear;
+      previousYear = currentYear;
     }
 
     ranges.push(
@@ -300,30 +314,30 @@ function FaceOfFranchise() {
         : `${rangeStart}-${previousYear}`
     );
 
-    rangeStart = currentYear;
-    previousYear = currentYear;
-  }
-
-  ranges.push(
-    rangeStart === previousYear
-      ? `${rangeStart}`
-      : `${rangeStart}-${previousYear}`
-  );
-
-  return ranges.join(", ");
-};
-
+    return ranges.join(", ");
+  };
 
   const totalOwnerPoints =
     ownerRecords.reduce(
       (sum, record) =>
-        sum
-        + Number(
+        sum +
+        Number(
           record.points || 0
         ),
       0
     );
 
+  const activePlayerCount =
+    ownerRecords.filter(
+      (record) =>
+        latestSeason !== null &&
+        Array.isArray(
+          record.years
+        ) &&
+        record.years
+          .map(Number)
+          .includes(latestSeason)
+    ).length;
 
   const sortableHeaderStyle = {
     cursor: "pointer",
@@ -333,12 +347,16 @@ function FaceOfFranchise() {
     paddingBottom: "8px",
   };
 
+  const standardHeaderStyle = {
+    textAlign: "left",
+    paddingRight: "16px",
+    paddingBottom: "8px",
+  };
 
   const cellStyle = {
     paddingRight: "16px",
     paddingBottom: "6px",
   };
-
 
   return (
     <div>
@@ -359,6 +377,10 @@ function FaceOfFranchise() {
             setSortDirection("desc");
           }}
         >
+          <option value="all">
+            All Owners
+          </option>
+
           {owners.map((owner) => (
             <option
               key={owner.ownerId}
@@ -371,13 +393,15 @@ function FaceOfFranchise() {
       </label>
 
       <h3>
-        {selectedOwner?.ownerName
-          ?? "Owner"}
+        {ownerId === "all"
+          ? "All Owners"
+          : selectedOwner?.ownerName ??
+            "Owner"}
       </h3>
 
       <p>
         <strong>
-          Players with Points:
+          Player-Owner Records:
         </strong>{" "}
         {ownerRecords.length}
       </p>
@@ -389,6 +413,13 @@ function FaceOfFranchise() {
         {formatPoints(
           totalOwnerPoints
         )}
+      </p>
+
+      <p>
+        <strong>
+          Active Players:
+        </strong>{" "}
+        {activePlayerCount}
       </p>
 
       <table
@@ -430,6 +461,24 @@ function FaceOfFranchise() {
               )}
             </th>
 
+            {ownerId === "all" && (
+              <th
+                onClick={() =>
+                  handleSort(
+                    "ownerName"
+                  )
+                }
+                style={
+                  sortableHeaderStyle
+                }
+              >
+                Owner
+                {sortIndicator(
+                  "ownerName"
+                )}
+              </th>
+            )}
+
             <th
               onClick={() =>
                 handleSort("points")
@@ -445,11 +494,9 @@ function FaceOfFranchise() {
             </th>
 
             <th
-              style={{
-                textAlign: "left",
-                paddingRight: "16px",
-                paddingBottom: "8px",
-              }}
+              style={
+                standardHeaderStyle
+              }
             >
               Seasons
             </th>
@@ -490,54 +537,74 @@ function FaceOfFranchise() {
 
         <tbody>
           {sortedRecords.map(
-            (record) => (
-              <tr
-                key={`${record.ownerId}-${record.player}`}
-                style={
-                    latestSeason !== null &&
-                    record.years
-                        .map(Number)
-                        .includes(latestSeason)
-                        ? {
-                            backgroundColor: "#f4f5f7",
-                            fontWeight: 700,
+            (record) => {
+              const isActive =
+                latestSeason !== null &&
+                Array.isArray(
+                  record.years
+                ) &&
+                record.years
+                  .map(Number)
+                  .includes(
+                    latestSeason
+                  );
+
+              return (
+                <tr
+                  key={`${record.ownerId}-${record.player}`}
+                  style={
+                    isActive
+                      ? {
+                          backgroundColor:
+                            "#f4f5f7",
+                          fontWeight:
+                            700,
                         }
-                    : undefined
-                    }
+                      : undefined
+                  }
                 >
-                <td style={cellStyle}>
-                  {getOrdinal(
-                    record.ownerRank
+                  <td style={cellStyle}>
+                    {getOrdinal(
+                      record.ownerRank
+                    )}
+                  </td>
+
+                  <td style={cellStyle}>
+                    {record.player}
+                  </td>
+
+                  {ownerId === "all" && (
+                    <td
+                      style={cellStyle}
+                    >
+                      {record.ownerName}
+                    </td>
                   )}
-                </td>
 
-                <td style={cellStyle}>
-                  {record.player}
-                </td>
+                  <td style={cellStyle}>
+                    {formatPoints(
+                      record.points
+                    )}
+                  </td>
 
-                <td style={cellStyle}>
-                  {formatPoints(
-                    record.points
-                  )}
-                </td>
+                  <td style={cellStyle}>
+                    {formatYears(
+                      record.years
+                    )}
+                  </td>
 
-                <td style={cellStyle}>
-                  {formatYears(
-                    record.years
-                  )}
-                </td>
+                  <td style={cellStyle}>
+                    {record.yearCount}
+                  </td>
 
-                <td style={cellStyle}>
-                  {record.yearCount}
-                </td>
-
-                <td style={cellStyle}>
-                  {getOrdinal(
-                    record.allTimeRank
-                  )}
-                </td>
-              </tr>
-            )
+                  <td style={cellStyle}>
+                    {getOrdinal(
+                      record.allTimeRank
+                    )}
+                  </td>
+                </tr>
+              );
+            }
           )}
         </tbody>
       </table>
@@ -556,12 +623,14 @@ function FaceOfFranchise() {
           fontSize: "0.8rem",
         }}
       >
+        Bold, shaded rows identify
+        players associated with an
+        owner in the latest season.
         All-Time Rank compares every
         player-owner points combination
         in league history. A player may
         therefore appear more than once
-        in the all-time rankings if he
-        scored points for multiple
+        if he scored points for multiple
         owners.
       </p>
     </div>
