@@ -24,19 +24,16 @@ function OwnerHistory() {
       .then((data) => {
         setTeams(data);
 
-        const ownerExists = data.some(
+        const defaultOwnerExists = data.some(
           (team) =>
-            team.ownerId ===
-            "nick-ceraso"
+            team.ownerId === "nick-ceraso"
         );
 
         if (
-          !ownerExists &&
+          !defaultOwnerExists &&
           data.length > 0
         ) {
-          setOwnerId(
-            data[0].ownerId
-          );
+          setOwnerId(data[0].ownerId);
         }
       })
       .catch((error) => {
@@ -44,97 +41,49 @@ function OwnerHistory() {
       });
   }, []);
 
-  const ownerMap = new Map();
-
-  teams.forEach((team) => {
-    if (
-      !ownerMap.has(team.ownerId)
-    ) {
-      ownerMap.set(team.ownerId, {
-        ownerId: team.ownerId,
-        ownerName: team.ownerName,
-      });
-    }
-  });
-
-  const owners = Array.from(
-    ownerMap.values()
-  ).sort((ownerA, ownerB) =>
-    ownerA.ownerName.localeCompare(
-      ownerB.ownerName
-    )
-  );
-
-  const ownerTeams = teams.filter(
-    (team) =>
-      team.ownerId === ownerId
-  );
-
-  const selectedOwner =
-    ownerMap.get(ownerId);
-
-  const ownerName =
-    selectedOwner?.ownerName ??
-    "Owner";
-
-  const totalWins = ownerTeams.reduce(
-    (sum, team) =>
-      sum + Number(team.wins || 0),
-    0
-  );
-
-  const totalLosses =
-    ownerTeams.reduce(
+  const calculateOwnerStats = (ownerTeams) => {
+    const totalWins = ownerTeams.reduce(
       (sum, team) =>
-        sum +
-        Number(team.losses || 0),
+        sum + Number(team.wins || 0),
       0
     );
 
-  const totalTies = ownerTeams.reduce(
-    (sum, team) =>
-      sum + Number(team.ties || 0),
-    0
-  );
-
-  const totalPoints =
-    ownerTeams.reduce(
+    const totalLosses = ownerTeams.reduce(
       (sum, team) =>
-        sum +
-        Number(
-          team.pointsFor || 0
-        ),
+        sum + Number(team.losses || 0),
       0
     );
 
-  const seasonsPlayed =
-    ownerTeams.length;
+    const totalTies = ownerTeams.reduce(
+      (sum, team) =>
+        sum + Number(team.ties || 0),
+      0
+    );
 
-  const averagePointsPerSeason =
-    seasonsPlayed > 0
-      ? totalPoints /
-        seasonsPlayed
-      : 0;
+    const totalPoints = ownerTeams.reduce(
+      (sum, team) =>
+        sum + Number(team.pointsFor || 0),
+      0
+    );
 
-  const gamesPlayed =
-    totalWins +
-    totalLosses +
-    totalTies;
+    const seasonsPlayed = ownerTeams.length;
 
-  const winPct =
-    gamesPlayed > 0
-      ? (
-          totalWins +
-          totalTies * 0.5
-        ) / gamesPlayed
-      : 0;
+    const gamesPlayed =
+      totalWins +
+      totalLosses +
+      totalTies;
 
-  const validFinishes =
-    ownerTeams
+    const winningPercentage =
+      gamesPlayed > 0
+        ? (
+            totalWins +
+            totalTies * 0.5
+          ) / gamesPlayed
+        : 0;
+
+    const validFinishes = ownerTeams
       .map((team) =>
-        Number(
-          team.finalStanding
-        )
+        Number(team.finalStanding)
       )
       .filter(
         (finish) =>
@@ -142,32 +91,279 @@ function OwnerHistory() {
           finish > 0
       );
 
-  const championships =
-    validFinishes.filter(
-      (finish) => finish === 1
-    ).length;
+    const championships =
+      validFinishes.filter(
+        (finish) => finish === 1
+      ).length;
 
-  const runnerUpFinishes =
-    validFinishes.filter(
-      (finish) => finish === 2
-    ).length;
+    const runnerUpFinishes =
+      validFinishes.filter(
+        (finish) => finish === 2
+      ).length;
 
-  const bestFinish =
-    validFinishes.length > 0
-      ? Math.min(
-          ...validFinishes
-        )
-      : null;
+    const bestFinish =
+      validFinishes.length > 0
+        ? Math.min(...validFinishes)
+        : null;
 
-  const averageFinish =
-    validFinishes.length > 0
-      ? validFinishes.reduce(
-          (sum, finish) =>
-            sum + finish,
-          0
-        ) /
-        validFinishes.length
-      : null;
+    const averageFinish =
+      validFinishes.length > 0
+        ? validFinishes.reduce(
+            (sum, finish) =>
+              sum + finish,
+            0
+          ) / validFinishes.length
+        : null;
+
+    const averagePointsPerSeason =
+      seasonsPlayed > 0
+        ? totalPoints / seasonsPlayed
+        : 0;
+
+    return {
+      seasonsPlayed,
+      totalWins,
+      totalLosses,
+      totalTies,
+      totalPoints,
+      winningPercentage,
+      championships,
+      runnerUpFinishes,
+      bestFinish,
+      averageFinish,
+      averagePointsPerSeason,
+    };
+  };
+
+  const ownerGroups = new Map();
+
+  teams.forEach((team) => {
+    if (!ownerGroups.has(team.ownerId)) {
+      ownerGroups.set(team.ownerId, {
+        ownerId: team.ownerId,
+        ownerName: team.ownerName,
+        teams: [],
+      });
+    }
+
+    ownerGroups
+      .get(team.ownerId)
+      .teams.push(team);
+  });
+
+  const allOwnerStats = Array.from(
+    ownerGroups.values()
+  )
+    .map((owner) => ({
+      ownerId: owner.ownerId,
+      ownerName: owner.ownerName,
+      ...calculateOwnerStats(
+        owner.teams
+      ),
+    }))
+    .sort((ownerA, ownerB) =>
+      ownerA.ownerName.localeCompare(
+        ownerB.ownerName
+      )
+    );
+
+  const owners = allOwnerStats.map(
+    (owner) => ({
+      ownerId: owner.ownerId,
+      ownerName: owner.ownerName,
+    })
+  );
+
+  const ownerTeams = teams.filter(
+    (team) => team.ownerId === ownerId
+  );
+
+  const selectedOwnerStats =
+    allOwnerStats.find(
+      (owner) =>
+        owner.ownerId === ownerId
+    );
+
+  const ownerName =
+    selectedOwnerStats?.ownerName ??
+    "Owner";
+
+  const stats =
+    selectedOwnerStats ?? {
+      seasonsPlayed: 0,
+      totalWins: 0,
+      totalLosses: 0,
+      totalTies: 0,
+      totalPoints: 0,
+      winningPercentage: 0,
+      championships: 0,
+      runnerUpFinishes: 0,
+      bestFinish: null,
+      averageFinish: null,
+      averagePointsPerSeason: 0,
+    };
+
+  const getRank = (
+    field,
+    {
+      ascending = false,
+      excludeNull = false,
+    } = {}
+  ) => {
+    let rankedOwners = [...allOwnerStats];
+
+    if (excludeNull) {
+      rankedOwners =
+        rankedOwners.filter(
+          (owner) =>
+            owner[field] !== null &&
+            owner[field] !== undefined
+        );
+    }
+
+    rankedOwners.sort(
+      (ownerA, ownerB) => {
+        const valueA =
+          Number(ownerA[field]) || 0;
+
+        const valueB =
+          Number(ownerB[field]) || 0;
+
+        if (ascending) {
+          return valueA - valueB;
+        }
+
+        return valueB - valueA;
+      }
+    );
+
+    const selectedValue =
+      selectedOwnerStats?.[field];
+
+    if (
+      selectedValue === null ||
+      selectedValue === undefined
+    ) {
+      return null;
+    }
+
+    const betterOwners =
+      rankedOwners.filter((owner) => {
+        if (ascending) {
+          return (
+            owner[field] <
+            selectedValue
+          );
+        }
+
+        return (
+          owner[field] >
+          selectedValue
+        );
+      });
+
+    const rank =
+      betterOwners.length + 1;
+
+    const tiedOwners =
+      rankedOwners.filter(
+        (owner) =>
+          owner[field] ===
+          selectedValue
+      );
+
+    return {
+      rank,
+      tied: tiedOwners.length > 1,
+    };
+  };
+
+  const getOrdinal = (number) => {
+    const lastTwoDigits =
+      number % 100;
+
+    if (
+      lastTwoDigits >= 11 &&
+      lastTwoDigits <= 13
+    ) {
+      return `${number}th`;
+    }
+
+    const lastDigit = number % 10;
+
+    if (lastDigit === 1) {
+      return `${number}st`;
+    }
+
+    if (lastDigit === 2) {
+      return `${number}nd`;
+    }
+
+    if (lastDigit === 3) {
+      return `${number}rd`;
+    }
+
+    return `${number}th`;
+  };
+
+  const formatRank = (rankData) => {
+    if (!rankData) {
+      return "Not Ranked";
+    }
+
+    const ordinal =
+      getOrdinal(rankData.rank);
+
+    return rankData.tied
+      ? `T-${ordinal}`
+      : ordinal;
+  };
+
+  const ranks = {
+    seasonsPlayed: getRank(
+      "seasonsPlayed"
+    ),
+
+    totalWins: getRank(
+      "totalWins"
+    ),
+
+    winningPercentage: getRank(
+      "winningPercentage"
+    ),
+
+    championships: getRank(
+      "championships"
+    ),
+
+    runnerUpFinishes: getRank(
+      "runnerUpFinishes"
+    ),
+
+    bestFinish: getRank(
+      "bestFinish",
+      {
+        ascending: true,
+        excludeNull: true,
+      }
+    ),
+
+    averageFinish: getRank(
+      "averageFinish",
+      {
+        ascending: true,
+        excludeNull: true,
+      }
+    ),
+
+    totalPoints: getRank(
+      "totalPoints"
+    ),
+
+    averagePointsPerSeason: getRank(
+      "averagePointsPerSeason"
+    ),
+  };
 
   const handleSort = (field) => {
     if (field === sortField) {
@@ -223,11 +419,10 @@ function OwnerHistory() {
   const sortedOwnerTeams = [
     ...ownerTeams,
   ].sort((teamA, teamB) => {
-    const comparison =
-      compareValues(
-        teamA[sortField],
-        teamB[sortField]
-      );
+    const comparison = compareValues(
+      teamA[sortField],
+      teamB[sortField]
+    );
 
     return sortDirection === "asc"
       ? comparison
@@ -254,10 +449,9 @@ function OwnerHistory() {
     );
 
   const formatWinPct = (value) =>
-    value.toFixed(3).replace(
-      /^0/,
-      ""
-    );
+    Number(value || 0)
+      .toFixed(3)
+      .replace(/^0/, "");
 
   const formatFinish = (finish) => {
     const numericFinish =
@@ -267,33 +461,26 @@ function OwnerHistory() {
       return "In Progress";
     }
 
-    const lastTwoDigits =
-      numericFinish % 100;
-
-    if (
-      lastTwoDigits >= 11 &&
-      lastTwoDigits <= 13
-    ) {
-      return `${numericFinish}th`;
-    }
-
-    const lastDigit =
-      numericFinish % 10;
-
-    if (lastDigit === 1) {
-      return `${numericFinish}st`;
-    }
-
-    if (lastDigit === 2) {
-      return `${numericFinish}nd`;
-    }
-
-    if (lastDigit === 3) {
-      return `${numericFinish}rd`;
-    }
-
-    return `${numericFinish}th`;
+    return getOrdinal(numericFinish);
   };
+
+  const formatMetricWithRank = (
+    value,
+    rankData
+  ) => (
+    <>
+      {value}{" "}
+      <span
+        style={{
+          color: "#64748b",
+          fontSize: "0.9em",
+          fontWeight: 600,
+        }}
+      >
+        ({formatRank(rankData)})
+      </span>
+    </>
+  );
 
   const sortableHeaderStyle = {
     cursor: "pointer",
@@ -338,63 +525,116 @@ function OwnerHistory() {
 
       <h3>{ownerName}</h3>
 
-      <p>
-        Seasons Played:{" "}
-        {seasonsPlayed}
-      </p>
+      <div className="owner-summary">
+        <p>
+          <strong>
+            Seasons Played:
+          </strong>{" "}
+          {formatMetricWithRank(
+            stats.seasonsPlayed,
+            ranks.seasonsPlayed
+          )}
+        </p>
 
-      <p>
-        Career Record:{" "}
-        {totalWins}-{totalLosses}
-        {totalTies > 0
-          ? `-${totalTies}`
-          : ""}
-      </p>
+        <p>
+          <strong>
+            Career Record:
+          </strong>{" "}
+          {formatMetricWithRank(
+            `${stats.totalWins}-${stats.totalLosses}${
+              stats.totalTies > 0
+                ? `-${stats.totalTies}`
+                : ""
+            }`,
+            ranks.totalWins
+          )}
+        </p>
 
-      <p>
-        Winning Percentage:{" "}
-        {formatWinPct(winPct)}
-      </p>
+        <p>
+          <strong>
+            Winning Percentage:
+          </strong>{" "}
+          {formatMetricWithRank(
+            formatWinPct(
+              stats.winningPercentage
+            ),
+            ranks.winningPercentage
+          )}
+        </p>
 
-      <p>
-        Championships:{" "}
-        {championships}
-      </p>
+        <p>
+          <strong>
+            Championships:
+          </strong>{" "}
+          {formatMetricWithRank(
+            stats.championships,
+            ranks.championships
+          )}
+        </p>
 
-      <p>
-        Runner-Up Finishes:{" "}
-        {runnerUpFinishes}
-      </p>
+        <p>
+          <strong>
+            Runner-Up Finishes:
+          </strong>{" "}
+          {formatMetricWithRank(
+            stats.runnerUpFinishes,
+            ranks.runnerUpFinishes
+          )}
+        </p>
 
-      <p>
-        Best Finish:{" "}
-        {bestFinish === null
-          ? "N/A"
-          : formatFinish(
-              bestFinish
-            )}
-      </p>
+        <p>
+          <strong>
+            Best Finish:
+          </strong>{" "}
+          {formatMetricWithRank(
+            stats.bestFinish === null
+              ? "N/A"
+              : formatFinish(
+                  stats.bestFinish
+                ),
+            ranks.bestFinish
+          )}
+        </p>
 
-      <p>
-        Average Finish:{" "}
-        {averageFinish === null
-          ? "N/A"
-          : averageFinish.toFixed(
-              1
-            )}
-      </p>
+        <p>
+          <strong>
+            Average Finish:
+          </strong>{" "}
+          {formatMetricWithRank(
+            stats.averageFinish ===
+              null
+              ? "N/A"
+              : stats.averageFinish.toFixed(
+                  1
+                ),
+            ranks.averageFinish
+          )}
+        </p>
 
-      <p>
-        Career Points:{" "}
-        {formatPoints(totalPoints)}
-      </p>
+        <p>
+          <strong>
+            Career Points:
+          </strong>{" "}
+          {formatMetricWithRank(
+            formatPoints(
+              stats.totalPoints
+            ),
+            ranks.totalPoints
+          )}
+        </p>
 
-      <p>
-        Average Points/Season:{" "}
-        {formatPoints(
-          averagePointsPerSeason
-        )}
-      </p>
+        <p>
+          <strong>
+            Average Points/Season:
+          </strong>{" "}
+          {formatMetricWithRank(
+            formatPoints(
+              stats.averagePointsPerSeason
+            ),
+            ranks.averagePointsPerSeason
+          )}
+        </p>
+      </div>
 
       <table
         style={{
@@ -414,16 +654,12 @@ function OwnerHistory() {
               }
             >
               Season
-              {sortIndicator(
-                "season"
-              )}
+              {sortIndicator("season")}
             </th>
 
             <th
               onClick={() =>
-                handleSort(
-                  "teamName"
-                )
+                handleSort("teamName")
               }
               style={
                 sortableHeaderStyle
@@ -449,9 +685,7 @@ function OwnerHistory() {
 
             <th
               onClick={() =>
-                handleSort(
-                  "losses"
-                )
+                handleSort("losses")
               }
               style={
                 sortableHeaderStyle
