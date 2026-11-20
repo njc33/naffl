@@ -1,16 +1,29 @@
-import { Link } from "react-router-dom";
+import {
+  Link,
+} from "react-router-dom";
 
 import "./Home.css";
 
 
 const PAGE_CARDS = [
   {
-  path: "/scoreboard",
-  icon: "🕰️",
-  title: "Scoreboard Time Machine",
-  description:
-    "Revisit every weekly matchup and explore historical starting lineups and benches.",
+    path: "/scoreboard",
+    icon: "🕰️",
+    title:
+      "Scoreboard Time Machine",
+    description:
+      "Revisit every weekly matchup and explore historical starting lineups and benches.",
   },
+
+  {
+    path: "/team-names",
+    icon: "☁️",
+    title:
+      "Team Name Word Cloud",
+    description:
+      "Explore the words, owners, seasons, and complete names behind NAFFL team history.",
+  },
+
   {
     path: "/history",
     icon: "🏆",
@@ -18,6 +31,7 @@ const PAGE_CARDS = [
     description:
       "Explore every season, standings, scoring, finishes, and league-wide trends.",
   },
+
   {
     path: "/owners",
     icon: "👤",
@@ -25,6 +39,7 @@ const PAGE_CARDS = [
     description:
       "Review each owner’s full career, rankings, teams, and season-by-season graph.",
   },
+
   {
     path: "/rosters",
     icon: "📋",
@@ -32,6 +47,7 @@ const PAGE_CARDS = [
     description:
       "Browse historical team rosters, player production, and acquisition sources.",
   },
+
   {
     path: "/drafts",
     icon: "🎯",
@@ -39,13 +55,16 @@ const PAGE_CARDS = [
     description:
       "Search draft results, player points, keepers, and value versus round average.",
   },
+
   {
     path: "/franchise",
     icon: "⭐",
-    title: "Face of the Franchise",
+    title:
+      "Face of the Franchise",
     description:
       "Discover the players who have scored the most points for every NAFFL owner.",
   },
+
   {
     path: "/players",
     icon: "🔎",
@@ -53,6 +72,7 @@ const PAGE_CARDS = [
     description:
       "Search any player and trace owners, draft slots, scoring, and team finishes.",
   },
+
   {
     path: "/records",
     icon: "📈",
@@ -99,9 +119,11 @@ function Home() {
 
         <p>
           Browse seasons, owners,
-          rosters, drafts, players,
-          franchise legends, and
-          all-time records.
+          rosters, drafts, weekly
+          scoreboards, players,
+          franchise legends, team-name
+          history, and all-time
+          records.
         </p>
       </section>
 

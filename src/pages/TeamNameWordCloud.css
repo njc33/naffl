@@ -1,0 +1,310 @@
+.word-cloud-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.word-cloud-intro {
+  max-width: 760px;
+  color: #536273;
+  line-height: 1.55;
+}
+
+.word-cloud-summary {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.word-cloud-summary > div {
+  padding: 16px;
+  border: 1px solid #d7dce3;
+  border-radius: 9px;
+  background-color: #f8fafc;
+}
+
+.word-cloud-summary strong {
+  display: block;
+  color: #17365d;
+  font-size: 1.45rem;
+  font-variant-numeric:
+    tabular-nums;
+}
+
+.word-cloud-summary span {
+  display: block;
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 0.76rem;
+}
+
+.word-cloud-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  align-items: end;
+  margin-bottom: 16px;
+  padding: 14px;
+  border: 1px solid #d7dce3;
+  border-radius: 9px;
+  background-color: #ffffff;
+}
+
+.word-cloud-controls label {
+  display: grid;
+  gap: 5px;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.word-cloud-controls input[type="search"],
+.word-cloud-controls select {
+  min-height: 38px;
+  padding: 7px 9px;
+  border: 1px solid #aeb8c4;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #172b43;
+  font: inherit;
+  font-weight: 400;
+}
+
+.word-cloud-controls input[type="search"] {
+  width: min(280px, 70vw);
+}
+
+.word-cloud-checkbox {
+  display: flex !important;
+  flex-direction: row;
+  gap: 7px !important;
+  align-items: center;
+  min-height: 38px;
+  cursor: pointer;
+}
+
+.word-cloud-canvas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  min-height: 390px;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background:
+    radial-gradient(
+      circle at top left,
+      #f8fafc,
+      #eef2f6
+    );
+  box-shadow:
+    inset 0 0 28px
+    rgba(15, 23, 42, 0.04);
+}
+
+.word-cloud-word {
+  position: relative;
+  display: inline-flex;
+  gap: 5px;
+  align-items: flex-start;
+  padding: 3px 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--word-color);
+  font-size: var(--word-size);
+  font-weight: 800;
+  line-height: 1.05;
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    background-color 120ms ease;
+}
+
+.word-cloud-word:hover {
+  z-index: 2;
+  transform: scale(1.06);
+  background-color:
+    rgba(255, 255, 255, 0.78);
+}
+
+.word-cloud-word:focus-visible {
+  z-index: 3;
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.word-cloud-word-selected {
+  background-color: #ffffff;
+  box-shadow:
+    0 4px 12px
+    rgba(15, 23, 42, 0.13);
+}
+
+.word-cloud-count {
+  padding-top: 2px;
+  color: #64748b;
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.word-cloud-details {
+  margin-top: 22px;
+  padding: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.word-cloud-details-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.word-cloud-details-kicker {
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.word-cloud-details h3 {
+  margin: 3px 0 5px;
+  color: #17365d;
+}
+
+.word-cloud-details p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.82rem;
+}
+
+.word-cloud-details-heading button {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+}
+
+.word-cloud-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling:
+    touch;
+}
+
+.word-cloud-table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+}
+
+.word-cloud-table th,
+.word-cloud-table td {
+  padding: 8px 10px;
+  border-bottom:
+    1px solid #eef2f6;
+  text-align: left;
+}
+
+.word-cloud-table th {
+  color: #475569;
+  font-size: 0.72rem;
+}
+
+.word-cloud-table td {
+  color: #253c56;
+  font-size: 0.8rem;
+}
+
+.word-cloud-empty {
+  width: 100%;
+  padding: 24px;
+  color: #64748b;
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+
+@media (max-width: 700px) {
+  .word-cloud-summary {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .word-cloud-summary > div {
+    display: flex;
+    justify-content:
+      space-between;
+    align-items: center;
+    padding: 11px 13px;
+  }
+
+  .word-cloud-summary strong {
+    font-size: 1.2rem;
+  }
+
+  .word-cloud-summary span {
+    margin-top: 0;
+  }
+
+  .word-cloud-controls {
+    align-items: stretch;
+  }
+
+  .word-cloud-controls label {
+    width: 100%;
+  }
+
+  .word-cloud-controls input[type="search"],
+  .word-cloud-controls select {
+    width: 100%;
+  }
+
+  .word-cloud-checkbox {
+    width: 100%;
+  }
+
+  .word-cloud-canvas {
+    gap: 7px 10px;
+    min-height: 310px;
+    padding: 18px 10px;
+  }
+
+  .word-cloud-word {
+    /*
+      Clamp very large words so the
+      cloud remains inside the screen.
+    */
+    font-size:
+      clamp(
+        13px,
+        calc(
+          var(--word-size) * 0.72
+        ),
+        36px
+      );
+  }
+
+  .word-cloud-details {
+    padding: 14px;
+  }
+
+  .word-cloud-details-heading {
+    align-items: center;
+  }
+}

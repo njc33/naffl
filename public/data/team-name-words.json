@@ -1,0 +1,6681 @@
+{
+  "summary": {
+    "teamSeasonRecords": 140,
+    "distinctTeamNames": 122,
+    "distinctWords": 300
+  },
+  "words": [
+    {
+      "word": "team",
+      "displayWord": "Team",
+      "count": 16,
+      "distinctTeamNameCount": 12,
+      "ownerCount": 5,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Team Burckhardt",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2013,
+          "teamName": "Team Chaff",
+          "ownerId": "jake-chaff",
+          "ownerName": "Jake Chaff",
+          "ownerDisplay": "jchaff99",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2013,
+          "teamName": "Team Robert Cupka",
+          "ownerId": "owen-jordan",
+          "ownerName": "owen jordan",
+          "ownerDisplay": "ojordan22",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2013,
+          "teamName": "Wow my team sucks (less)",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2014,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2015,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2016,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2017,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2017,
+          "teamName": "My Team Sucks",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2018,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2018,
+          "teamName": "Yawkeys Team",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2019,
+          "teamName": "Yawkey’s Team",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2022,
+          "teamName": "Yawkey's Team",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2023,
+          "teamName": "Team Falaras",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2024,
+          "teamName": "Worst playoff team by far",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Team"
+        },
+        {
+          "season": 2026,
+          "teamName": "Managing This Team is a Burden",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Team"
+        }
+      ]
+    },
+    {
+      "word": "the",
+      "displayWord": "The",
+      "count": 14,
+      "distinctTeamNameCount": 12,
+      "ownerCount": 9,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Build For The Future",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "The"
+        },
+        {
+          "season": 2014,
+          "teamName": "Coach T And The Boys",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "The"
+        },
+        {
+          "season": 2016,
+          "teamName": "Luck Her Right  In The Pussy",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "The"
+        },
+        {
+          "season": 2016,
+          "teamName": "Build for the Future",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "The"
+        },
+        {
+          "season": 2017,
+          "teamName": "Big Ben Cirrone + The Reedtards",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "The"
+        },
+        {
+          "season": 2019,
+          "teamName": "Tucker in the  Waistband",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "The"
+        },
+        {
+          "season": 2019,
+          "teamName": "Under the Influwentz",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "The"
+        },
+        {
+          "season": 2020,
+          "teamName": "Justin Herbert The Pervert",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "The"
+        },
+        {
+          "season": 2020,
+          "teamName": "Under the Influwentz",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "The"
+        },
+        {
+          "season": 2021,
+          "teamName": "Under the Influwentz",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "The"
+        },
+        {
+          "season": 2021,
+          "teamName": "Wk 9 mostpoints in the league",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "The"
+        },
+        {
+          "season": 2022,
+          "teamName": "Dirty Mike and the Boys",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "The"
+        },
+        {
+          "season": 2022,
+          "teamName": "Tua in the pink 1 in the stink",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "The"
+        },
+        {
+          "season": 2024,
+          "teamName": "KyloRen and the Swift Lords",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "The"
+        }
+      ]
+    },
+    {
+      "word": "and",
+      "displayWord": "And",
+      "count": 10,
+      "distinctTeamNameCount": 10,
+      "ownerCount": 7,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Coach T And The Boys",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "And"
+        },
+        {
+          "season": 2017,
+          "teamName": "Fournetflix and Chill",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "And"
+        },
+        {
+          "season": 2018,
+          "teamName": "Drake and Josh",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "And"
+        },
+        {
+          "season": 2019,
+          "teamName": "LadyKickers and Penny Pickers",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "And"
+        },
+        {
+          "season": 2019,
+          "teamName": "Marlon Mack 11s Glocks and 9s",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "And"
+        },
+        {
+          "season": 2019,
+          "teamName": "My Ginny and Juice",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "And"
+        },
+        {
+          "season": 2021,
+          "teamName": "Hop, Knox, and  Lockett",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "And"
+        },
+        {
+          "season": 2022,
+          "teamName": "Dirty Mike and the Boys",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "And"
+        },
+        {
+          "season": 2024,
+          "teamName": "KyloRen and the Swift Lords",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "And"
+        },
+        {
+          "season": 2025,
+          "teamName": "Lamario and Luigi",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "And"
+        }
+      ]
+    },
+    {
+      "word": "a",
+      "displayWord": "A",
+      "count": 9,
+      "distinctTeamNameCount": 8,
+      "ownerCount": 7,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Vick in A Box",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "A"
+        },
+        {
+          "season": 2019,
+          "teamName": "OJ is a Freeman",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "A"
+        },
+        {
+          "season": 2020,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "A"
+        },
+        {
+          "season": 2021,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "A"
+        },
+        {
+          "season": 2023,
+          "teamName": "A Fields Good Story",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "A"
+        },
+        {
+          "season": 2025,
+          "teamName": "Yanni had a little lamb",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "A"
+        },
+        {
+          "season": 2026,
+          "teamName": "Managing This Team is a Burden",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "A"
+        },
+        {
+          "season": 2026,
+          "teamName": "Love with a Christian McBride",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "A"
+        },
+        {
+          "season": 2026,
+          "teamName": "Maye Not Win a Game",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "A"
+        }
+      ]
+    },
+    {
+      "word": "ginny",
+      "displayWord": "Ginny",
+      "count": 9,
+      "distinctTeamNameCount": 9,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Ginny's  Beautiful Cobb",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginny"
+        },
+        {
+          "season": 2018,
+          "teamName": "Ginny Top Luke Bottom",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginny"
+        },
+        {
+          "season": 2019,
+          "teamName": "My Ginny and Juice",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginny"
+        },
+        {
+          "season": 2020,
+          "teamName": "I am Begging you Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginny"
+        },
+        {
+          "season": 2021,
+          "teamName": "Thank You Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginny"
+        },
+        {
+          "season": 2023,
+          "teamName": "Ginny Lazone - Step Cousins",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginny"
+        },
+        {
+          "season": 2024,
+          "teamName": "Ginny Lazone Bijan My Mind",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginny"
+        },
+        {
+          "season": 2025,
+          "teamName": "Not Worthy of Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginny"
+        },
+        {
+          "season": 2026,
+          "teamName": "Picken Ginny's Brown",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginny"
+        }
+      ]
+    },
+    {
+      "word": "in",
+      "displayWord": "In",
+      "count": 7,
+      "distinctTeamNameCount": 7,
+      "ownerCount": 5,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Vick in A Box",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "In"
+        },
+        {
+          "season": 2013,
+          "teamName": "Jacquizz In 2:48",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "In"
+        },
+        {
+          "season": 2016,
+          "teamName": "Luck Her Right  In The Pussy",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "In"
+        },
+        {
+          "season": 2019,
+          "teamName": "Tucker in the  Waistband",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "In"
+        },
+        {
+          "season": 2021,
+          "teamName": "Put It In  Reverse Terry",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "In"
+        },
+        {
+          "season": 2021,
+          "teamName": "Wk 9 mostpoints in the league",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "In"
+        },
+        {
+          "season": 2022,
+          "teamName": "Tua in the pink 1 in the stink",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "In"
+        }
+      ]
+    },
+    {
+      "word": "my",
+      "displayWord": "My",
+      "count": 6,
+      "distinctTeamNameCount": 6,
+      "ownerCount": 3,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Lick My Balls, No Romo",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "My"
+        },
+        {
+          "season": 2013,
+          "teamName": "Wow my team sucks (less)",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "My"
+        },
+        {
+          "season": 2014,
+          "teamName": "My Bush Ertz",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "My"
+        },
+        {
+          "season": 2017,
+          "teamName": "My Team Sucks",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "My"
+        },
+        {
+          "season": 2019,
+          "teamName": "My Ginny and Juice",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "My"
+        },
+        {
+          "season": 2024,
+          "teamName": "Ginny Lazone Bijan My Mind",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "My"
+        }
+      ]
+    },
+    {
+      "word": "burckhardts",
+      "displayWord": "Burckhardts",
+      "count": 5,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Burckhardts"
+        },
+        {
+          "season": 2015,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Burckhardts"
+        },
+        {
+          "season": 2016,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Burckhardts"
+        },
+        {
+          "season": 2017,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Burckhardts"
+        },
+        {
+          "season": 2018,
+          "teamName": "Burckhardts team",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Burckhardts"
+        }
+      ]
+    },
+    {
+      "word": "for",
+      "displayWord": "For",
+      "count": 5,
+      "distinctTeamNameCount": 5,
+      "ownerCount": 3,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Build For The Future",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "For"
+        },
+        {
+          "season": 2013,
+          "teamName": "Going For Last Place",
+          "ownerId": "patrick-wolfgang",
+          "ownerName": "patrick wolfgang",
+          "ownerDisplay": "wolfy1521",
+          "displayWord": "For"
+        },
+        {
+          "season": 2014,
+          "teamName": "Built for Last Place",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "For"
+        },
+        {
+          "season": 2016,
+          "teamName": "Build for the Future",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "For"
+        },
+        {
+          "season": 2025,
+          "teamName": "DO IT FOR DANNY",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "For"
+        }
+      ]
+    },
+    {
+      "word": "i",
+      "displayWord": "I",
+      "count": 5,
+      "distinctTeamNameCount": 5,
+      "ownerCount": 4,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "I Stand With Colin!",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "I"
+        },
+        {
+          "season": 2020,
+          "teamName": "I am Begging you Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "I"
+        },
+        {
+          "season": 2020,
+          "teamName": "Fuller? I  Barely Know Her",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "I"
+        },
+        {
+          "season": 2023,
+          "teamName": "I wish this was on purpose",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "I"
+        },
+        {
+          "season": 2026,
+          "teamName": "I have faith this year",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "I"
+        }
+      ]
+    },
+    {
+      "word": "is",
+      "displayWord": "Is",
+      "count": 4,
+      "distinctTeamNameCount": 3,
+      "ownerCount": 3,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Roddy is not White",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Is"
+        },
+        {
+          "season": 2016,
+          "teamName": "Roddy is not White",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Is"
+        },
+        {
+          "season": 2019,
+          "teamName": "OJ is a Freeman",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Is"
+        },
+        {
+          "season": 2026,
+          "teamName": "Managing This Team is a Burden",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Is"
+        }
+      ]
+    },
+    {
+      "word": "it",
+      "displayWord": "It",
+      "count": 4,
+      "distinctTeamNameCount": 4,
+      "ownerCount": 3,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "I'm Thielen It",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "It"
+        },
+        {
+          "season": 2021,
+          "teamName": "So Gay It Hurts",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "It"
+        },
+        {
+          "season": 2021,
+          "teamName": "Put It In  Reverse Terry",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "It"
+        },
+        {
+          "season": 2025,
+          "teamName": "DO IT FOR DANNY",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "It"
+        }
+      ]
+    },
+    {
+      "word": "not",
+      "displayWord": "Not",
+      "count": 4,
+      "distinctTeamNameCount": 3,
+      "ownerCount": 3,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Roddy is not White",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Not"
+        },
+        {
+          "season": 2016,
+          "teamName": "Roddy is not White",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Not"
+        },
+        {
+          "season": 2025,
+          "teamName": "Not Worthy of Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Not"
+        },
+        {
+          "season": 2026,
+          "teamName": "Maye Not Win a Game",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Not"
+        }
+      ]
+    },
+    {
+      "word": "of",
+      "displayWord": "Of",
+      "count": 4,
+      "distinctTeamNameCount": 3,
+      "ownerCount": 3,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "island of  misfit boys",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Of"
+        },
+        {
+          "season": 2020,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Of"
+        },
+        {
+          "season": 2021,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Of"
+        },
+        {
+          "season": 2025,
+          "teamName": "Not Worthy of Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Of"
+        }
+      ]
+    },
+    {
+      "word": "shady",
+      "displayWord": "Shady",
+      "count": 4,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 3,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Fo Shady Foles",
+          "ownerId": "jake-chaff",
+          "ownerName": "Jake Chaff",
+          "ownerDisplay": "jchaff99",
+          "displayWord": "Shady"
+        },
+        {
+          "season": 2014,
+          "teamName": "Shady Ewis",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Shady"
+        },
+        {
+          "season": 2015,
+          "teamName": "Fo Shady Foles",
+          "ownerId": "jake-chaff",
+          "ownerName": "Jake Chaff",
+          "ownerDisplay": "jchaff99",
+          "displayWord": "Shady"
+        },
+        {
+          "season": 2016,
+          "teamName": "Fo Shady Foles",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Shady"
+        }
+      ]
+    },
+    {
+      "word": "boys",
+      "displayWord": "Boys",
+      "count": 3,
+      "distinctTeamNameCount": 3,
+      "ownerCount": 3,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Coach T And The Boys",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Boys"
+        },
+        {
+          "season": 2014,
+          "teamName": "island of  misfit boys",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Boys"
+        },
+        {
+          "season": 2022,
+          "teamName": "Dirty Mike and the Boys",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Boys"
+        }
+      ]
+    },
+    {
+      "word": "butkus",
+      "displayWord": "Butkus",
+      "count": 3,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Butkus' Dick",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Butkus"
+        },
+        {
+          "season": 2015,
+          "teamName": "Butkus' Dick",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Butkus"
+        },
+        {
+          "season": 2016,
+          "teamName": "Butkus' Dick",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Butkus"
+        }
+      ]
+    },
+    {
+      "word": "cobb",
+      "displayWord": "Cobb",
+      "count": 3,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Ginnys Cobb",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Cobb"
+        },
+        {
+          "season": 2016,
+          "teamName": "Ginnys Cobb",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Cobb"
+        },
+        {
+          "season": 2017,
+          "teamName": "Ginny's  Beautiful Cobb",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Cobb"
+        }
+      ]
+    },
+    {
+      "word": "dees",
+      "displayWord": "Dees",
+      "count": 3,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Saquon Dees Nuts",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Dees"
+        },
+        {
+          "season": 2021,
+          "teamName": "Cee Dees Nuts",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Dees"
+        },
+        {
+          "season": 2022,
+          "teamName": "Cee Dees Nuts",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Dees"
+        }
+      ]
+    },
+    {
+      "word": "dick",
+      "displayWord": "Dick",
+      "count": 3,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Butkus' Dick",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Dick"
+        },
+        {
+          "season": 2015,
+          "teamName": "Butkus' Dick",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Dick"
+        },
+        {
+          "season": 2016,
+          "teamName": "Butkus' Dick",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Dick"
+        }
+      ]
+    },
+    {
+      "word": "fo",
+      "displayWord": "Fo",
+      "count": 3,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Fo Shady Foles",
+          "ownerId": "jake-chaff",
+          "ownerName": "Jake Chaff",
+          "ownerDisplay": "jchaff99",
+          "displayWord": "Fo"
+        },
+        {
+          "season": 2015,
+          "teamName": "Fo Shady Foles",
+          "ownerId": "jake-chaff",
+          "ownerName": "Jake Chaff",
+          "ownerDisplay": "jchaff99",
+          "displayWord": "Fo"
+        },
+        {
+          "season": 2016,
+          "teamName": "Fo Shady Foles",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Fo"
+        }
+      ]
+    },
+    {
+      "word": "foles",
+      "displayWord": "Foles",
+      "count": 3,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Fo Shady Foles",
+          "ownerId": "jake-chaff",
+          "ownerName": "Jake Chaff",
+          "ownerDisplay": "jchaff99",
+          "displayWord": "Foles"
+        },
+        {
+          "season": 2015,
+          "teamName": "Fo Shady Foles",
+          "ownerId": "jake-chaff",
+          "ownerName": "Jake Chaff",
+          "ownerDisplay": "jchaff99",
+          "displayWord": "Foles"
+        },
+        {
+          "season": 2016,
+          "teamName": "Fo Shady Foles",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Foles"
+        }
+      ]
+    },
+    {
+      "word": "game",
+      "displayWord": "Game",
+      "count": 3,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Game"
+        },
+        {
+          "season": 2021,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Game"
+        },
+        {
+          "season": 2026,
+          "teamName": "Maye Not Win a Game",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Game"
+        }
+      ]
+    },
+    {
+      "word": "golden",
+      "displayWord": "Golden",
+      "count": 3,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Golden Taint",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Golden"
+        },
+        {
+          "season": 2016,
+          "teamName": "Golden Taint",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Golden"
+        },
+        {
+          "season": 2026,
+          "teamName": "Golden Bowers",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Golden"
+        }
+      ]
+    },
+    {
+      "word": "good",
+      "displayWord": "Good",
+      "count": 3,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Good  Grape Juice",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Good"
+        },
+        {
+          "season": 2023,
+          "teamName": "A Fields Good Story",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Good"
+        },
+        {
+          "season": 2023,
+          "teamName": "Good  Grape Juice",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Good"
+        }
+      ]
+    },
+    {
+      "word": "her",
+      "displayWord": "Her",
+      "count": 3,
+      "distinctTeamNameCount": 3,
+      "ownerCount": 3,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2016,
+          "teamName": "Luck Her Right  In The Pussy",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Her"
+        },
+        {
+          "season": 2017,
+          "teamName": "Her Parents  Are Cousins",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Her"
+        },
+        {
+          "season": 2020,
+          "teamName": "Fuller? I  Barely Know Her",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Her"
+        }
+      ]
+    },
+    {
+      "word": "influwentz",
+      "displayWord": "Influwentz",
+      "count": 3,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Under the Influwentz",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Influwentz"
+        },
+        {
+          "season": 2020,
+          "teamName": "Under the Influwentz",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Influwentz"
+        },
+        {
+          "season": 2021,
+          "teamName": "Under the Influwentz",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Influwentz"
+        }
+      ]
+    },
+    {
+      "word": "juice",
+      "displayWord": "Juice",
+      "count": 3,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "My Ginny and Juice",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Juice"
+        },
+        {
+          "season": 2022,
+          "teamName": "Good  Grape Juice",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Juice"
+        },
+        {
+          "season": 2023,
+          "teamName": "Good  Grape Juice",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Juice"
+        }
+      ]
+    },
+    {
+      "word": "nuts",
+      "displayWord": "Nuts",
+      "count": 3,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Saquon Dees Nuts",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Nuts"
+        },
+        {
+          "season": 2021,
+          "teamName": "Cee Dees Nuts",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Nuts"
+        },
+        {
+          "season": 2022,
+          "teamName": "Cee Dees Nuts",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Nuts"
+        }
+      ]
+    },
+    {
+      "word": "this",
+      "displayWord": "This",
+      "count": 3,
+      "distinctTeamNameCount": 3,
+      "ownerCount": 3,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "I wish this was on purpose",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "This"
+        },
+        {
+          "season": 2026,
+          "teamName": "Managing This Team is a Burden",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "This"
+        },
+        {
+          "season": 2026,
+          "teamName": "I have faith this year",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "This"
+        }
+      ]
+    },
+    {
+      "word": "under",
+      "displayWord": "Under",
+      "count": 3,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Under the Influwentz",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Under"
+        },
+        {
+          "season": 2020,
+          "teamName": "Under the Influwentz",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Under"
+        },
+        {
+          "season": 2021,
+          "teamName": "Under the Influwentz",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Under"
+        }
+      ]
+    },
+    {
+      "word": "white",
+      "displayWord": "White",
+      "count": 3,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "North Andover White Knights",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "White"
+        },
+        {
+          "season": 2015,
+          "teamName": "Roddy is not White",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "White"
+        },
+        {
+          "season": 2016,
+          "teamName": "Roddy is not White",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "White"
+        }
+      ]
+    },
+    {
+      "word": "abou",
+      "displayWord": "Abou",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Nowar Abou-Mayaleh",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Abou"
+        },
+        {
+          "season": 2016,
+          "teamName": "Nowar Abou-Mayaleh",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Abou"
+        }
+      ]
+    },
+    {
+      "word": "balls",
+      "displayWord": "Balls",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Balls Hitchdick",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Balls"
+        },
+        {
+          "season": 2013,
+          "teamName": "Lick My Balls, No Romo",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Balls"
+        }
+      ]
+    },
+    {
+      "word": "big",
+      "displayWord": "Big",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Big Ben Cirrone + The Reedtards",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Big"
+        },
+        {
+          "season": 2026,
+          "teamName": "Square Head Big Penix",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Big"
+        }
+      ]
+    },
+    {
+      "word": "brown",
+      "displayWord": "Brown",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Kittle Brown Gurleys",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Brown"
+        },
+        {
+          "season": 2026,
+          "teamName": "Picken Ginny's Brown",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Brown"
+        }
+      ]
+    },
+    {
+      "word": "build",
+      "displayWord": "Build",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Build For The Future",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Build"
+        },
+        {
+          "season": 2016,
+          "teamName": "Build for the Future",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Build"
+        }
+      ]
+    },
+    {
+      "word": "built",
+      "displayWord": "Built",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Built for Last Place",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Built"
+        },
+        {
+          "season": 2023,
+          "teamName": "Built Ford Tough",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Built"
+        }
+      ]
+    },
+    {
+      "word": "cee",
+      "displayWord": "Cee",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Cee Dees Nuts",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Cee"
+        },
+        {
+          "season": 2022,
+          "teamName": "Cee Dees Nuts",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Cee"
+        }
+      ]
+    },
+    {
+      "word": "chubb",
+      "displayWord": "Chubb",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Quarter Chubb",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Chubb"
+        },
+        {
+          "season": 2020,
+          "teamName": "Nick's Chubb",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Chubb"
+        }
+      ]
+    },
+    {
+      "word": "cousins",
+      "displayWord": "Cousins",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Her Parents  Are Cousins",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Cousins"
+        },
+        {
+          "season": 2023,
+          "teamName": "Ginny Lazone - Step Cousins",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Cousins"
+        }
+      ]
+    },
+    {
+      "word": "five",
+      "displayWord": "Five",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Five"
+        },
+        {
+          "season": 2021,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Five"
+        }
+      ]
+    },
+    {
+      "word": "future",
+      "displayWord": "Future",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Build For The Future",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Future"
+        },
+        {
+          "season": 2016,
+          "teamName": "Build for the Future",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Future"
+        }
+      ]
+    },
+    {
+      "word": "ginnys",
+      "displayWord": "Ginnys",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Ginnys Cobb",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginnys"
+        },
+        {
+          "season": 2016,
+          "teamName": "Ginnys Cobb",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginnys"
+        }
+      ]
+    },
+    {
+      "word": "grape",
+      "displayWord": "Grape",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Good  Grape Juice",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Grape"
+        },
+        {
+          "season": 2023,
+          "teamName": "Good  Grape Juice",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Grape"
+        }
+      ]
+    },
+    {
+      "word": "inches",
+      "displayWord": "Inches",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Inches"
+        },
+        {
+          "season": 2021,
+          "teamName": "A Game of Five Inches",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Inches"
+        }
+      ]
+    },
+    {
+      "word": "joseph",
+      "displayWord": "Joseph",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Joseph Smith-Njigba",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Joseph"
+        },
+        {
+          "season": 2026,
+          "teamName": "Joseph Smith-Njigba",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Joseph"
+        }
+      ]
+    },
+    {
+      "word": "knights",
+      "displayWord": "Knights",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "North Andover White Knights",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Knights"
+        },
+        {
+          "season": 2021,
+          "teamName": "Go Knights!  !",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Knights"
+        }
+      ]
+    },
+    {
+      "word": "lamario",
+      "displayWord": "Lamario",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Lamario Party 8",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Lamario"
+        },
+        {
+          "season": 2025,
+          "teamName": "Lamario and Luigi",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Lamario"
+        }
+      ]
+    },
+    {
+      "word": "last",
+      "displayWord": "Last",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Going For Last Place",
+          "ownerId": "patrick-wolfgang",
+          "ownerName": "patrick wolfgang",
+          "ownerDisplay": "wolfy1521",
+          "displayWord": "Last"
+        },
+        {
+          "season": 2014,
+          "teamName": "Built for Last Place",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Last"
+        }
+      ]
+    },
+    {
+      "word": "lazone",
+      "displayWord": "Lazone",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Ginny Lazone - Step Cousins",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Lazone"
+        },
+        {
+          "season": 2024,
+          "teamName": "Ginny Lazone Bijan My Mind",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Lazone"
+        }
+      ]
+    },
+    {
+      "word": "mayaleh",
+      "displayWord": "Mayaleh",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Nowar Abou-Mayaleh",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Mayaleh"
+        },
+        {
+          "season": 2016,
+          "teamName": "Nowar Abou-Mayaleh",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Mayaleh"
+        }
+      ]
+    },
+    {
+      "word": "michael",
+      "displayWord": "Michael",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Michael Sam Has Ebola",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Michael"
+        },
+        {
+          "season": 2024,
+          "teamName": "Michael Pittman's Closet",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Michael"
+        }
+      ]
+    },
+    {
+      "word": "njigba",
+      "displayWord": "Njigba",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Joseph Smith-Njigba",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Njigba"
+        },
+        {
+          "season": 2026,
+          "teamName": "Joseph Smith-Njigba",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Njigba"
+        }
+      ]
+    },
+    {
+      "word": "nowar",
+      "displayWord": "Nowar",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Nowar Abou-Mayaleh",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Nowar"
+        },
+        {
+          "season": 2016,
+          "teamName": "Nowar Abou-Mayaleh",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Nowar"
+        }
+      ]
+    },
+    {
+      "word": "place",
+      "displayWord": "Place",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Going For Last Place",
+          "ownerId": "patrick-wolfgang",
+          "ownerName": "patrick wolfgang",
+          "ownerDisplay": "wolfy1521",
+          "displayWord": "Place"
+        },
+        {
+          "season": 2014,
+          "teamName": "Built for Last Place",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Place"
+        }
+      ]
+    },
+    {
+      "word": "roddy",
+      "displayWord": "Roddy",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Roddy is not White",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Roddy"
+        },
+        {
+          "season": 2016,
+          "teamName": "Roddy is not White",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Roddy"
+        }
+      ]
+    },
+    {
+      "word": "smith",
+      "displayWord": "Smith",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Joseph Smith-Njigba",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Smith"
+        },
+        {
+          "season": 2026,
+          "teamName": "Joseph Smith-Njigba",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Smith"
+        }
+      ]
+    },
+    {
+      "word": "sucks",
+      "displayWord": "Sucks",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Wow my team sucks (less)",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Sucks"
+        },
+        {
+          "season": 2017,
+          "teamName": "My Team Sucks",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Sucks"
+        }
+      ]
+    },
+    {
+      "word": "taint",
+      "displayWord": "Taint",
+      "count": 2,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Golden Taint",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Taint"
+        },
+        {
+          "season": 2016,
+          "teamName": "Golden Taint",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Taint"
+        }
+      ]
+    },
+    {
+      "word": "tua",
+      "displayWord": "Tua",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Tua Tindervailoa",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Tua"
+        },
+        {
+          "season": 2022,
+          "teamName": "Tua in the pink 1 in the stink",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Tua"
+        }
+      ]
+    },
+    {
+      "word": "win",
+      "displayWord": "Win",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 2,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Win Later Mode",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Win"
+        },
+        {
+          "season": 2026,
+          "teamName": "Maye Not Win a Game",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Win"
+        }
+      ]
+    },
+    {
+      "word": "with",
+      "displayWord": "With",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "I Stand With Colin!",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "With"
+        },
+        {
+          "season": 2026,
+          "teamName": "Love with a Christian McBride",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "With"
+        }
+      ]
+    },
+    {
+      "word": "yawkey",
+      "displayWord": "Yawkey",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Yawkey’s Team",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Yawkey"
+        },
+        {
+          "season": 2022,
+          "teamName": "Yawkey's Team",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Yawkey"
+        }
+      ]
+    },
+    {
+      "word": "year",
+      "displayWord": "Year",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "There's Always Next Year",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Year"
+        },
+        {
+          "season": 2026,
+          "teamName": "I have faith this year",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Year"
+        }
+      ]
+    },
+    {
+      "word": "you",
+      "displayWord": "You",
+      "count": 2,
+      "distinctTeamNameCount": 2,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "I am Begging you Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "You"
+        },
+        {
+          "season": 2021,
+          "teamName": "Thank You Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "You"
+        }
+      ]
+    },
+    {
+      "word": "0",
+      "displayWord": "0",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "4 Wins 0 Chugs",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "0"
+        }
+      ]
+    },
+    {
+      "word": "04",
+      "displayWord": "04",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "04 Patriots",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "04"
+        }
+      ]
+    },
+    {
+      "word": "1",
+      "displayWord": "1",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Tua in the pink 1 in the stink",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "1"
+        }
+      ]
+    },
+    {
+      "word": "11s",
+      "displayWord": "11S",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Marlon Mack 11s Glocks and 9s",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "11S"
+        }
+      ]
+    },
+    {
+      "word": "2",
+      "displayWord": "2",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Jacquizz In 2:48",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "2"
+        }
+      ]
+    },
+    {
+      "word": "2022",
+      "displayWord": "2022",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "2022 All-Pros",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "ESPNfan6728798141",
+          "displayWord": "2022"
+        }
+      ]
+    },
+    {
+      "word": "225",
+      "displayWord": "225",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "225 Bench Club Member",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "225"
+        }
+      ]
+    },
+    {
+      "word": "4",
+      "displayWord": "4",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "4 Wins 0 Chugs",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "4"
+        }
+      ]
+    },
+    {
+      "word": "48",
+      "displayWord": "48",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Jacquizz In 2:48",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "48"
+        }
+      ]
+    },
+    {
+      "word": "49",
+      "displayWord": "49",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Wine Dine 49",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "49"
+        }
+      ]
+    },
+    {
+      "word": "8",
+      "displayWord": "8",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Lamario Party 8",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "8"
+        }
+      ]
+    },
+    {
+      "word": "9",
+      "displayWord": "9",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Wk 9 mostpoints in the league",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "9"
+        }
+      ]
+    },
+    {
+      "word": "9s",
+      "displayWord": "9S",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Marlon Mack 11s Glocks and 9s",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "9S"
+        }
+      ]
+    },
+    {
+      "word": "all",
+      "displayWord": "All",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "2022 All-Pros",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "ESPNfan6728798141",
+          "displayWord": "All"
+        }
+      ]
+    },
+    {
+      "word": "always",
+      "displayWord": "Always",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "There's Always Next Year",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Always"
+        }
+      ]
+    },
+    {
+      "word": "am",
+      "displayWord": "Am",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "I am Begging you Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Am"
+        }
+      ]
+    },
+    {
+      "word": "anderson",
+      "displayWord": "Anderson",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "CJ Anderson  Blows Cock",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Anderson"
+        }
+      ]
+    },
+    {
+      "word": "andover",
+      "displayWord": "Andover",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "North Andover White Knights",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Andover"
+        }
+      ]
+    },
+    {
+      "word": "anne",
+      "displayWord": "Anne",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Anne Cannons",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Anne"
+        }
+      ]
+    },
+    {
+      "word": "are",
+      "displayWord": "Are",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Her Parents  Are Cousins",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Are"
+        }
+      ]
+    },
+    {
+      "word": "baby",
+      "displayWord": "Baby",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Baby Got Dak",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Baby"
+        }
+      ]
+    },
+    {
+      "word": "baker",
+      "displayWord": "Baker",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Dusty Baker",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Baker"
+        }
+      ]
+    },
+    {
+      "word": "barely",
+      "displayWord": "Barely",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Fuller? I  Barely Know Her",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Barely"
+        }
+      ]
+    },
+    {
+      "word": "barry",
+      "displayWord": "Barry",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Kamara Barry",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Barry"
+        }
+      ]
+    },
+    {
+      "word": "bates",
+      "displayWord": "Bates",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "M*ster Bates",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Bates"
+        }
+      ]
+    },
+    {
+      "word": "beautiful",
+      "displayWord": "Beautiful",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Ginny's  Beautiful Cobb",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Beautiful"
+        }
+      ]
+    },
+    {
+      "word": "begging",
+      "displayWord": "Begging",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "I am Begging you Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Begging"
+        }
+      ]
+    },
+    {
+      "word": "ben",
+      "displayWord": "Ben",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Big Ben Cirrone + The Reedtards",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Ben"
+        }
+      ]
+    },
+    {
+      "word": "bench",
+      "displayWord": "Bench",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "225 Bench Club Member",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Bench"
+        }
+      ]
+    },
+    {
+      "word": "bijan",
+      "displayWord": "Bijan",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Ginny Lazone Bijan My Mind",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Bijan"
+        }
+      ]
+    },
+    {
+      "word": "black",
+      "displayWord": "Black",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Black Lives Matter",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Black"
+        }
+      ]
+    },
+    {
+      "word": "blows",
+      "displayWord": "Blows",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "CJ Anderson  Blows Cock",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Blows"
+        }
+      ]
+    },
+    {
+      "word": "blue",
+      "displayWord": "Blue",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Blue Tent Crew",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Blue"
+        }
+      ]
+    },
+    {
+      "word": "bob",
+      "displayWord": "Bob",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Bob Wylie's Warriors",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Bob"
+        }
+      ]
+    },
+    {
+      "word": "bottom",
+      "displayWord": "Bottom",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Ginny Top Luke Bottom",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Bottom"
+        }
+      ]
+    },
+    {
+      "word": "bowers",
+      "displayWord": "Bowers",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Golden Bowers",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Bowers"
+        }
+      ]
+    },
+    {
+      "word": "box",
+      "displayWord": "Box",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Vick in A Box",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Box"
+        }
+      ]
+    },
+    {
+      "word": "breesin",
+      "displayWord": "Breesin",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Breesin Woods",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Breesin"
+        }
+      ]
+    },
+    {
+      "word": "burckhardt",
+      "displayWord": "Burckhardt",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Team Burckhardt",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Burckhardt"
+        }
+      ]
+    },
+    {
+      "word": "burckley",
+      "displayWord": "Burckley",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Saquads Burckley",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Burckley"
+        }
+      ]
+    },
+    {
+      "word": "burden",
+      "displayWord": "Burden",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Managing This Team is a Burden",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Burden"
+        }
+      ]
+    },
+    {
+      "word": "burkhead",
+      "displayWord": "Burkhead",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Jake Burkhead",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Burkhead"
+        }
+      ]
+    },
+    {
+      "word": "bush",
+      "displayWord": "Bush",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "My Bush Ertz",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Bush"
+        }
+      ]
+    },
+    {
+      "word": "by",
+      "displayWord": "By",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Worst playoff team by far",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "By"
+        }
+      ]
+    },
+    {
+      "word": "cannons",
+      "displayWord": "Cannons",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Anne Cannons",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Cannons"
+        }
+      ]
+    },
+    {
+      "word": "chaff",
+      "displayWord": "Chaff",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Team Chaff",
+          "ownerId": "jake-chaff",
+          "ownerName": "Jake Chaff",
+          "ownerDisplay": "jchaff99",
+          "displayWord": "Chaff"
+        }
+      ]
+    },
+    {
+      "word": "chill",
+      "displayWord": "Chill",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Fournetflix and Chill",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Chill"
+        }
+      ]
+    },
+    {
+      "word": "chisolm",
+      "displayWord": "Chisolm",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "LeGarrett Chisolm",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Chisolm"
+        }
+      ]
+    },
+    {
+      "word": "christian",
+      "displayWord": "Christian",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Love with a Christian McBride",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Christian"
+        }
+      ]
+    },
+    {
+      "word": "chugs",
+      "displayWord": "Chugs",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "4 Wins 0 Chugs",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Chugs"
+        }
+      ]
+    },
+    {
+      "word": "cirrone",
+      "displayWord": "Cirrone",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Big Ben Cirrone + The Reedtards",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Cirrone"
+        }
+      ]
+    },
+    {
+      "word": "cj",
+      "displayWord": "Cj",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "CJ Anderson  Blows Cock",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Cj"
+        }
+      ]
+    },
+    {
+      "word": "closet",
+      "displayWord": "Closet",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Michael Pittman's Closet",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Closet"
+        }
+      ]
+    },
+    {
+      "word": "club",
+      "displayWord": "Club",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "225 Bench Club Member",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Club"
+        }
+      ]
+    },
+    {
+      "word": "coach",
+      "displayWord": "Coach",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Coach T And The Boys",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Coach"
+        }
+      ]
+    },
+    {
+      "word": "cock",
+      "displayWord": "Cock",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "CJ Anderson  Blows Cock",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Cock"
+        }
+      ]
+    },
+    {
+      "word": "colin",
+      "displayWord": "Colin",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "I Stand With Colin!",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Colin"
+        }
+      ]
+    },
+    {
+      "word": "crashee",
+      "displayWord": "Crashee",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "CRashee Rice",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Crashee"
+        }
+      ]
+    },
+    {
+      "word": "crew",
+      "displayWord": "Crew",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Blue Tent Crew",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Crew"
+        }
+      ]
+    },
+    {
+      "word": "cupka",
+      "displayWord": "Cupka",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Team Robert Cupka",
+          "ownerId": "owen-jordan",
+          "ownerName": "owen jordan",
+          "ownerDisplay": "ojordan22",
+          "displayWord": "Cupka"
+        }
+      ]
+    },
+    {
+      "word": "dak",
+      "displayWord": "Dak",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Baby Got Dak",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Dak"
+        }
+      ]
+    },
+    {
+      "word": "danny",
+      "displayWord": "Danny",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "DO IT FOR DANNY",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Danny"
+        }
+      ]
+    },
+    {
+      "word": "darts",
+      "displayWord": "Darts",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Rippin Darts",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Darts"
+        }
+      ]
+    },
+    {
+      "word": "dine",
+      "displayWord": "Dine",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Wine Dine 49",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Dine"
+        }
+      ]
+    },
+    {
+      "word": "dirty",
+      "displayWord": "Dirty",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Dirty Mike and the Boys",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Dirty"
+        }
+      ]
+    },
+    {
+      "word": "do",
+      "displayWord": "Do",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "DO IT FOR DANNY",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Do"
+        }
+      ]
+    },
+    {
+      "word": "drake",
+      "displayWord": "Drake",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Drake and Josh",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Drake"
+        }
+      ]
+    },
+    {
+      "word": "dumpster",
+      "displayWord": "Dumpster",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Dumpster Fire",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Dumpster"
+        }
+      ]
+    },
+    {
+      "word": "dusty",
+      "displayWord": "Dusty",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Dusty Baker",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Dusty"
+        }
+      ]
+    },
+    {
+      "word": "ebola",
+      "displayWord": "Ebola",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Michael Sam Has Ebola",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Ebola"
+        }
+      ]
+    },
+    {
+      "word": "ertz",
+      "displayWord": "Ertz",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "My Bush Ertz",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Ertz"
+        }
+      ]
+    },
+    {
+      "word": "everywhere",
+      "displayWord": "Everywhere",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Just Pain, Pain Everywhere",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Everywhere"
+        }
+      ]
+    },
+    {
+      "word": "ewis",
+      "displayWord": "Ewis",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Shady Ewis",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ewis"
+        }
+      ]
+    },
+    {
+      "word": "faith",
+      "displayWord": "Faith",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "I have faith this year",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Faith"
+        }
+      ]
+    },
+    {
+      "word": "falaras",
+      "displayWord": "Falaras",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Team Falaras",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Falaras"
+        }
+      ]
+    },
+    {
+      "word": "far",
+      "displayWord": "Far",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Worst playoff team by far",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Far"
+        }
+      ]
+    },
+    {
+      "word": "fields",
+      "displayWord": "Fields",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "A Fields Good Story",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Fields"
+        }
+      ]
+    },
+    {
+      "word": "fire",
+      "displayWord": "Fire",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Dumpster Fire",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Fire"
+        }
+      ]
+    },
+    {
+      "word": "football",
+      "displayWord": "Football",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Le(z) New York Football Giants",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Football"
+        }
+      ]
+    },
+    {
+      "word": "ford",
+      "displayWord": "Ford",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Built Ford Tough",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Ford"
+        }
+      ]
+    },
+    {
+      "word": "forest",
+      "displayWord": "Forest",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "GINNAY (Forest Gump Voice)",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Forest"
+        }
+      ]
+    },
+    {
+      "word": "fournetflix",
+      "displayWord": "Fournetflix",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Fournetflix and Chill",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Fournetflix"
+        }
+      ]
+    },
+    {
+      "word": "fournette",
+      "displayWord": "Fournette",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Fournette Skin",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN7302265454",
+          "displayWord": "Fournette"
+        }
+      ]
+    },
+    {
+      "word": "freeman",
+      "displayWord": "Freeman",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "OJ is a Freeman",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Freeman"
+        }
+      ]
+    },
+    {
+      "word": "fuller",
+      "displayWord": "Fuller",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Fuller? I  Barely Know Her",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Fuller"
+        }
+      ]
+    },
+    {
+      "word": "gay",
+      "displayWord": "Gay",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "So Gay It Hurts",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Gay"
+        }
+      ]
+    },
+    {
+      "word": "giants",
+      "displayWord": "Giants",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Le(z) New York Football Giants",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Giants"
+        }
+      ]
+    },
+    {
+      "word": "ginnay",
+      "displayWord": "Ginnay",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "GINNAY (Forest Gump Voice)",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Ginnay"
+        }
+      ]
+    },
+    {
+      "word": "girley",
+      "displayWord": "Girley",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Todd Girley",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Girley"
+        }
+      ]
+    },
+    {
+      "word": "glocks",
+      "displayWord": "Glocks",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Marlon Mack 11s Glocks and 9s",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Glocks"
+        }
+      ]
+    },
+    {
+      "word": "go",
+      "displayWord": "Go",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Go Knights!  !",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Go"
+        }
+      ]
+    },
+    {
+      "word": "going",
+      "displayWord": "Going",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Going For Last Place",
+          "ownerId": "patrick-wolfgang",
+          "ownerName": "patrick wolfgang",
+          "ownerDisplay": "wolfy1521",
+          "displayWord": "Going"
+        }
+      ]
+    },
+    {
+      "word": "got",
+      "displayWord": "Got",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Baby Got Dak",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Got"
+        }
+      ]
+    },
+    {
+      "word": "greg",
+      "displayWord": "Greg",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2016,
+          "teamName": "Third Leg Greg",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Greg"
+        }
+      ]
+    },
+    {
+      "word": "gump",
+      "displayWord": "Gump",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "GINNAY (Forest Gump Voice)",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Gump"
+        }
+      ]
+    },
+    {
+      "word": "gurleys",
+      "displayWord": "Gurleys",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Kittle Brown Gurleys",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Gurleys"
+        }
+      ]
+    },
+    {
+      "word": "had",
+      "displayWord": "Had",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Yanni had a little lamb",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Had"
+        }
+      ]
+    },
+    {
+      "word": "has",
+      "displayWord": "Has",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Michael Sam Has Ebola",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Has"
+        }
+      ]
+    },
+    {
+      "word": "have",
+      "displayWord": "Have",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "I have faith this year",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Have"
+        }
+      ]
+    },
+    {
+      "word": "head",
+      "displayWord": "Head",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Square Head Big Penix",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Head"
+        }
+      ]
+    },
+    {
+      "word": "herbert",
+      "displayWord": "Herbert",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Justin Herbert The Pervert",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Herbert"
+        }
+      ]
+    },
+    {
+      "word": "hitchdick",
+      "displayWord": "Hitchdick",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Balls Hitchdick",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Hitchdick"
+        }
+      ]
+    },
+    {
+      "word": "hop",
+      "displayWord": "Hop",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Hop, Knox, and  Lockett",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Hop"
+        }
+      ]
+    },
+    {
+      "word": "hurts",
+      "displayWord": "Hurts",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "So Gay It Hurts",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Hurts"
+        }
+      ]
+    },
+    {
+      "word": "im",
+      "displayWord": "Im",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "I'm Thielen It",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Im"
+        }
+      ]
+    },
+    {
+      "word": "island",
+      "displayWord": "Island",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "island of  misfit boys",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Island"
+        }
+      ]
+    },
+    {
+      "word": "jacquizz",
+      "displayWord": "Jacquizz",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Jacquizz In 2:48",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Jacquizz"
+        }
+      ]
+    },
+    {
+      "word": "jake",
+      "displayWord": "Jake",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Jake Burkhead",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Jake"
+        }
+      ]
+    },
+    {
+      "word": "jefferson",
+      "displayWord": "Jefferson",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Jefferson Steelflex",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Jefferson"
+        }
+      ]
+    },
+    {
+      "word": "josh",
+      "displayWord": "Josh",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Drake and Josh",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Josh"
+        }
+      ]
+    },
+    {
+      "word": "just",
+      "displayWord": "Just",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Just Pain, Pain Everywhere",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Just"
+        }
+      ]
+    },
+    {
+      "word": "justin",
+      "displayWord": "Justin",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Justin Herbert The Pervert",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Justin"
+        }
+      ]
+    },
+    {
+      "word": "kamara",
+      "displayWord": "Kamara",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Kamara Barry",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Kamara"
+        }
+      ]
+    },
+    {
+      "word": "kittle",
+      "displayWord": "Kittle",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Kittle Brown Gurleys",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Kittle"
+        }
+      ]
+    },
+    {
+      "word": "know",
+      "displayWord": "Know",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Fuller? I  Barely Know Her",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Know"
+        }
+      ]
+    },
+    {
+      "word": "knox",
+      "displayWord": "Knox",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Hop, Knox, and  Lockett",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Knox"
+        }
+      ]
+    },
+    {
+      "word": "kupps",
+      "displayWord": "Kupps",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Reese's Kupps",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Kupps"
+        }
+      ]
+    },
+    {
+      "word": "kyloren",
+      "displayWord": "Kyloren",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "KyloRen and the Swift Lords",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Kyloren"
+        }
+      ]
+    },
+    {
+      "word": "ladykickers",
+      "displayWord": "Ladykickers",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "LadyKickers and Penny Pickers",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Ladykickers"
+        }
+      ]
+    },
+    {
+      "word": "lamb",
+      "displayWord": "Lamb",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Yanni had a little lamb",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Lamb"
+        }
+      ]
+    },
+    {
+      "word": "later",
+      "displayWord": "Later",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Win Later Mode",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Later"
+        }
+      ]
+    },
+    {
+      "word": "le",
+      "displayWord": "Le",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Le(z) New York Football Giants",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Le"
+        }
+      ]
+    },
+    {
+      "word": "league",
+      "displayWord": "League",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Wk 9 mostpoints in the league",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "League"
+        }
+      ]
+    },
+    {
+      "word": "leg",
+      "displayWord": "Leg",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2016,
+          "teamName": "Third Leg Greg",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Leg"
+        }
+      ]
+    },
+    {
+      "word": "legarrett",
+      "displayWord": "Legarrett",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "LeGarrett Chisolm",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Legarrett"
+        }
+      ]
+    },
+    {
+      "word": "less",
+      "displayWord": "Less",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Wow my team sucks (less)",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Less"
+        }
+      ]
+    },
+    {
+      "word": "lick",
+      "displayWord": "Lick",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Lick My Balls, No Romo",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Lick"
+        }
+      ]
+    },
+    {
+      "word": "little",
+      "displayWord": "Little",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Yanni had a little lamb",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Little"
+        }
+      ]
+    },
+    {
+      "word": "lives",
+      "displayWord": "Lives",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Black Lives Matter",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Lives"
+        }
+      ]
+    },
+    {
+      "word": "lockett",
+      "displayWord": "Lockett",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Hop, Knox, and  Lockett",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Lockett"
+        }
+      ]
+    },
+    {
+      "word": "lords",
+      "displayWord": "Lords",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "KyloRen and the Swift Lords",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Lords"
+        }
+      ]
+    },
+    {
+      "word": "love",
+      "displayWord": "Love",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Love with a Christian McBride",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Love"
+        }
+      ]
+    },
+    {
+      "word": "luck",
+      "displayWord": "Luck",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2016,
+          "teamName": "Luck Her Right  In The Pussy",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Luck"
+        }
+      ]
+    },
+    {
+      "word": "luigi",
+      "displayWord": "Luigi",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Lamario and Luigi",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Luigi"
+        }
+      ]
+    },
+    {
+      "word": "luke",
+      "displayWord": "Luke",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Ginny Top Luke Bottom",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Luke"
+        }
+      ]
+    },
+    {
+      "word": "m",
+      "displayWord": "M",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "M*ster Bates",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "M"
+        }
+      ]
+    },
+    {
+      "word": "mack",
+      "displayWord": "Mack",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Marlon Mack 11s Glocks and 9s",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Mack"
+        }
+      ]
+    },
+    {
+      "word": "managing",
+      "displayWord": "Managing",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Managing This Team is a Burden",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Managing"
+        }
+      ]
+    },
+    {
+      "word": "marlon",
+      "displayWord": "Marlon",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Marlon Mack 11s Glocks and 9s",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Marlon"
+        }
+      ]
+    },
+    {
+      "word": "massages",
+      "displayWord": "Massages",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Moore Massages",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Massages"
+        }
+      ]
+    },
+    {
+      "word": "matter",
+      "displayWord": "Matter",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "Black Lives Matter",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Matter"
+        }
+      ]
+    },
+    {
+      "word": "maye",
+      "displayWord": "Maye",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Maye Not Win a Game",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Maye"
+        }
+      ]
+    },
+    {
+      "word": "mcbride",
+      "displayWord": "Mcbride",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Love with a Christian McBride",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Mcbride"
+        }
+      ]
+    },
+    {
+      "word": "member",
+      "displayWord": "Member",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "225 Bench Club Member",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Member"
+        }
+      ]
+    },
+    {
+      "word": "mike",
+      "displayWord": "Mike",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Dirty Mike and the Boys",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Mike"
+        }
+      ]
+    },
+    {
+      "word": "mind",
+      "displayWord": "Mind",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Ginny Lazone Bijan My Mind",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Mind"
+        }
+      ]
+    },
+    {
+      "word": "misfit",
+      "displayWord": "Misfit",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "island of  misfit boys",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Misfit"
+        }
+      ]
+    },
+    {
+      "word": "mode",
+      "displayWord": "Mode",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Win Later Mode",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Mode"
+        }
+      ]
+    },
+    {
+      "word": "moore",
+      "displayWord": "Moore",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Moore Massages",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Moore"
+        }
+      ]
+    },
+    {
+      "word": "mostpoints",
+      "displayWord": "Mostpoints",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Wk 9 mostpoints in the league",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Mostpoints"
+        }
+      ]
+    },
+    {
+      "word": "new",
+      "displayWord": "New",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Le(z) New York Football Giants",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "New"
+        }
+      ]
+    },
+    {
+      "word": "next",
+      "displayWord": "Next",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "There's Always Next Year",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Next"
+        }
+      ]
+    },
+    {
+      "word": "nick",
+      "displayWord": "Nick",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Nick's Chubb",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Nick"
+        }
+      ]
+    },
+    {
+      "word": "no",
+      "displayWord": "No",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Lick My Balls, No Romo",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "No"
+        }
+      ]
+    },
+    {
+      "word": "north",
+      "displayWord": "North",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2015,
+          "teamName": "North Andover White Knights",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "North"
+        }
+      ]
+    },
+    {
+      "word": "oj",
+      "displayWord": "Oj",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "OJ is a Freeman",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Oj"
+        }
+      ]
+    },
+    {
+      "word": "on",
+      "displayWord": "On",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": true,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "I wish this was on purpose",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "On"
+        }
+      ]
+    },
+    {
+      "word": "pain",
+      "displayWord": "Pain",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Just Pain, Pain Everywhere",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Pain"
+        }
+      ]
+    },
+    {
+      "word": "parents",
+      "displayWord": "Parents",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Her Parents  Are Cousins",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Parents"
+        }
+      ]
+    },
+    {
+      "word": "party",
+      "displayWord": "Party",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Lamario Party 8",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Party"
+        }
+      ]
+    },
+    {
+      "word": "patriots",
+      "displayWord": "Patriots",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "04 Patriots",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Patriots"
+        }
+      ]
+    },
+    {
+      "word": "peace",
+      "displayWord": "Peace",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Warren Peace",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Peace"
+        }
+      ]
+    },
+    {
+      "word": "penix",
+      "displayWord": "Penix",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Square Head Big Penix",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Penix"
+        }
+      ]
+    },
+    {
+      "word": "penny",
+      "displayWord": "Penny",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "LadyKickers and Penny Pickers",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Penny"
+        }
+      ]
+    },
+    {
+      "word": "pervert",
+      "displayWord": "Pervert",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Justin Herbert The Pervert",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Pervert"
+        }
+      ]
+    },
+    {
+      "word": "picken",
+      "displayWord": "Picken",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Picken Ginny's Brown",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Picken"
+        }
+      ]
+    },
+    {
+      "word": "pickers",
+      "displayWord": "Pickers",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "LadyKickers and Penny Pickers",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Pickers"
+        }
+      ]
+    },
+    {
+      "word": "pink",
+      "displayWord": "Pink",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Tua in the pink 1 in the stink",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Pink"
+        }
+      ]
+    },
+    {
+      "word": "pittman",
+      "displayWord": "Pittman",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Michael Pittman's Closet",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Pittman"
+        }
+      ]
+    },
+    {
+      "word": "playoff",
+      "displayWord": "Playoff",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Worst playoff team by far",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Playoff"
+        }
+      ]
+    },
+    {
+      "word": "pros",
+      "displayWord": "Pros",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "2022 All-Pros",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "ESPNfan6728798141",
+          "displayWord": "Pros"
+        }
+      ]
+    },
+    {
+      "word": "purpose",
+      "displayWord": "Purpose",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "I wish this was on purpose",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Purpose"
+        }
+      ]
+    },
+    {
+      "word": "pussy",
+      "displayWord": "Pussy",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2016,
+          "teamName": "Luck Her Right  In The Pussy",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Pussy"
+        }
+      ]
+    },
+    {
+      "word": "put",
+      "displayWord": "Put",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Put It In  Reverse Terry",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Put"
+        }
+      ]
+    },
+    {
+      "word": "quarter",
+      "displayWord": "Quarter",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Quarter Chubb",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Quarter"
+        }
+      ]
+    },
+    {
+      "word": "reedtards",
+      "displayWord": "Reedtards",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "Big Ben Cirrone + The Reedtards",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Reedtards"
+        }
+      ]
+    },
+    {
+      "word": "reese",
+      "displayWord": "Reese",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Reese's Kupps",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Reese"
+        }
+      ]
+    },
+    {
+      "word": "reverse",
+      "displayWord": "Reverse",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Put It In  Reverse Terry",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Reverse"
+        }
+      ]
+    },
+    {
+      "word": "rice",
+      "displayWord": "Rice",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "CRashee Rice",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Rice"
+        }
+      ]
+    },
+    {
+      "word": "rico",
+      "displayWord": "Rico",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Uncle Rico",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Rico"
+        }
+      ]
+    },
+    {
+      "word": "right",
+      "displayWord": "Right",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2016,
+          "teamName": "Luck Her Right  In The Pussy",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Right"
+        }
+      ]
+    },
+    {
+      "word": "rippin",
+      "displayWord": "Rippin",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Rippin Darts",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Rippin"
+        }
+      ]
+    },
+    {
+      "word": "robert",
+      "displayWord": "Robert",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Team Robert Cupka",
+          "ownerId": "owen-jordan",
+          "ownerName": "owen jordan",
+          "ownerDisplay": "ojordan22",
+          "displayWord": "Robert"
+        }
+      ]
+    },
+    {
+      "word": "rolls",
+      "displayWord": "Rolls",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Rolls Royce",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Rolls"
+        }
+      ]
+    },
+    {
+      "word": "romo",
+      "displayWord": "Romo",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Lick My Balls, No Romo",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Romo"
+        }
+      ]
+    },
+    {
+      "word": "royce",
+      "displayWord": "Royce",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Rolls Royce",
+          "ownerId": "matt-wolfenden",
+          "ownerName": "Matt Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Royce"
+        }
+      ]
+    },
+    {
+      "word": "sam",
+      "displayWord": "Sam",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Michael Sam Has Ebola",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Sam"
+        }
+      ]
+    },
+    {
+      "word": "saquads",
+      "displayWord": "Saquads",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Saquads Burckley",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Saquads"
+        }
+      ]
+    },
+    {
+      "word": "saquon",
+      "displayWord": "Saquon",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Saquon Dees Nuts",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Saquon"
+        }
+      ]
+    },
+    {
+      "word": "sharks",
+      "displayWord": "Sharks",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Tiburon Sharks",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Sharks"
+        }
+      ]
+    },
+    {
+      "word": "skin",
+      "displayWord": "Skin",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Fournette Skin",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN7302265454",
+          "displayWord": "Skin"
+        }
+      ]
+    },
+    {
+      "word": "so",
+      "displayWord": "So",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "So Gay It Hurts",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "So"
+        }
+      ]
+    },
+    {
+      "word": "square",
+      "displayWord": "Square",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Square Head Big Penix",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Square"
+        }
+      ]
+    },
+    {
+      "word": "stand",
+      "displayWord": "Stand",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2017,
+          "teamName": "I Stand With Colin!",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Stand"
+        }
+      ]
+    },
+    {
+      "word": "steelflex",
+      "displayWord": "Steelflex",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Jefferson Steelflex",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Steelflex"
+        }
+      ]
+    },
+    {
+      "word": "step",
+      "displayWord": "Step",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Ginny Lazone - Step Cousins",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Step"
+        }
+      ]
+    },
+    {
+      "word": "ster",
+      "displayWord": "Ster",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "M*ster Bates",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Ster"
+        }
+      ]
+    },
+    {
+      "word": "stink",
+      "displayWord": "Stink",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Tua in the pink 1 in the stink",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Stink"
+        }
+      ]
+    },
+    {
+      "word": "story",
+      "displayWord": "Story",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "A Fields Good Story",
+          "ownerId": "andrew-severin",
+          "ownerName": "Andrew Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Story"
+        }
+      ]
+    },
+    {
+      "word": "swift",
+      "displayWord": "Swift",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "KyloRen and the Swift Lords",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Swift"
+        }
+      ]
+    },
+    {
+      "word": "t",
+      "displayWord": "T",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2014,
+          "teamName": "Coach T And The Boys",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "T"
+        }
+      ]
+    },
+    {
+      "word": "tankathon",
+      "displayWord": "Tankathon",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "tankathon",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Tankathon"
+        }
+      ]
+    },
+    {
+      "word": "tent",
+      "displayWord": "Tent",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Blue Tent Crew",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Tent"
+        }
+      ]
+    },
+    {
+      "word": "terry",
+      "displayWord": "Terry",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Put It In  Reverse Terry",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Terry"
+        }
+      ]
+    },
+    {
+      "word": "thank",
+      "displayWord": "Thank",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Thank You Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Thank"
+        }
+      ]
+    },
+    {
+      "word": "there",
+      "displayWord": "There",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "There's Always Next Year",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "There"
+        }
+      ]
+    },
+    {
+      "word": "thielen",
+      "displayWord": "Thielen",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "I'm Thielen It",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Thielen"
+        }
+      ]
+    },
+    {
+      "word": "third",
+      "displayWord": "Third",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2016,
+          "teamName": "Third Leg Greg",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Third"
+        }
+      ]
+    },
+    {
+      "word": "tiburon",
+      "displayWord": "Tiburon",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Tiburon Sharks",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Tiburon"
+        }
+      ]
+    },
+    {
+      "word": "tindervailoa",
+      "displayWord": "Tindervailoa",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2020,
+          "teamName": "Tua Tindervailoa",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Tindervailoa"
+        }
+      ]
+    },
+    {
+      "word": "todd",
+      "displayWord": "Todd",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Todd Girley",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Todd"
+        }
+      ]
+    },
+    {
+      "word": "top",
+      "displayWord": "Top",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Ginny Top Luke Bottom",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Top"
+        }
+      ]
+    },
+    {
+      "word": "tough",
+      "displayWord": "Tough",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "Built Ford Tough",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Tough"
+        }
+      ]
+    },
+    {
+      "word": "tucker",
+      "displayWord": "Tucker",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Tucker in the  Waistband",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Tucker"
+        }
+      ]
+    },
+    {
+      "word": "uncle",
+      "displayWord": "Uncle",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Uncle Rico",
+          "ownerId": "jake-burckhardt",
+          "ownerName": "Jake Burckhardt",
+          "ownerDisplay": "nafootball8228",
+          "displayWord": "Uncle"
+        }
+      ]
+    },
+    {
+      "word": "vick",
+      "displayWord": "Vick",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Vick in A Box",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Vick"
+        }
+      ]
+    },
+    {
+      "word": "voice",
+      "displayWord": "Voice",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "GINNAY (Forest Gump Voice)",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Voice"
+        }
+      ]
+    },
+    {
+      "word": "waistband",
+      "displayWord": "Waistband",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2019,
+          "teamName": "Tucker in the  Waistband",
+          "ownerId": "john-boudreau",
+          "ownerName": "John Boudreau",
+          "ownerDisplay": "Bouda1275",
+          "displayWord": "Waistband"
+        }
+      ]
+    },
+    {
+      "word": "warren",
+      "displayWord": "Warren",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2026,
+          "teamName": "Warren Peace",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Warren"
+        }
+      ]
+    },
+    {
+      "word": "warriors",
+      "displayWord": "Warriors",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Bob Wylie's Warriors",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Warriors"
+        }
+      ]
+    },
+    {
+      "word": "was",
+      "displayWord": "Was",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "I wish this was on purpose",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Was"
+        }
+      ]
+    },
+    {
+      "word": "wine",
+      "displayWord": "Wine",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "Wine Dine 49",
+          "ownerId": "matthew-wolfenden",
+          "ownerName": "Matthew Wolfenden",
+          "ownerDisplay": "wolfsta51",
+          "displayWord": "Wine"
+        }
+      ]
+    },
+    {
+      "word": "wins",
+      "displayWord": "Wins",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2022,
+          "teamName": "4 Wins 0 Chugs",
+          "ownerId": "billy-marcotte",
+          "ownerName": "Billy Marcotte",
+          "ownerDisplay": "NAEast09",
+          "displayWord": "Wins"
+        }
+      ]
+    },
+    {
+      "word": "wish",
+      "displayWord": "Wish",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2023,
+          "teamName": "I wish this was on purpose",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Wish"
+        }
+      ]
+    },
+    {
+      "word": "wk",
+      "displayWord": "Wk",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2021,
+          "teamName": "Wk 9 mostpoints in the league",
+          "ownerId": "nick-diduca",
+          "ownerName": "Nick DiDuca",
+          "ownerDisplay": "297nick",
+          "displayWord": "Wk"
+        }
+      ]
+    },
+    {
+      "word": "woods",
+      "displayWord": "Woods",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Breesin Woods",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Woods"
+        }
+      ]
+    },
+    {
+      "word": "worst",
+      "displayWord": "Worst",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2024,
+          "teamName": "Worst playoff team by far",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Worst"
+        }
+      ]
+    },
+    {
+      "word": "worthy",
+      "displayWord": "Worthy",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Not Worthy of Ginny",
+          "ownerId": "luke-hitchcock",
+          "ownerName": "Luke Hitchcock",
+          "ownerDisplay": "hitch1147",
+          "displayWord": "Worthy"
+        }
+      ]
+    },
+    {
+      "word": "wow",
+      "displayWord": "Wow",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2013,
+          "teamName": "Wow my team sucks (less)",
+          "ownerId": "yanni-falaras",
+          "ownerName": "yanni falaras",
+          "ownerDisplay": "yanni279",
+          "displayWord": "Wow"
+        }
+      ]
+    },
+    {
+      "word": "wylie",
+      "displayWord": "Wylie",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Bob Wylie's Warriors",
+          "ownerId": "john-severin",
+          "ownerName": "John Severin",
+          "ownerDisplay": "lsufootball88",
+          "displayWord": "Wylie"
+        }
+      ]
+    },
+    {
+      "word": "yanni",
+      "displayWord": "Yanni",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Yanni had a little lamb",
+          "ownerId": "yanni-falaras",
+          "ownerName": "Yanni Falaras",
+          "ownerDisplay": "ESPNFAN2108589222",
+          "displayWord": "Yanni"
+        }
+      ]
+    },
+    {
+      "word": "yawkeys",
+      "displayWord": "Yawkeys",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2018,
+          "teamName": "Yawkeys Team",
+          "ownerId": "matt-iacoviello",
+          "ownerName": "Matt Iacoviello",
+          "ownerDisplay": "FloridaG15",
+          "displayWord": "Yawkeys"
+        }
+      ]
+    },
+    {
+      "word": "york",
+      "displayWord": "York",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Le(z) New York Football Giants",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "York"
+        }
+      ]
+    },
+    {
+      "word": "z",
+      "displayWord": "Z",
+      "count": 1,
+      "distinctTeamNameCount": 1,
+      "ownerCount": 1,
+      "isCommon": false,
+      "occurrences": [
+        {
+          "season": 2025,
+          "teamName": "Le(z) New York Football Giants",
+          "ownerId": "nick-ceraso",
+          "ownerName": "Nick Ceraso",
+          "ownerDisplay": "nick92696",
+          "displayWord": "Z"
+        }
+      ]
+    }
+  ]
+}
