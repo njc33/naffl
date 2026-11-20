@@ -250,18 +250,49 @@ function DraftHistory() {
   };
 
   const sortedDraftPicks = [
-    ...filteredDraftPicks,
-  ].sort((pickA, pickB) => {
-    const comparison =
-      compareValues(
-        pickA[sortField],
-        pickB[sortField]
-      );
+  ...filteredDraftPicks,
+    ].sort((pickA, pickB) => {
+  const valueA =
+    pickA[sortField];
 
-    return sortDirection === "asc"
-      ? comparison
-      : -comparison;
-  });
+  const valueB =
+    pickB[sortField];
+
+  const valueAIsMissing =
+    valueA === null ||
+    valueA === undefined;
+
+  const valueBIsMissing =
+    valueB === null ||
+    valueB === undefined;
+
+  // Missing values always stay at the bottom,
+  // regardless of sort direction.
+  if (
+    valueAIsMissing &&
+    valueBIsMissing
+  ) {
+    return 0;
+  }
+
+  if (valueAIsMissing) {
+    return 1;
+  }
+
+  if (valueBIsMissing) {
+    return -1;
+  }
+
+  const comparison =
+    compareValues(
+      valueA,
+      valueB
+    );
+
+  return sortDirection === "asc"
+    ? comparison
+    : -comparison;
+    });
 
   const sortIndicator = (field) => {
     if (sortField !== field) {
@@ -271,7 +302,7 @@ function DraftHistory() {
     return sortDirection === "asc"
       ? " ▲"
       : " ▼";
-  };
+    };
 
   const formatBid = (amount) =>
     Number(amount || 0).toLocaleString(
