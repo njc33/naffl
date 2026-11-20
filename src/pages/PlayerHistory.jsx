@@ -9,6 +9,7 @@ function PlayerHistory() {
   const [sortDirection, setSortDirection] = useState("asc");
   const [leaderCategory, setLeaderCategory] = useState("");
   const [showFullLeaderList, setShowFullLeaderList] = useState(false);
+  const [selectedFromRingsLeaderboard, setSelectedFromRingsLeaderboard] = useState(false);
 
   useEffect(() => {
     fetch("/data/player-history.json")
@@ -64,15 +65,24 @@ function PlayerHistory() {
           overallCareerRank: record.overallCareerRank ?? null,
           positionCareerRank: record.positionCareerRank ?? null,
           ownerIds: new Set(),
+          championshipTeamSeasons: new Set(),
         });
       }
 
-      summaries.get(record.player).ownerIds.add(record.ownerId);
+      const summary = summaries.get(record.player);
+      summary.ownerIds.add(record.ownerId);
+
+      if (Number(record.teamFinish) === 1) {
+        summary.championshipTeamSeasons.add(
+          `${record.season}-${record.ownerId}`
+        );
+      }
     });
 
     return [...summaries.values()].map((summary) => ({
       ...summary,
       ownerCount: summary.ownerIds.size,
+      ringCount: summary.championshipTeamSeasons.size,
     }));
   }, [records]);
 
@@ -85,6 +95,7 @@ function PlayerHistory() {
     { value: "K", label: "Top Kickers of All Time" },
     { value: "D/ST", label: "Top D/STs of All Time" },
     { value: "mostOwners", label: "Players with the Most NAFFL Owners" },
+    { value: "mostRings", label: "Players with the Most Rings" },
   ];
 
   const selectedLeaderCategory = leaderCategories.find(
@@ -95,7 +106,7 @@ function PlayerHistory() {
     if (!leaderCategory) return [];
 
     const filtered =
-      leaderCategory === "overall" || leaderCategory === "mostOwners"
+      ["overall", "mostOwners", "mostRings"].includes(leaderCategory)
         ? playerSummaries
         : playerSummaries.filter(
             (summary) => summary.position === leaderCategory
@@ -105,6 +116,14 @@ function PlayerHistory() {
       if (leaderCategory === "mostOwners") {
         return (
           playerB.ownerCount - playerA.ownerCount ||
+          playerB.careerPoints - playerA.careerPoints ||
+          playerA.player.localeCompare(playerB.player)
+        );
+      }
+
+      if (leaderCategory === "mostRings") {
+        return (
+          playerB.ringCount - playerA.ringCount ||
           playerB.careerPoints - playerA.careerPoints ||
           playerA.player.localeCompare(playerB.player)
         );
@@ -127,9 +146,10 @@ function PlayerHistory() {
   const overallRank = playerSummary?.overallCareerRank ?? null;
   const positionRank = playerSummary?.positionCareerRank ?? null;
 
-  const selectPlayer = (player) => {
+  const selectPlayer = (player, fromRingsLeaderboard = false) => {
     setSelectedPlayer(player);
     setSearchText(player);
+    setSelectedFromRingsLeaderboard(fromRingsLeaderboard);
     setSuggestionsVisible(false);
     setSortField("season");
     setSortDirection("asc");
@@ -275,12 +295,13 @@ function PlayerHistory() {
           onChange={(event) => {
             setSearchText(event.target.value);
             setSelectedPlayer("");
+            setSelectedFromRingsLeaderboard(false);
             setSuggestionsVisible(true);
           }}
           onKeyDown={(event) => {
             if (event.key === "Enter" && suggestions.length > 0) {
               event.preventDefault();
-              selectPlayer(suggestions[0]);
+              selectPlayer(suggestions[0], false);
             }
             if (event.key === "Escape") setSuggestionsVisible(false);
           }}
@@ -321,7 +342,7 @@ function PlayerHistory() {
                 role="option"
                 onMouseDown={(event) => {
                   event.preventDefault();
-                  selectPlayer(player);
+                  selectPlayer(player, false);
                 }}
                 style={{
                   display: "block",
@@ -438,7 +459,9 @@ function PlayerHistory() {
               <button
                 key={leader.playerKey || leader.player}
                 type="button"
-                onClick={() => selectPlayer(leader.player)}
+                onClick={() =>
+                  selectPlayer(leader.player, leaderCategory === "mostRings")
+                }
                 style={{
                   display: "grid",
                   gridTemplateColumns: "42px minmax(0, 1fr) auto",
@@ -482,7 +505,9 @@ function PlayerHistory() {
                 >
                   {leaderCategory === "mostOwners"
                     ? `${leader.ownerCount} owners`
-                    : formatPoints(leader.careerPoints)}
+                    : leaderCategory === "mostRings"
+                      ? `${leader.ringCount} ${leader.ringCount === 1 ? "ring" : "rings"}`
+                      : formatPoints(leader.careerPoints)}
                 </span>
               </button>
             ))}
@@ -501,7 +526,14 @@ function PlayerHistory() {
               backgroundColor: "#f8fafc",
             }}
           >
-            <h3 style={{ margin: 0, color: "#17365d" }}>{selectedPlayer}</h3>
+            <h3 style={{ margin: 0, color: "#17365d" }}>
+              {selectedPlayer}
+              {selectedFromRingsLeaderboard &&
+                Number(playerSummary?.teamFinish) !== 0 &&
+                playerRecords.some((record) => Number(record.teamFinish) === 1)
+                ? " 🏆"
+                : ""}
+            </h3>
             <p style={{ margin: "5px 0 0", color: "#536273" }}>
               <strong>Position:</strong> {position}
             </p>
@@ -512,6 +544,18 @@ function PlayerHistory() {
             <p style={{ margin: "9px 0 0", color: "#64748b", fontSize: "0.8rem" }}>
               Seasons/Owner Records: {playerRecords.length} · Owners: {ownerCount}
             </p>
+            {selectedFromRingsLeaderboard && (
+              <p
+                style={{
+                  margin: "9px 0 0",
+                  color: "#8a5a00",
+                  fontSize: "0.78rem",
+                  fontWeight: 700,
+                }}
+              >
+                Championship seasons are highlighted in gold below.
+              </p>
+            )}
           </section>
 
           <div style={{ width: "100%", overflowX: "auto" }}>
@@ -548,6 +592,14 @@ function PlayerHistory() {
                 {sortedRecords.map((record, index) => (
                   <tr
                     key={`${record.playerKey}-${record.season}-${record.ownerId}-${record.draftRound}-${record.draftPick}-${index}`}
+                    style={
+                      selectedFromRingsLeaderboard && Number(record.teamFinish) === 1
+                        ? {
+                            backgroundColor: "#fff7d6",
+                            boxShadow: "inset 4px 0 0 #d4a017",
+                          }
+                        : undefined
+                    }
                   >
                     <td style={cellStyle}>{record.season}</td>
                     <td style={cellStyle} title={record.teamName}>
@@ -567,7 +619,23 @@ function PlayerHistory() {
                     >
                       {formatNetPoints(record.netPoints)}
                     </td>
-                    <td style={cellStyle}>{getOrdinal(record.teamFinish)}</td>
+                    <td
+                      style={{
+                        ...cellStyle,
+                        color:
+                          selectedFromRingsLeaderboard && Number(record.teamFinish) === 1
+                            ? "#8a5a00"
+                            : undefined,
+                        fontWeight:
+                          selectedFromRingsLeaderboard && Number(record.teamFinish) === 1
+                            ? 800
+                            : undefined,
+                      }}
+                    >
+                      {selectedFromRingsLeaderboard && Number(record.teamFinish) === 1
+                        ? `🏆 ${getOrdinal(record.teamFinish)}`
+                        : getOrdinal(record.teamFinish)}
+                    </td>
                   </tr>
                 ))}
               </tbody>
