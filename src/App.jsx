@@ -12,6 +12,7 @@ import TeamRosterHistory from "./pages/TeamRosterHistory";
 import DraftHistory from "./pages/DraftHistory";
 import FaceOfFranchise from "./pages/FaceOfFranchise";
 import PlayerHistory from "./pages/PlayerHistory";
+import ScoreboardTimeMachine from "./pages/ScoreboardTimeMachine";
 import Records from "./pages/Records";
 
 import "./App.css";
@@ -51,6 +52,15 @@ function App() {
               }
             >
               Home
+            </NavLink>
+
+            <NavLink
+              to="/scoreboard"
+              className={
+                getNavLinkClass
+              }
+            >
+              Scoreboard
             </NavLink>
 
             <NavLink
@@ -123,6 +133,13 @@ function App() {
             <Route
               path="/"
               element={<Home />}
+            />
+
+            <Route
+              path="/scoreboard"
+              element={
+                <ScoreboardTimeMachine />
+              }
             />
 
             <Route

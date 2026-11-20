@@ -5,6 +5,13 @@ import "./Home.css";
 
 const PAGE_CARDS = [
   {
+  path: "/scoreboard",
+  icon: "🕰️",
+  title: "Scoreboard Time Machine",
+  description:
+    "Revisit every weekly matchup and explore historical starting lineups and benches.",
+  },
+  {
     path: "/history",
     icon: "🏆",
     title: "League History",
