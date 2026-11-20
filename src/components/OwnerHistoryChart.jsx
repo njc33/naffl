@@ -219,10 +219,10 @@ function OwnerHistoryChart({
       : 10;
 
   const finishDomain =
-    metric.field ===
-    "finalStanding"
-      ? [finishMaximum, 1]
-      : [0, "auto"];
+  metric.field ===
+  "finalStanding"
+    ? [1, finishMaximum]
+    : [0, "auto"];
 
   const yAxisFormatter = (
     value
@@ -364,6 +364,10 @@ function OwnerHistoryChart({
 
             <YAxis
               domain={finishDomain}
+              reversed={
+                metric.field ===
+                "finalStanding"
+            }
               allowDecimals={
                 metric.decimals > 0
               }
