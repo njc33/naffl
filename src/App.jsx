@@ -8,11 +8,19 @@ import {
 import Home from "./pages/Home";
 import LeagueHistory from "./pages/LeagueHistory";
 import OwnerHistory from "./pages/OwnerHistory";
+import TeamRosterHistory from "./pages/TeamRosterHistory";
 import Records from "./pages/Records";
 
 import "./App.css";
 
 function App() {
+  const getNavLinkClass = ({
+    isActive,
+  }) =>
+    isActive
+      ? "nav-link nav-link-active"
+      : "nav-link";
+
   return (
     <BrowserRouter>
       <div className="app-shell">
@@ -33,10 +41,8 @@ function App() {
           >
             <NavLink
               to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link nav-link-active"
-                  : "nav-link"
+              className={
+                getNavLinkClass
               }
             >
               Home
@@ -44,10 +50,8 @@ function App() {
 
             <NavLink
               to="/history"
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link nav-link-active"
-                  : "nav-link"
+              className={
+                getNavLinkClass
               }
             >
               League History
@@ -55,21 +59,26 @@ function App() {
 
             <NavLink
               to="/owners"
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link nav-link-active"
-                  : "nav-link"
+              className={
+                getNavLinkClass
               }
             >
               Owner History
             </NavLink>
 
             <NavLink
+              to="/rosters"
+              className={
+                getNavLinkClass
+              }
+            >
+              Rosters
+            </NavLink>
+
+            <NavLink
               to="/records"
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link nav-link-active"
-                  : "nav-link"
+              className={
+                getNavLinkClass
               }
             >
               Records
@@ -86,12 +95,23 @@ function App() {
 
             <Route
               path="/history"
-              element={<LeagueHistory />}
+              element={
+                <LeagueHistory />
+              }
             />
 
             <Route
               path="/owners"
-              element={<OwnerHistory />}
+              element={
+                <OwnerHistory />
+              }
+            />
+
+            <Route
+              path="/rosters"
+              element={
+                <TeamRosterHistory />
+              }
             />
 
             <Route
