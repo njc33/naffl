@@ -119,9 +119,8 @@ function DraftHistory() {
 
           const seasonMatches =
             season === "all" ||
-            Number(
-              record.season
-            ) === Number(season);
+            Number(record.season) ===
+              Number(season);
 
           return (
             ownerMatches &&
@@ -193,7 +192,6 @@ function DraftHistory() {
     const descendingFields = [
       "points",
       "netPointsVsRoundAverage",
-      "bidAmount",
     ];
 
     setSortDirection(
@@ -246,8 +244,8 @@ function DraftHistory() {
       valueB === undefined;
 
     /*
-      Missing values always stay at the bottom,
-      regardless of sorting direction.
+      Missing values remain at the
+      bottom in either direction.
     */
     if (
       valueAIsMissing &&
@@ -284,17 +282,6 @@ function DraftHistory() {
       ? " ▲"
       : " ▼";
   };
-
-  const formatBid = (amount) =>
-    Number(amount || 0).toLocaleString(
-      undefined,
-      {
-        style: "currency",
-        currency: "USD",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }
-    );
 
   const formatPoints = (points) => {
     if (
@@ -371,16 +358,6 @@ function DraftHistory() {
         record.keeper === true
     ).length;
 
-  const totalBidAmount =
-    filteredDraftPicks.reduce(
-      (sum, record) =>
-        sum +
-        Number(
-          record.bidAmount || 0
-        ),
-      0
-    );
-
   const averageNetPoints =
     filteredDraftPicks.reduce(
       (summary, record) => {
@@ -399,6 +376,7 @@ function DraftHistory() {
           total:
             summary.total +
             Number(value),
+
           count:
             summary.count + 1,
         };
@@ -414,19 +392,6 @@ function DraftHistory() {
       ? averageNetPoints.total /
         averageNetPoints.count
       : null;
-
-  const sortableHeaderStyle = {
-    cursor: "pointer",
-    userSelect: "none",
-    textAlign: "left",
-    paddingRight: "16px",
-    paddingBottom: "8px",
-  };
-
-  const cellStyle = {
-    paddingRight: "16px",
-    paddingBottom: "6px",
-  };
 
   const getNetPointsColor = (
     value
@@ -452,6 +417,37 @@ function DraftHistory() {
     return undefined;
   };
 
+  const sortableHeaderStyle = {
+    cursor: "pointer",
+    userSelect: "none",
+    textAlign: "left",
+    padding: "7px 7px",
+    fontSize: "0.76rem",
+    lineHeight: 1.15,
+    whiteSpace: "nowrap",
+  };
+
+  const cellStyle = {
+    padding: "6px 7px",
+    fontSize: "0.78rem",
+    lineHeight: 1.2,
+    whiteSpace: "nowrap",
+  };
+
+  const numericCellStyle = {
+    ...cellStyle,
+    textAlign: "right",
+    fontVariantNumeric:
+      "tabular-nums",
+  };
+
+  const compactTableStyle = {
+    marginTop: "16px",
+    borderCollapse: "collapse",
+    width: "max-content",
+    minWidth: "100%",
+  };
+
   return (
     <div>
       <h2>Draft History</h2>
@@ -460,7 +456,7 @@ function DraftHistory() {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          gap: "12px",
+          gap: "10px",
           alignItems: "center",
         }}
       >
@@ -531,40 +527,39 @@ function DraftHistory() {
         </p>
       )}
 
-      <p>
-        <strong>
-          Draft Records:
-        </strong>{" "}
-        {filteredDraftPicks.length}
-      </p>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          columnGap: "18px",
+          rowGap: "2px",
+          marginBottom: "4px",
+        }}
+      >
+        <p>
+          <strong>
+            Draft Records:
+          </strong>{" "}
+          {filteredDraftPicks.length}
+        </p>
 
-      <p>
-        <strong>Keepers:</strong>{" "}
-        {keeperCount}
-      </p>
+        <p>
+          <strong>Keepers:</strong>{" "}
+          {keeperCount}
+        </p>
 
-      <p>
-        <strong>
-          Total Bid Amount:
-        </strong>{" "}
-        {formatBid(totalBidAmount)}
-      </p>
-
-      <p>
-        <strong>
-          Average Net Points vs Rd Avg:
-        </strong>{" "}
-        {formatNetPoints(
-          selectedAverageNetPoints
-        )}
-      </p>
+        <p>
+          <strong>
+            Avg. Net vs Rd:
+          </strong>{" "}
+          {formatNetPoints(
+            selectedAverageNetPoints
+          )}
+        </p>
+      </div>
 
       <table
-        style={{
-          marginTop: "20px",
-          borderCollapse:
-            "collapse",
-        }}
+        style={compactTableStyle}
       >
         <thead>
           <tr>
@@ -575,8 +570,9 @@ function DraftHistory() {
               style={
                 sortableHeaderStyle
               }
+              title="Season"
             >
-              Season
+              Yr
               {sortIndicator(
                 "season"
               )}
@@ -589,8 +585,9 @@ function DraftHistory() {
               style={
                 sortableHeaderStyle
               }
+              title="Draft Round"
             >
-              Round
+              Rd
               {sortIndicator(
                 "round"
               )}
@@ -603,6 +600,7 @@ function DraftHistory() {
               style={
                 sortableHeaderStyle
               }
+              title="Overall Pick"
             >
               Pick
               {sortIndicator("pick")}
@@ -615,8 +613,9 @@ function DraftHistory() {
               style={
                 sortableHeaderStyle
               }
+              title="Season Points"
             >
-              Points
+              Pts
               {sortIndicator(
                 "points"
               )}
@@ -631,8 +630,11 @@ function DraftHistory() {
               style={
                 sortableHeaderStyle
               }
+              title={
+                "Net Points Versus Draft Round Average"
+              }
             >
-              Net Points vs Rd Avg
+              Net vs Rd Avg
               {sortIndicator(
                 "netPointsVsRoundAverage"
               )}
@@ -690,25 +692,9 @@ function DraftHistory() {
                 sortableHeaderStyle
               }
             >
-              Keeper
+              Kpr
               {sortIndicator(
                 "keeper"
-              )}
-            </th>
-
-            <th
-              onClick={() =>
-                handleSort(
-                  "bidAmount"
-                )
-              }
-              style={
-                sortableHeaderStyle
-              }
-            >
-              Bid
-              {sortIndicator(
-                "bidAmount"
               )}
             </th>
           </tr>
@@ -720,19 +706,35 @@ function DraftHistory() {
               <tr
                 key={`${record.season}-${record.ownerId}-${record.round}-${record.pick}-${record.playerId}-${index}`}
               >
-                <td style={cellStyle}>
+                <td
+                  style={
+                    numericCellStyle
+                  }
+                >
                   {record.season}
                 </td>
 
-                <td style={cellStyle}>
+                <td
+                  style={
+                    numericCellStyle
+                  }
+                >
                   {record.round}
                 </td>
 
-                <td style={cellStyle}>
+                <td
+                  style={
+                    numericCellStyle
+                  }
+                >
                   {record.pick}
                 </td>
 
-                <td style={cellStyle}>
+                <td
+                  style={
+                    numericCellStyle
+                  }
+                >
                   {formatPoints(
                     record.points
                   )}
@@ -740,12 +742,14 @@ function DraftHistory() {
 
                 <td
                   style={{
-                    ...cellStyle,
+                    ...numericCellStyle,
+
                     color:
                       getNetPointsColor(
                         record
                           .netPointsVsRoundAverage
                       ),
+
                     fontWeight:
                       record
                         .netPointsVsRoundAverage !==
@@ -771,20 +775,30 @@ function DraftHistory() {
                   {record.ownerName}
                 </td>
 
-                <td style={cellStyle}>
+                <td
+                  style={{
+                    ...cellStyle,
+                    maxWidth: "180px",
+                    overflow: "hidden",
+                    textOverflow:
+                      "ellipsis",
+                  }}
+                  title={
+                    record.teamName
+                  }
+                >
                   {record.teamName}
                 </td>
 
-                <td style={cellStyle}>
+                <td
+                  style={{
+                    ...cellStyle,
+                    textAlign: "center",
+                  }}
+                >
                   {record.keeper
-                    ? "Yes"
-                    : "No"}
-                </td>
-
-                <td style={cellStyle}>
-                  {formatBid(
-                    record.bidAmount
-                  )}
+                    ? "Y"
+                    : ""}
                 </td>
               </tr>
             )
@@ -799,6 +813,18 @@ function DraftHistory() {
           for these filters.
         </p>
       )}
+
+      <p
+        style={{
+          marginTop: "10px",
+          color: "#64748b",
+          fontSize: "0.75rem",
+        }}
+      >
+        Hover over a shortened team
+        name to view the complete name.
+        Kpr indicates a keeper.
+      </p>
     </div>
   );
 }
