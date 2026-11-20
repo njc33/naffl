@@ -6,13 +6,14 @@ import {
 } from "react-router-dom";
 
 import Home from "./pages/Home";
+import ScoreboardTimeMachine from "./pages/ScoreboardTimeMachine";
+import TeamNameWordCloud from "./pages/TeamNameWordCloud";
 import LeagueHistory from "./pages/LeagueHistory";
 import OwnerHistory from "./pages/OwnerHistory";
 import TeamRosterHistory from "./pages/TeamRosterHistory";
 import DraftHistory from "./pages/DraftHistory";
 import FaceOfFranchise from "./pages/FaceOfFranchise";
 import PlayerHistory from "./pages/PlayerHistory";
-import ScoreboardTimeMachine from "./pages/ScoreboardTimeMachine";
 import Records from "./pages/Records";
 
 import "./App.css";
@@ -36,7 +37,8 @@ function App() {
             </div>
 
             <div className="site-brand-long">
-              North Andover Fantasy Football League
+              North Andover Fantasy
+              Football League
             </div>
           </div>
 
@@ -61,6 +63,15 @@ function App() {
               }
             >
               Scoreboard
+            </NavLink>
+
+            <NavLink
+              to="/team-names"
+              className={
+                getNavLinkClass
+              }
+            >
+              Team Names
             </NavLink>
 
             <NavLink
@@ -139,6 +150,13 @@ function App() {
               path="/scoreboard"
               element={
                 <ScoreboardTimeMachine />
+              }
+            />
+
+            <Route
+              path="/team-names"
+              element={
+                <TeamNameWordCloud />
               }
             />
 
