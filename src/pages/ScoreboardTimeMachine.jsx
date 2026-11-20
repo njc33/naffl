@@ -330,6 +330,27 @@ function ScoreboardTimeMachine() {
   };
 
 
+  const formatLineupSlot = (
+    lineupSlot
+  ) => {
+    const normalizedSlot =
+      String(
+        lineupSlot ?? ""
+      )
+        .trim()
+        .toUpperCase();
+
+    if (
+      normalizedSlot === "RB/WR" ||
+      normalizedSlot === "RB/WR/TE"
+    ) {
+      return "FLEX";
+    }
+
+    return lineupSlot;
+  };
+
+
   const LineupTable = ({
     team,
   }) => {
@@ -397,7 +418,9 @@ function ScoreboardTimeMachine() {
                 key={`${team.ownerId}-${player.playerId}-${player.player}-${player.lineupSlot}-${index}`}
               >
                 <div className="scoreboard-player-slot">
-                  {player.lineupSlot}
+                  {formatLineupSlot(
+                    player.lineupSlot
+                  )}
                 </div>
 
                 <div className="scoreboard-player-name">
@@ -421,12 +444,6 @@ function ScoreboardTimeMachine() {
                 <div className="scoreboard-player-number points">
                   {formatPoints(
                     player.points
-                  )}
-                </div>
-
-                <div className="scoreboard-player-number projected">
-                  {formatPoints(
-                    player.projectedPoints
                   )}
                 </div>
 
@@ -472,15 +489,7 @@ function ScoreboardTimeMachine() {
               textAlign: "right",
             }}
           >
-            Proj
-          </div>
-
-          <div
-            style={{
-              textAlign: "right",
-            }}
-          >
-            Vs Proj
+            Net vs Proj
           </div>
         </div>
 
@@ -541,37 +550,24 @@ function ScoreboardTimeMachine() {
           }
           style={{
             display: "grid",
-
             gridTemplateColumns:
               "minmax(0, 1fr) auto",
-
             gap: "12px",
-
             alignItems: "start",
-
             width: "100%",
-
             minWidth: 0,
-
             padding: "14px",
-
             border: isWinner
               ? "2px solid #17365d"
               : "1px solid #d7dce3",
-
             borderRadius: "8px",
-
             backgroundColor:
               isWinner
                 ? "#eef4fa"
                 : "#ffffff",
-
             color: "#172b43",
-
             font: "inherit",
-
             textAlign: "left",
-
             cursor: "pointer",
           }}
         >
@@ -584,21 +580,14 @@ function ScoreboardTimeMachine() {
             <span
               style={{
                 display: "block",
-
                 overflow: "hidden",
-
                 color: "#17365d",
-
                 fontSize:
                   "0.95rem",
-
                 fontWeight: 800,
-
                 lineHeight: 1.25,
-
                 textOverflow:
                   "ellipsis",
-
                 whiteSpace:
                   "nowrap",
               }}
@@ -612,14 +601,10 @@ function ScoreboardTimeMachine() {
             <span
               style={{
                 display: "block",
-
                 marginTop: "3px",
-
                 color: "#64748b",
-
                 fontSize:
                   "0.76rem",
-
                 lineHeight: 1.3,
               }}
             >
@@ -635,14 +620,10 @@ function ScoreboardTimeMachine() {
             <span
               style={{
                 display: "block",
-
                 marginTop: "6px",
-
                 color: "#475569",
-
                 fontSize:
                   "0.7rem",
-
                 lineHeight: 1.3,
               }}
             >
@@ -659,17 +640,12 @@ function ScoreboardTimeMachine() {
               color: isWinner
                 ? "#17365d"
                 : "#334155",
-
               fontSize:
                 "clamp(1.15rem, 5vw, 1.45rem)",
-
               fontWeight: 900,
-
               fontVariantNumeric:
                 "tabular-nums",
-
               lineHeight: 1,
-
               whiteSpace: "nowrap",
             }}
           >
@@ -686,20 +662,13 @@ function ScoreboardTimeMachine() {
             }
             style={{
               width: "100%",
-
               minWidth: 0,
-
               marginTop: "8px",
-
               padding: "10px",
-
               overflow: "hidden",
-
               border:
                 "1px solid #d7dce3",
-
               borderRadius: "8px",
-
               backgroundColor:
                 "#f8fafc",
             }}
@@ -707,16 +676,11 @@ function ScoreboardTimeMachine() {
             <div
               style={{
                 display: "flex",
-
                 justifyContent:
                   "space-between",
-
                 alignItems: "center",
-
                 gap: "10px",
-
                 minWidth: 0,
-
                 marginBottom:
                   "8px",
               }}
@@ -724,19 +688,13 @@ function ScoreboardTimeMachine() {
               <div
                 style={{
                   minWidth: 0,
-
                   overflow: "hidden",
-
                   color: "#172b43",
-
                   fontSize:
                     "0.84rem",
-
                   fontWeight: 800,
-
                   textOverflow:
                     "ellipsis",
-
                   whiteSpace:
                     "nowrap",
                 }}
@@ -756,24 +714,17 @@ function ScoreboardTimeMachine() {
                 }
                 style={{
                   flexShrink: 0,
-
                   padding:
                     "4px 8px",
-
                   border:
                     "1px solid #cbd5e1",
-
                   borderRadius:
                     "5px",
-
                   backgroundColor:
                     "#ffffff",
-
                   color: "#334155",
-
                   fontSize:
                     "0.7rem",
-
                   cursor: "pointer",
                 }}
               >
@@ -818,13 +769,9 @@ function ScoreboardTimeMachine() {
       <div
         style={{
           display: "flex",
-
           flexWrap: "wrap",
-
           gap: "12px",
-
           alignItems: "center",
-
           marginTop: "18px",
         }}
       >
@@ -892,16 +839,11 @@ function ScoreboardTimeMachine() {
       <div
         style={{
           display: "grid",
-
           gridTemplateColumns:
             "repeat(auto-fit, minmax(min(100%, 390px), 1fr))",
-
           gap: "16px",
-
           width: "100%",
-
           minWidth: 0,
-
           marginTop: "14px",
         }}
       >
@@ -913,22 +855,15 @@ function ScoreboardTimeMachine() {
               }
               style={{
                 width: "100%",
-
                 minWidth: 0,
-
                 padding: "14px",
-
                 overflow: "hidden",
-
                 border:
                   "1px solid #cbd5e1",
-
                 borderRadius:
                   "10px",
-
                 backgroundColor:
                   "#ffffff",
-
                 boxShadow:
                   "0 4px 12px rgba(15, 23, 42, 0.06)",
               }}
@@ -936,17 +871,12 @@ function ScoreboardTimeMachine() {
               <div
                 style={{
                   display: "flex",
-
                   flexWrap: "wrap",
-
                   justifyContent:
                     "space-between",
-
                   alignItems:
                     "center",
-
                   gap: "8px 12px",
-
                   marginBottom:
                     "10px",
                 }}
@@ -955,31 +885,23 @@ function ScoreboardTimeMachine() {
                   style={{
                     display:
                       "inline-block",
-
                     padding:
                       "4px 8px",
-
                     borderRadius:
                       "999px",
-
                     backgroundColor:
                       matchup.playoff
                         ? "#fef3c7"
                         : "#eef2f6",
-
                     color:
                       matchup.playoff
                         ? "#92400e"
                         : "#475569",
-
                     fontSize:
                       "0.68rem",
-
                     fontWeight: 800,
-
                     letterSpacing:
                       "0.04em",
-
                     textTransform:
                       "uppercase",
                   }}
@@ -993,10 +915,8 @@ function ScoreboardTimeMachine() {
                   style={{
                     color:
                       "#64748b",
-
                     fontSize:
                       "0.72rem",
-
                     whiteSpace:
                       "nowrap",
                   }}
@@ -1027,15 +947,11 @@ function ScoreboardTimeMachine() {
                   style={{
                     color:
                       "#94a3b8",
-
                     fontSize:
                       "0.68rem",
-
                     fontWeight: 800,
-
                     textAlign:
                       "center",
-
                     textTransform:
                       "uppercase",
                   }}
@@ -1061,19 +977,13 @@ function ScoreboardTimeMachine() {
         <div
           style={{
             marginTop: "18px",
-
             padding: "24px",
-
             border:
               "1px dashed #94a3b8",
-
             borderRadius: "8px",
-
             backgroundColor:
               "#f8fafc",
-
             color: "#64748b",
-
             textAlign: "center",
           }}
         >
