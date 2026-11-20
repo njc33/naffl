@@ -32,18 +32,45 @@ def clean_text(value):
     return str(value).strip()
 
 
+def normalize_text(value):
+    return clean_text(value).casefold()
+
+
 def clean_integer(value):
     if pd.isna(value) or value == "":
         return 0
 
-    return int(float(value))
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return 0
 
 
 def clean_number(value):
     if pd.isna(value) or value == "":
-        return 0
+        return 0.0
 
-    return round(float(value), 2)
+    try:
+        return round(float(value), 2)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def clean_points(value):
+    """
+    Convert numeric point values to decimals.
+
+    Text values such as "Not on End of Season Roster"
+    become None so the website can display N/A.
+    """
+
+    if pd.isna(value) or value == "":
+        return None
+
+    try:
+        return round(float(value), 2)
+    except (TypeError, ValueError):
+        return None
 
 
 def clean_keeper(value):
@@ -56,11 +83,7 @@ def clean_keeper(value):
     if isinstance(value, (int, float)):
         return value != 0
 
-    text_value = (
-        str(value)
-        .strip()
-        .casefold()
-    )
+    text_value = normalize_text(value)
 
     return text_value in {
         "yes",
@@ -72,6 +95,7 @@ def clean_keeper(value):
     }
 
 
+# Load canonical team and owner information.
 with TEAM_SEASONS_FILE.open(
     "r",
     encoding="utf-8",
@@ -84,32 +108,23 @@ with TEAM_SEASONS_FILE.open(
 team_lookup = {}
 
 for team in team_seasons:
-    season = int(
-        team["season"]
+    season = int(team["season"])
+
+    team_name_key = normalize_text(
+        team["teamName"]
     )
 
-    team_name_key = (
-        str(
-            team["teamName"]
+    owner_display_key = normalize_text(
+        team.get(
+            "ownerDisplay",
+            "",
         )
-        .strip()
-        .casefold()
-    )
-
-    owner_display_key = (
-        str(
-            team.get(
-                "ownerDisplay",
-                "",
-            )
-        )
-        .strip()
-        .casefold()
     )
 
     team_lookup[
         (
             season,
+            "team",
             team_name_key,
         )
     ] = team
@@ -118,23 +133,129 @@ for team in team_seasons:
         team_lookup[
             (
                 season,
+                "display",
                 owner_display_key,
             )
         ] = team
 
 
+# These two workbook sheets already contain the
+# points associated with each draft record.
+draft_points_frames = []
+
+for sheet_name in [
+    "Draft 13-18",
+    "Draft 19-26",
+]:
+    sheet_df = pd.read_excel(
+        EXCEL_FILE,
+        sheet_name=sheet_name,
+    )
+
+    # Removes the trailing space from "Points ".
+    sheet_df.columns = [
+        clean_text(column)
+        for column in sheet_df.columns
+    ]
+
+    draft_points_frames.append(
+        sheet_df
+    )
+
+
+draft_points_df = pd.concat(
+    draft_points_frames,
+    ignore_index=True,
+)
+
+
+# Primary lookup:
+# Season + Player ID
+points_by_player_id = {}
+
+# Fallback lookup:
+# Season + normalized Player name
+points_by_player_name = {}
+
+numeric_point_records = 0
+unavailable_point_records = 0
+
+
+for _, row in draft_points_df.iterrows():
+    season = clean_integer(
+        row["Season"]
+    )
+
+    player_id = clean_text(
+        row["Player ID"]
+    )
+
+    player_name_key = normalize_text(
+        row["Player"]
+    )
+
+    points = clean_points(
+        row["Points"]
+    )
+
+    if points is None:
+        unavailable_point_records += 1
+    else:
+        numeric_point_records += 1
+
+    if player_id:
+        points_by_player_id[
+            (
+                season,
+                player_id,
+            )
+        ] = points
+
+    if player_name_key:
+        points_by_player_name[
+            (
+                season,
+                player_name_key,
+            )
+        ] = points
+
+
+# Load the authoritative draft export.
 df = pd.read_excel(
     EXCEL_FILE,
     sheet_name="Draft_Export",
 )
 
+df.columns = [
+    clean_text(column)
+    for column in df.columns
+]
+
+
 records = []
 
-unmatched_records = []
+unmatched_team_records = []
+unmatched_point_records = []
+
+points_matched_by_id = 0
+points_matched_by_name = 0
+
 
 for _, row in df.iterrows():
     season = clean_integer(
         row["Season"]
+    )
+
+    player = clean_text(
+        row["Player"]
+    )
+
+    player_id = clean_text(
+        row["Player ID"]
+    )
+
+    player_name_key = normalize_text(
+        player
     )
 
     excel_team_name = clean_text(
@@ -145,18 +266,13 @@ for _, row in df.iterrows():
         row["Owner Display"]
     )
 
-    team_name_key = (
-        excel_team_name.casefold()
-    )
-
-    owner_display_key = (
-        excel_owner_display.casefold()
-    )
-
     canonical_team = team_lookup.get(
         (
             season,
-            team_name_key,
+            "team",
+            normalize_text(
+                excel_team_name
+            ),
         )
     )
 
@@ -164,15 +280,19 @@ for _, row in df.iterrows():
         canonical_team = team_lookup.get(
             (
                 season,
-                owner_display_key,
+                "display",
+                normalize_text(
+                    excel_owner_display
+                ),
             )
         )
 
     if canonical_team is None:
-        unmatched_records.append(
+        unmatched_team_records.append(
             {
                 "season": season,
-                "teamName": excel_team_name,
+                "teamName":
+                    excel_team_name,
                 "ownerDisplay":
                     excel_owner_display,
             }
@@ -198,6 +318,7 @@ for _, row in df.iterrows():
         )
 
         team_name = excel_team_name
+
     else:
         owner_id = canonical_team[
             "ownerId"
@@ -219,6 +340,58 @@ for _, row in df.iterrows():
             "teamName"
         ]
 
+    points = None
+    points_match_method = ""
+
+    player_id_key = (
+        season,
+        player_id,
+    )
+
+    player_name_lookup_key = (
+        season,
+        player_name_key,
+    )
+
+    if (
+        player_id and
+        player_id_key
+        in points_by_player_id
+    ):
+        points = points_by_player_id[
+            player_id_key
+        ]
+
+        points_match_method = (
+            "playerId"
+        )
+
+        points_matched_by_id += 1
+
+    elif (
+        player_name_key and
+        player_name_lookup_key
+        in points_by_player_name
+    ):
+        points = points_by_player_name[
+            player_name_lookup_key
+        ]
+
+        points_match_method = (
+            "playerName"
+        )
+
+        points_matched_by_name += 1
+
+    else:
+        unmatched_point_records.append(
+            {
+                "season": season,
+                "player": player,
+                "playerId": player_id,
+            }
+        )
+
     record = {
         "season": season,
 
@@ -230,13 +403,14 @@ for _, row in df.iterrows():
             row["Pick"]
         ),
 
-        "player": clean_text(
-            row["Player"]
-        ),
+        "points": points,
 
-        "playerId": clean_text(
-            row["Player ID"]
-        ),
+        "pointsMatchMethod":
+            points_match_method,
+
+        "player": player,
+
+        "playerId": player_id,
 
         "teamName": team_name,
 
@@ -288,22 +462,16 @@ with OUTPUT_FILE.open(
     )
 
 
-unique_seasons = sorted(
-    {
-        record["season"]
-        for record in records
-    }
+exported_numeric_points = sum(
+    1
+    for record in records
+    if record["points"] is not None
 )
 
-unique_owners = sorted(
-    {
-        (
-            record["ownerId"],
-            record["ownerName"],
-        )
-        for record in records
-    },
-    key=lambda owner: owner[1],
+exported_unavailable_points = sum(
+    1
+    for record in records
+    if record["points"] is None
 )
 
 
@@ -317,29 +485,77 @@ print(
 )
 
 print(
-    f"Seasons: "
-    f"{unique_seasons[0]}-"
-    f"{unique_seasons[-1]}"
+    f"Source numeric point records: "
+    f"{numeric_point_records}"
 )
 
 print(
-    f"Canonical owners: "
-    f"{len(unique_owners)}"
+    f"Source unavailable point records: "
+    f"{unavailable_point_records}"
 )
 
 print(
-    f"Unmatched draft records: "
-    f"{len(unmatched_records)}"
+    f"Points matched by Player ID: "
+    f"{points_matched_by_id}"
 )
 
-if unmatched_records:
-    unique_unmatched = {
+print(
+    f"Points matched by player name: "
+    f"{points_matched_by_name}"
+)
+
+print(
+    f"Exported records with points: "
+    f"{exported_numeric_points}"
+)
+
+print(
+    f"Exported records displaying N/A: "
+    f"{exported_unavailable_points}"
+)
+
+print(
+    f"Unmatched point records: "
+    f"{len(unmatched_point_records)}"
+)
+
+print(
+    f"Unmatched team records: "
+    f"{len(unmatched_team_records)}"
+)
+
+
+if unmatched_point_records:
+    print(
+        "Draft records with no "
+        "matching point record:"
+    )
+
+    for unmatched in (
+        unmatched_point_records[:25]
+    ):
+        print(
+            "- "
+            f"{unmatched['season']}: "
+            f"{unmatched['player']} "
+            f"({unmatched['playerId']})"
+        )
+
+
+if unmatched_team_records:
+    print(
+        "Draft records missing "
+        "canonical teams:"
+    )
+
+    unique_unmatched_teams = {
         (
             record["season"],
             record["teamName"],
             record["ownerDisplay"],
         )
-        for record in unmatched_records
+        for record
+        in unmatched_team_records
     }
 
     for (
@@ -347,7 +563,7 @@ if unmatched_records:
         unmatched_team_name,
         unmatched_owner_display,
     ) in sorted(
-        unique_unmatched
+        unique_unmatched_teams
     ):
         print(
             "- "
