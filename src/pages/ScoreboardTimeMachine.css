@@ -1,4 +1,6 @@
 .scoreboard-lineup {
+  width: 100%;
+  min-width: 0;
   overflow: hidden;
   border: 1px solid #d7dce3;
   border-radius: 7px;
@@ -8,23 +10,37 @@
 .scoreboard-lineup-header,
 .scoreboard-player-row {
   display: grid;
+
+  /*
+    Flexible desktop layout:
+    Slot | Player | Points | Net vs Proj
+
+    The player column can shrink below its
+    content width, which keeps the final
+    Net vs Proj column visible.
+  */
   grid-template-columns:
-    70px minmax(180px, 1fr)
-    76px 98px;
+    52px
+    minmax(0, 1fr)
+    minmax(54px, 68px)
+    minmax(78px, 96px);
+
   align-items: center;
+  width: 100%;
+  min-width: 0;
 }
 
 .scoreboard-lineup-header {
   background-color: #e8edf3;
   color: #334155;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
 }
 
 .scoreboard-lineup-header > div,
 .scoreboard-player-row > div {
   min-width: 0;
-  padding: 7px 8px;
+  padding: 7px 6px;
 }
 
 .scoreboard-lineup-section {
@@ -46,35 +62,48 @@
 }
 
 .scoreboard-player-slot {
+  overflow: hidden;
   color: #536273;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .scoreboard-player-name {
+  min-width: 0;
   overflow: hidden;
 }
 
 .scoreboard-player-name strong {
   display: block;
+  min-width: 0;
   overflow: hidden;
   color: #172b43;
+  font-size: 0.76rem;
+  line-height: 1.25;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .scoreboard-player-meta {
+  min-width: 0;
   margin-top: 2px;
   overflow: hidden;
   color: #64748b;
-  font-size: 0.68rem;
+  font-size: 0.62rem;
+  line-height: 1.25;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .scoreboard-player-number {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.72rem;
+  line-height: 1.25;
   text-align: right;
+  text-overflow: ellipsis;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -89,6 +118,44 @@
   text-align: center;
 }
 
+
+/*
+  Give the desktop layout slightly more room
+  on wide screens without forcing a minimum
+  width on smaller matchup cards.
+*/
+@media (min-width: 1100px) {
+  .scoreboard-lineup-header,
+  .scoreboard-player-row {
+    grid-template-columns:
+      58px
+      minmax(0, 1fr)
+      minmax(60px, 76px)
+      minmax(88px, 108px);
+  }
+
+  .scoreboard-lineup-header > div,
+  .scoreboard-player-row > div {
+    padding: 7px 8px;
+  }
+
+  .scoreboard-player-name strong {
+    font-size: 0.8rem;
+  }
+
+  .scoreboard-player-meta {
+    font-size: 0.66rem;
+  }
+
+  .scoreboard-player-number {
+    font-size: 0.76rem;
+  }
+}
+
+
+/*
+  Mobile player cards.
+*/
 @media (max-width: 700px) {
   .scoreboard-lineup {
     overflow: visible;
@@ -114,8 +181,12 @@
   .scoreboard-player-row {
     display: grid;
     grid-template-columns:
-      minmax(0, 1fr) auto;
+      minmax(0, 1fr)
+      auto;
+
     gap: 6px 10px;
+    width: 100%;
+    min-width: 0;
     margin-top: 8px;
     padding: 10px;
     border: 1px solid #d7dce3;
@@ -136,13 +207,17 @@
     grid-column: 2;
     grid-row: 1;
     align-self: start;
+    max-width: 75px;
     padding: 3px 7px !important;
+    overflow: hidden;
     border-radius: 999px;
     background-color: #eef2f6;
     color: #475569;
     font-size: 0.65rem;
     line-height: 1.2;
     text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .scoreboard-player-name {
@@ -170,14 +245,18 @@
   .scoreboard-player-number {
     display: grid;
     grid-template-columns:
-      minmax(0, 1fr) auto;
+      minmax(0, 1fr)
+      auto;
+
     grid-column: 1 / -1;
     gap: 12px;
     padding-top: 6px !important;
+    overflow: visible;
     border-top: 1px solid #eef2f6;
     font-size: 0.76rem;
     line-height: 1.25;
     text-align: right;
+    text-overflow: initial;
   }
 
   .scoreboard-player-number::before {
@@ -200,6 +279,7 @@
     font-size: 0.76rem;
   }
 }
+
 
 @media (max-width: 380px) {
   .scoreboard-player-row {
