@@ -4,6 +4,8 @@ import {
   useState,
 } from "react";
 
+import "./ScoreboardTimeMachine.css";
+
 
 function ScoreboardTimeMachine() {
   const [matchups, setMatchups] =
@@ -46,7 +48,10 @@ function ScoreboardTimeMachine() {
                 )
             )
           ),
-        ].sort((a, b) => b - a);
+        ].sort(
+          (seasonA, seasonB) =>
+            seasonB - seasonA
+        );
 
         if (
           seasons.length === 0
@@ -78,7 +83,10 @@ function ScoreboardTimeMachine() {
                   )
               )
           ),
-        ].sort((a, b) => b - a);
+        ].sort(
+          (weekA, weekB) =>
+            weekB - weekA
+        );
 
         if (
           latestSeasonWeeks.length >
@@ -108,7 +116,10 @@ function ScoreboardTimeMachine() {
               )
           )
         ),
-      ].sort((a, b) => b - a);
+      ].sort(
+        (seasonA, seasonB) =>
+          seasonB - seasonA
+      );
     }, [matchups]);
 
 
@@ -131,7 +142,10 @@ function ScoreboardTimeMachine() {
                 )
             )
         ),
-      ].sort((a, b) => a - b);
+      ].sort(
+        (weekA, weekB) =>
+          weekA - weekB
+      );
     }, [
       matchups,
       season,
@@ -184,7 +198,10 @@ function ScoreboardTimeMachine() {
               )
           )
       ),
-    ].sort((a, b) => a - b);
+    ].sort(
+      (weekA, weekB) =>
+        weekA - weekB
+    );
 
     setWeek(
       newSeasonWeeks.length > 0
@@ -290,7 +307,8 @@ function ScoreboardTimeMachine() {
 
     return (
       normalizedSlot === "BE" ||
-      normalizedSlot === "BENCH"
+      normalizedSlot ===
+        "BENCH"
     );
   };
 
@@ -323,19 +341,7 @@ function ScoreboardTimeMachine() {
       team.lineup.length === 0
     ) {
       return (
-        <div
-          style={{
-            padding: "18px",
-            border:
-              "1px dashed #aeb8c4",
-            borderRadius: "7px",
-            backgroundColor:
-              "#ffffff",
-            color: "#64748b",
-            fontSize: "0.82rem",
-            textAlign: "center",
-          }}
-        >
+        <div className="scoreboard-lineup-empty">
           Detailed lineup data is not
           available for this team and
           week.
@@ -380,135 +386,66 @@ function ScoreboardTimeMachine() {
 
       return (
         <>
-          <tr>
-            <td
-              colSpan={5}
-              style={{
-                padding:
-                  "9px 8px 5px",
-                backgroundColor:
-                  "#eef2f6",
-                color: "#334155",
-                fontSize:
-                  "0.72rem",
-                fontWeight: 800,
-                letterSpacing:
-                  "0.06em",
-                textTransform:
-                  "uppercase",
-              }}
-            >
-              {sectionLabel}
-            </td>
-          </tr>
+          <div className="scoreboard-lineup-section">
+            {sectionLabel}
+          </div>
 
           {players.map(
             (player, index) => (
-              <tr
+              <div
+                className="scoreboard-player-row"
                 key={`${team.ownerId}-${player.playerId}-${player.player}-${player.lineupSlot}-${index}`}
               >
-                <td
-                  style={{
-                    padding:
-                      "7px 8px",
-                    whiteSpace:
-                      "nowrap",
-                  }}
-                >
-                  {
-                    player.lineupSlot
-                  }
-                </td>
+                <div className="scoreboard-player-slot">
+                  {player.lineupSlot}
+                </div>
 
-                <td
-                  style={{
-                    padding:
-                      "7px 8px",
-                  }}
-                >
+                <div className="scoreboard-player-name">
                   <strong>
                     {player.player}
                   </strong>
 
-                  <div
-                    style={{
-                      marginTop:
-                        "2px",
-                      color:
-                        "#64748b",
-                      fontSize:
-                        "0.7rem",
-                    }}
-                  >
-                    {
-                      player.position
-                    }
+                  <div className="scoreboard-player-meta">
+                    {player.position}
+
                     {player.nflTeam
                       ? ` · ${player.nflTeam}`
                       : ""}
+
                     {player.nflOpponent
                       ? ` vs ${player.nflOpponent}`
                       : ""}
                   </div>
-                </td>
+                </div>
 
-                <td
-                  style={{
-                    padding:
-                      "7px 8px",
-                    textAlign:
-                      "right",
-                    whiteSpace:
-                      "nowrap",
-                    fontVariantNumeric:
-                      "tabular-nums",
-                  }}
-                >
+                <div className="scoreboard-player-number points">
                   {formatPoints(
                     player.points
                   )}
-                </td>
+                </div>
 
-                <td
-                  style={{
-                    padding:
-                      "7px 8px",
-                    textAlign:
-                      "right",
-                    whiteSpace:
-                      "nowrap",
-                    fontVariantNumeric:
-                      "tabular-nums",
-                  }}
-                >
+                <div className="scoreboard-player-number projected">
                   {formatPoints(
                     player.projectedPoints
                   )}
-                </td>
+                </div>
 
-                <td
+                <div
+                  className="scoreboard-player-number variance"
                   style={{
-                    padding:
-                      "7px 8px",
                     color:
                       getProjectionColor(
                         player.vsProjection
                       ),
-                    fontWeight:
-                      700,
-                    textAlign:
-                      "right",
-                    whiteSpace:
-                      "nowrap",
-                    fontVariantNumeric:
-                      "tabular-nums",
+
+                    fontWeight: 700,
                   }}
                 >
                   {formatVsProjection(
                     player.vsProjection
                   )}
-                </td>
-              </tr>
+                </div>
+              </div>
             )
           )}
         </>
@@ -516,93 +453,51 @@ function ScoreboardTimeMachine() {
     };
 
     return (
-      <div
-        style={{
-          overflowX: "auto",
-          WebkitOverflowScrolling:
-            "touch",
-        }}
-      >
-        <table
-          style={{
-            width: "100%",
-            minWidth: "510px",
-            borderCollapse:
-              "collapse",
-          }}
-        >
-          <thead>
-            <tr>
-              <th
-                style={{
-                  padding:
-                    "7px 8px",
-                }}
-              >
-                Slot
-              </th>
+      <div className="scoreboard-lineup">
+        <div className="scoreboard-lineup-header">
+          <div>Slot</div>
 
-              <th
-                style={{
-                  padding:
-                    "7px 8px",
-                }}
-              >
-                Player
-              </th>
+          <div>Player</div>
 
-              <th
-                style={{
-                  padding:
-                    "7px 8px",
-                  textAlign:
-                    "right",
-                }}
-              >
-                Pts
-              </th>
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            Pts
+          </div>
 
-              <th
-                style={{
-                  padding:
-                    "7px 8px",
-                  textAlign:
-                    "right",
-                }}
-              >
-                Proj
-              </th>
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            Proj
+          </div>
 
-              <th
-                style={{
-                  padding:
-                    "7px 8px",
-                  textAlign:
-                    "right",
-                }}
-              >
-                Vs Proj
-              </th>
-            </tr>
-          </thead>
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            Vs Proj
+          </div>
+        </div>
 
-          <tbody>
-            {renderPlayers(
-              starters,
-              "Starting Lineup"
-            )}
+        {renderPlayers(
+          starters,
+          "Starting Lineup"
+        )}
 
-            {renderPlayers(
-              bench,
-              "Bench"
-            )}
+        {renderPlayers(
+          bench,
+          "Bench"
+        )}
 
-            {renderPlayers(
-              reserve,
-              "Reserve"
-            )}
-          </tbody>
-        </table>
+        {renderPlayers(
+          reserve,
+          "Reserve"
+        )}
       </div>
     );
   };
@@ -632,6 +527,9 @@ function ScoreboardTimeMachine() {
           aria-expanded={
             isExpanded
           }
+          aria-controls={
+            `lineup-${teamKey}`
+          }
           onClick={() =>
             setExpandedTeamKey(
               (currentKey) =>
@@ -643,40 +541,64 @@ function ScoreboardTimeMachine() {
           }
           style={{
             display: "grid",
+
             gridTemplateColumns:
               "minmax(0, 1fr) auto",
+
             gap: "12px",
+
+            alignItems: "start",
+
             width: "100%",
+
+            minWidth: 0,
+
             padding: "14px",
+
             border: isWinner
               ? "2px solid #17365d"
               : "1px solid #d7dce3",
+
             borderRadius: "8px",
+
             backgroundColor:
               isWinner
                 ? "#eef4fa"
                 : "#ffffff",
+
             color: "#172b43",
+
             font: "inherit",
+
             textAlign: "left",
+
             cursor: "pointer",
           }}
         >
           <span
             style={{
+              display: "block",
               minWidth: 0,
             }}
           >
             <span
               style={{
                 display: "block",
+
                 overflow: "hidden",
+
                 color: "#17365d",
+
                 fontSize:
                   "0.95rem",
+
                 fontWeight: 800,
+
+                lineHeight: 1.25,
+
                 textOverflow:
                   "ellipsis",
+
                 whiteSpace:
                   "nowrap",
               }}
@@ -690,13 +612,19 @@ function ScoreboardTimeMachine() {
             <span
               style={{
                 display: "block",
+
                 marginTop: "3px",
+
                 color: "#64748b",
+
                 fontSize:
                   "0.76rem",
+
+                lineHeight: 1.3,
               }}
             >
               {team.ownerName}
+
               {isWinner
                 ? " · Winner"
                 : isTie
@@ -707,10 +635,15 @@ function ScoreboardTimeMachine() {
             <span
               style={{
                 display: "block",
-                marginTop: "5px",
+
+                marginTop: "6px",
+
                 color: "#475569",
+
                 fontSize:
                   "0.7rem",
+
+                lineHeight: 1.3,
               }}
             >
               {team.lineupAvailable
@@ -726,12 +659,18 @@ function ScoreboardTimeMachine() {
               color: isWinner
                 ? "#17365d"
                 : "#334155",
+
               fontSize:
-                "1.45rem",
+                "clamp(1.15rem, 5vw, 1.45rem)",
+
               fontWeight: 900,
+
               fontVariantNumeric:
                 "tabular-nums",
+
               lineHeight: 1,
+
+              whiteSpace: "nowrap",
             }}
           >
             {formatPoints(
@@ -742,27 +681,104 @@ function ScoreboardTimeMachine() {
 
         {isExpanded && (
           <div
+            id={
+              `lineup-${teamKey}`
+            }
             style={{
+              width: "100%",
+
+              minWidth: 0,
+
               marginTop: "8px",
+
               padding: "10px",
+
+              overflow: "hidden",
+
               border:
                 "1px solid #d7dce3",
+
               borderRadius: "8px",
+
               backgroundColor:
                 "#f8fafc",
             }}
           >
             <div
               style={{
+                display: "flex",
+
+                justifyContent:
+                  "space-between",
+
+                alignItems: "center",
+
+                gap: "10px",
+
+                minWidth: 0,
+
                 marginBottom:
                   "8px",
-                color: "#172b43",
-                fontSize:
-                  "0.84rem",
-                fontWeight: 800,
               }}
             >
-              {team.teamName} lineup
+              <div
+                style={{
+                  minWidth: 0,
+
+                  overflow: "hidden",
+
+                  color: "#172b43",
+
+                  fontSize:
+                    "0.84rem",
+
+                  fontWeight: 800,
+
+                  textOverflow:
+                    "ellipsis",
+
+                  whiteSpace:
+                    "nowrap",
+                }}
+                title={
+                  `${team.teamName} lineup`
+                }
+              >
+                {team.teamName} lineup
+              </div>
+
+              <button
+                type="button"
+                onClick={() =>
+                  setExpandedTeamKey(
+                    null
+                  )
+                }
+                style={{
+                  flexShrink: 0,
+
+                  padding:
+                    "4px 8px",
+
+                  border:
+                    "1px solid #cbd5e1",
+
+                  borderRadius:
+                    "5px",
+
+                  backgroundColor:
+                    "#ffffff",
+
+                  color: "#334155",
+
+                  fontSize:
+                    "0.7rem",
+
+                  cursor: "pointer",
+                }}
+              >
+                Close
+              </button>
             </div>
 
             <LineupTable
@@ -776,7 +792,12 @@ function ScoreboardTimeMachine() {
 
 
   return (
-    <div>
+    <div
+      style={{
+        width: "100%",
+        minWidth: 0,
+      }}
+    >
       <h2>
         Scoreboard Time Machine
       </h2>
@@ -797,14 +818,19 @@ function ScoreboardTimeMachine() {
       <div
         style={{
           display: "flex",
+
           flexWrap: "wrap",
+
           gap: "12px",
+
           alignItems: "center",
+
           marginTop: "18px",
         }}
       >
         <label>
           Season:{" "}
+
           <select
             value={season}
             onChange={
@@ -826,6 +852,7 @@ function ScoreboardTimeMachine() {
 
         <label>
           Week:{" "}
+
           <select
             value={week}
             onChange={(event) => {
@@ -865,9 +892,16 @@ function ScoreboardTimeMachine() {
       <div
         style={{
           display: "grid",
+
           gridTemplateColumns:
             "repeat(auto-fit, minmax(min(100%, 390px), 1fr))",
+
           gap: "16px",
+
+          width: "100%",
+
+          minWidth: 0,
+
           marginTop: "14px",
         }}
       >
@@ -878,14 +912,23 @@ function ScoreboardTimeMachine() {
                 matchup.matchupId
               }
               style={{
+                width: "100%",
+
                 minWidth: 0,
+
                 padding: "14px",
+
+                overflow: "hidden",
+
                 border:
                   "1px solid #cbd5e1",
+
                 borderRadius:
                   "10px",
+
                 backgroundColor:
                   "#ffffff",
+
                 boxShadow:
                   "0 4px 12px rgba(15, 23, 42, 0.06)",
               }}
@@ -893,11 +936,17 @@ function ScoreboardTimeMachine() {
               <div
                 style={{
                   display: "flex",
+
+                  flexWrap: "wrap",
+
                   justifyContent:
                     "space-between",
+
                   alignItems:
                     "center",
-                  gap: "12px",
+
+                  gap: "8px 12px",
+
                   marginBottom:
                     "10px",
                 }}
@@ -906,23 +955,31 @@ function ScoreboardTimeMachine() {
                   style={{
                     display:
                       "inline-block",
+
                     padding:
                       "4px 8px",
+
                     borderRadius:
                       "999px",
+
                     backgroundColor:
                       matchup.playoff
                         ? "#fef3c7"
                         : "#eef2f6",
+
                     color:
                       matchup.playoff
                         ? "#92400e"
                         : "#475569",
+
                     fontSize:
                       "0.68rem",
+
                     fontWeight: 800,
+
                     letterSpacing:
                       "0.04em",
+
                     textTransform:
                       "uppercase",
                   }}
@@ -936,8 +993,12 @@ function ScoreboardTimeMachine() {
                   style={{
                     color:
                       "#64748b",
+
                     fontSize:
                       "0.72rem",
+
+                    whiteSpace:
+                      "nowrap",
                   }}
                 >
                   Margin:{" "}
@@ -951,6 +1012,7 @@ function ScoreboardTimeMachine() {
                 style={{
                   display: "grid",
                   gap: "10px",
+                  minWidth: 0,
                 }}
               >
                 <TeamScore
@@ -965,11 +1027,15 @@ function ScoreboardTimeMachine() {
                   style={{
                     color:
                       "#94a3b8",
+
                     fontSize:
                       "0.68rem",
+
                     fontWeight: 800,
+
                     textAlign:
                       "center",
+
                     textTransform:
                       "uppercase",
                   }}
@@ -995,13 +1061,19 @@ function ScoreboardTimeMachine() {
         <div
           style={{
             marginTop: "18px",
+
             padding: "24px",
+
             border:
               "1px dashed #94a3b8",
+
             borderRadius: "8px",
+
             backgroundColor:
               "#f8fafc",
+
             color: "#64748b",
+
             textAlign: "center",
           }}
         >
