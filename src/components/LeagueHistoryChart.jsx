@@ -189,9 +189,10 @@ function LeagueHistoryTooltip({
   return (
     <div
       style={{
-        maxHeight: "320px",
+        maxWidth: "240px",
+        maxHeight: "280px",
         overflowY: "auto",
-        padding: "10px 12px",
+        padding: "9px 10px",
         border:
           "1px solid #cbd5e1",
         borderRadius: "6px",
@@ -204,7 +205,7 @@ function LeagueHistoryTooltip({
         style={{
           marginBottom: "7px",
           color: "#334155",
-          fontSize: "0.82rem",
+          fontSize: "0.78rem",
           fontWeight: 800,
         }}
       >
@@ -230,7 +231,7 @@ function LeagueHistoryTooltip({
                 color:
                   entry.color ??
                   "#475569",
-                fontSize: "0.8rem",
+                fontSize: "0.76rem",
                 fontWeight: 700,
               }}
             >
@@ -259,8 +260,41 @@ function LeagueHistoryChart({
   const [metricKey, setMetricKey] =
     useState("pointsFor");
 
+  const [isMobile, setIsMobile] =
+    useState(false);
+
   const metric =
     METRICS[metricKey];
+
+
+  useEffect(() => {
+    const mediaQuery =
+      window.matchMedia(
+        "(max-width: 700px)"
+      );
+
+    const updateMobileState = (
+      event
+    ) => {
+      setIsMobile(event.matches);
+    };
+
+    setIsMobile(
+      mediaQuery.matches
+    );
+
+    mediaQuery.addEventListener(
+      "change",
+      updateMobileState
+    );
+
+    return () => {
+      mediaQuery.removeEventListener(
+        "change",
+        updateMobileState
+      );
+    };
+  }, []);
 
 
   const owners = useMemo(() => {
@@ -293,10 +327,6 @@ function LeagueHistoryChart({
   }, [teams]);
 
 
-  /*
-    Select every owner automatically
-    once the owner list has loaded.
-  */
   useEffect(() => {
     if (
       owners.length > 0 &&
@@ -572,6 +602,23 @@ function LeagueHistoryChart({
   };
 
 
+  const chartMinimumWidth =
+    isMobile
+      ? Math.max(
+          680,
+          seasons.length * 55
+        )
+      : "100%";
+
+
+  const chartHeight =
+    isMobile
+      ? 355
+      : selectedOwnerIds.length > 5
+        ? 500
+        : 410;
+
+
   if (teams.length === 0) {
     return null;
   }
@@ -580,8 +627,14 @@ function LeagueHistoryChart({
   return (
     <section
       style={{
-        marginTop: "38px",
-        paddingTop: "24px",
+        marginTop: isMobile
+          ? "28px"
+          : "38px",
+
+        paddingTop: isMobile
+          ? "18px"
+          : "24px",
+
         borderTop:
           "1px solid #d7dce3",
       }}
@@ -593,18 +646,28 @@ function LeagueHistoryChart({
       <div
         style={{
           display: "flex",
+          flexDirection: isMobile
+            ? "column"
+            : "row",
           flexWrap: "wrap",
-          gap: "12px",
-          alignItems: "flex-start",
-          marginBottom: "16px",
+          gap: "10px",
+          alignItems: isMobile
+            ? "stretch"
+            : "flex-start",
+          marginBottom: "14px",
         }}
       >
         <details
           style={{
-            width: "min(100%, 420px)",
+            width: isMobile
+              ? "100%"
+              : "min(100%, 420px)",
+
             border:
               "1px solid #cbd5e1",
+
             borderRadius: "6px",
+
             backgroundColor:
               "#ffffff",
           }}
@@ -612,9 +675,11 @@ function LeagueHistoryChart({
           <summary
             style={{
               cursor: "pointer",
-              padding: "9px 12px",
+              padding: "9px 11px",
               color: "#172b43",
-              fontSize: "0.9rem",
+              fontSize: isMobile
+                ? "0.82rem"
+                : "0.9rem",
               fontWeight: 700,
               userSelect: "none",
             }}
@@ -628,7 +693,8 @@ function LeagueHistoryChart({
           <div
             style={{
               padding:
-                "4px 12px 12px",
+                "4px 11px 11px",
+
               borderTop:
                 "1px solid #e2e8f0",
             }}
@@ -639,8 +705,8 @@ function LeagueHistoryChart({
                 justifyContent:
                   "space-between",
                 alignItems: "center",
-                gap: "12px",
-                padding: "9px 0",
+                gap: "10px",
+                padding: "8px 0",
               }}
             >
               <label
@@ -649,6 +715,8 @@ function LeagueHistoryChart({
                   alignItems: "center",
                   gap: "7px",
                   cursor: "pointer",
+                  fontSize:
+                    "0.82rem",
                 }}
               >
                 <input
@@ -681,14 +749,14 @@ function LeagueHistoryChart({
                 }
                 style={{
                   padding:
-                    "5px 9px",
+                    "5px 8px",
                   border:
                     "1px solid #cbd5e1",
                   borderRadius: "5px",
                   backgroundColor:
                     "#f8fafc",
                   color: "#334155",
-                  fontSize: "0.75rem",
+                  fontSize: "0.72rem",
                   cursor: "pointer",
                 }}
               >
@@ -699,11 +767,20 @@ function LeagueHistoryChart({
             <div
               style={{
                 display: "grid",
+
                 gridTemplateColumns:
-                  "repeat(auto-fit, minmax(165px, 1fr))",
+                  isMobile
+                    ? "1fr"
+                    : "repeat(auto-fit, minmax(165px, 1fr))",
+
                 gap: "7px 12px",
-                maxHeight: "240px",
+
+                maxHeight: isMobile
+                  ? "225px"
+                  : "240px",
+
                 overflowY: "auto",
+
                 paddingTop: "4px",
               }}
             >
@@ -723,7 +800,7 @@ function LeagueHistoryChart({
                       gap: "7px",
                       cursor: "pointer",
                       fontSize:
-                        "0.82rem",
+                        "0.8rem",
                     }}
                   >
                     <input
@@ -767,8 +844,19 @@ function LeagueHistoryChart({
           </div>
         </details>
 
-        <label>
+        <label
+          style={{
+            width: isMobile
+              ? "100%"
+              : "auto",
+
+            display: "flex",
+            alignItems: "center",
+            gap: "7px",
+          }}
+        >
           Graph Metric:{" "}
+
           <select
             value={metricKey}
             onChange={(event) =>
@@ -776,6 +864,11 @@ function LeagueHistoryChart({
                 event.target.value
               )
             }
+            style={{
+              flex: isMobile
+                ? 1
+                : "initial",
+            }}
           >
             {Object.entries(
               METRICS
@@ -800,9 +893,11 @@ function LeagueHistoryChart({
 
       <p
         style={{
-          marginBottom: "12px",
+          marginBottom: "10px",
           color: "#536273",
-          fontSize: "0.9rem",
+          fontSize: isMobile
+            ? "0.8rem"
+            : "0.9rem",
         }}
       >
         {chartHeading()}:{" "}
@@ -810,210 +905,367 @@ function LeagueHistoryChart({
       </p>
 
       {selectedOwnerIds.length > 0 ? (
-        <div
-          style={{
-            width: "100%",
-            height:
-              selectedOwnerIds.length >
-              5
-                ? "500px"
-                : "410px",
-            minHeight: "320px",
-          }}
-        >
-          <ResponsiveContainer
-            width="100%"
-            height="100%"
+        <>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "5px 10px",
+              marginBottom: "9px",
+            }}
           >
-            <LineChart
-              data={chartData}
-              margin={{
-                top: 12,
-                right: 24,
-                bottom: 12,
-                left: 8,
+            {displayedOwners.map(
+              (owner) => {
+                const ownerDetails =
+                  ownerMap.get(
+                    owner.ownerId
+                  );
+
+                return (
+                  <span
+                    key={
+                      owner.ownerId
+                    }
+                    style={{
+                      display:
+                        "inline-flex",
+                      alignItems:
+                        "center",
+                      gap: "5px",
+                      color: "#475569",
+                      fontSize:
+                        isMobile
+                          ? "0.68rem"
+                          : "0.75rem",
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        width: "9px",
+                        height: "9px",
+                        borderRadius:
+                          "50%",
+                        backgroundColor:
+                          ownerDetails
+                            ?.color ??
+                          "#64748b",
+                      }}
+                    />
+
+                    {owner.ownerName}
+                  </span>
+                );
+              }
+            )}
+
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "5px",
+                color: "#475569",
+                fontSize: isMobile
+                  ? "0.68rem"
+                  : "0.75rem",
               }}
             >
-              <CartesianGrid
-                strokeDasharray="3 3"
-                stroke="#d7dce3"
-              />
-
-              <XAxis
-                dataKey="season"
-                type="category"
-                allowDuplicatedCategory={
-                  false
-                }
-                tick={{
-                  fill: "#536273",
-                  fontSize: 12,
-                }}
-                tickLine={false}
-                axisLine={{
-                  stroke: "#94a3b8",
+              <span
+                aria-hidden="true"
+                style={{
+                  width: "16px",
+                  borderTop:
+                    "2px dashed #111827",
                 }}
               />
 
-              <YAxis
-                domain={yAxisDomain}
-                reversed={
-                  metric.field ===
-                  "finalStanding"
-                }
-                allowDecimals={
-                  metric.field !==
-                  "finalStanding"
-                }
-                tickFormatter={
-                  yAxisFormatter
-                }
-                tick={{
-                  fill: "#536273",
-                  fontSize: 12,
-                }}
-                tickLine={false}
-                axisLine={{
-                  stroke: "#94a3b8",
-                }}
-                width={
-                  metric.field ===
-                  "finalStanding"
-                    ? 50
-                    : 72
-                }
-              />
+              League Average
+            </span>
+          </div>
 
-              <Tooltip
-                content={
-                  <LeagueHistoryTooltip
-                    metric={metric}
-                    ownerMap={
-                      ownerMap
+          {isMobile && (
+            <p
+              style={{
+                margin: "0 0 6px",
+                color: "#64748b",
+                fontSize: "0.7rem",
+              }}
+            >
+              Swipe horizontally to
+              view all seasons.
+            </p>
+          )}
+
+          <div
+            style={{
+              width: "100%",
+              overflowX: "auto",
+              overflowY: "hidden",
+              WebkitOverflowScrolling:
+                "touch",
+              border:
+                isMobile
+                  ? "1px solid #e2e8f0"
+                  : "none",
+              borderRadius:
+                isMobile
+                  ? "6px"
+                  : 0,
+              backgroundColor:
+                "#ffffff",
+            }}
+          >
+            <div
+              style={{
+                width: isMobile
+                  ? `${chartMinimumWidth}px`
+                  : "100%",
+
+                minWidth:
+                  isMobile
+                    ? `${chartMinimumWidth}px`
+                    : 0,
+
+                height:
+                  `${chartHeight}px`,
+              }}
+            >
+              <ResponsiveContainer
+                width="100%"
+                height="100%"
+                debounce={100}
+              >
+                <LineChart
+                  data={chartData}
+                  margin={{
+                    top: 8,
+                    right: isMobile
+                      ? 14
+                      : 24,
+                    bottom: 8,
+                    left: isMobile
+                      ? 0
+                      : 8,
+                  }}
+                >
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="#d7dce3"
+                  />
+
+                  <XAxis
+                    dataKey="season"
+                    type="category"
+                    allowDuplicatedCategory={
+                      false
+                    }
+                    interval={0}
+                    minTickGap={8}
+                    tick={{
+                      fill: "#536273",
+                      fontSize:
+                        isMobile
+                          ? 10
+                          : 12,
+                    }}
+                    tickLine={false}
+                    axisLine={{
+                      stroke:
+                        "#94a3b8",
+                    }}
+                  />
+
+                  <YAxis
+                    domain={
+                      yAxisDomain
+                    }
+                    reversed={
+                      metric.field ===
+                      "finalStanding"
+                    }
+                    allowDecimals={
+                      metric.field !==
+                      "finalStanding"
+                    }
+                    tickFormatter={
+                      yAxisFormatter
+                    }
+                    tick={{
+                      fill: "#536273",
+                      fontSize:
+                        isMobile
+                          ? 10
+                          : 12,
+                    }}
+                    tickLine={false}
+                    axisLine={{
+                      stroke:
+                        "#94a3b8",
+                    }}
+                    width={
+                      metric.field ===
+                      "finalStanding"
+                        ? isMobile
+                          ? 42
+                          : 50
+                        : isMobile
+                          ? 58
+                          : 72
                     }
                   />
-                }
-              />
 
-              <Legend
-                verticalAlign="top"
-                height={
-                  selectedOwnerIds
-                    .length > 5
-                    ? 72
-                    : 42
-                }
-                iconType="line"
-                wrapperStyle={{
-                  fontSize:
-                    "0.75rem",
-                  lineHeight: 1.4,
-                }}
-                formatter={(
-                  value,
-                  entry
-                ) => {
-                  if (
-                    entry.dataKey ===
-                    "leagueAverage"
-                  ) {
-                    return (
-                      "League Average"
-                    );
-                  }
+                  <Tooltip
+                    content={
+                      <LeagueHistoryTooltip
+                        metric={metric}
+                        ownerMap={
+                          ownerMap
+                        }
+                      />
+                    }
+                  />
 
-                  return (
-                    ownerMap.get(
-                      entry.dataKey
-                    )?.ownerName ??
-                    value
-                  );
-                }}
-              />
-
-              {displayedOwners.map(
-                (owner) => {
-                  const ownerDetails =
-                    ownerMap.get(
-                      owner.ownerId
-                    );
-
-                  return (
-                    <Line
-                      key={
-                        owner.ownerId
-                      }
-                      type="monotone"
-                      dataKey={
-                        owner.ownerId
-                      }
-                      name={
-                        owner.ownerName
-                      }
-                      stroke={
-                        ownerDetails
-                          ?.color ??
-                        "#17365d"
-                      }
-                      strokeWidth={
+                  {!isMobile && (
+                    <Legend
+                      verticalAlign="top"
+                      height={
                         selectedOwnerIds
                           .length > 5
-                          ? 2
-                          : 3
+                          ? 72
+                          : 42
                       }
-                      dot={
-                        selectedOwnerIds
-                          .length > 5
-                          ? false
-                          : {
-                              r: 4,
-                              fill:
-                                ownerDetails
-                                  ?.color ??
-                                "#17365d",
-                              stroke:
-                                "#ffffff",
-                              strokeWidth: 2,
-                            }
-                      }
-                      activeDot={{
-                        r: 5,
+                      iconType="line"
+                      wrapperStyle={{
+                        fontSize:
+                          "0.75rem",
+                        lineHeight:
+                          1.4,
                       }}
-                      connectNulls={
-                        false
-                      }
-                    />
-                  );
-                }
-              )}
+                      formatter={(
+                        value,
+                        entry
+                      ) => {
+                        if (
+                          entry.dataKey ===
+                          "leagueAverage"
+                        ) {
+                          return (
+                            "League Average"
+                          );
+                        }
 
-              <Line
-                type="monotone"
-                dataKey="leagueAverage"
-                name="League Average"
-                stroke="#111827"
-                strokeWidth={2}
-                strokeDasharray="7 5"
-                dot={false}
-                activeDot={{
-                  r: 5,
-                  fill: "#111827",
-                }}
-                connectNulls={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+                        return (
+                          ownerMap.get(
+                            entry.dataKey
+                          )?.ownerName ??
+                          value
+                        );
+                      }}
+                    />
+                  )}
+
+                  {displayedOwners.map(
+                    (owner) => {
+                      const ownerDetails =
+                        ownerMap.get(
+                          owner.ownerId
+                        );
+
+                      return (
+                        <Line
+                          key={
+                            owner.ownerId
+                          }
+                          type="monotone"
+                          dataKey={
+                            owner.ownerId
+                          }
+                          name={
+                            owner.ownerName
+                          }
+                          stroke={
+                            ownerDetails
+                              ?.color ??
+                            "#17365d"
+                          }
+                          strokeWidth={
+                            selectedOwnerIds
+                              .length >
+                            5
+                              ? 2
+                              : 3
+                          }
+                          dot={
+                            selectedOwnerIds
+                              .length >
+                            5
+                              ? false
+                              : {
+                                  r: isMobile
+                                    ? 3
+                                    : 4,
+                                  fill:
+                                    ownerDetails
+                                      ?.color ??
+                                    "#17365d",
+                                  stroke:
+                                    "#ffffff",
+                                  strokeWidth:
+                                    2,
+                                }
+                          }
+                          activeDot={{
+                            r: isMobile
+                              ? 4
+                              : 5,
+                          }}
+                          connectNulls={
+                            false
+                          }
+                          isAnimationActive={
+                            !isMobile
+                          }
+                        />
+                      );
+                    }
+                  )}
+
+                  <Line
+                    type="monotone"
+                    dataKey="leagueAverage"
+                    name="League Average"
+                    stroke="#111827"
+                    strokeWidth={2}
+                    strokeDasharray="7 5"
+                    dot={false}
+                    activeDot={{
+                      r: isMobile
+                        ? 4
+                        : 5,
+                      fill: "#111827",
+                    }}
+                    connectNulls={false}
+                    isAnimationActive={
+                      !isMobile
+                    }
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </>
       ) : (
         <div
           style={{
-            padding: "32px 18px",
+            padding: "30px 16px",
             border:
               "1px dashed #94a3b8",
             borderRadius: "8px",
             backgroundColor:
               "#f8fafc",
             color: "#475569",
+            fontSize: "0.85rem",
             textAlign: "center",
           }}
         >
@@ -1026,7 +1278,7 @@ function LeagueHistoryChart({
         style={{
           marginTop: "8px",
           color: "#64748b",
-          fontSize: "0.8rem",
+          fontSize: "0.75rem",
         }}
       >
         The dashed line represents the
@@ -1042,7 +1294,7 @@ function LeagueHistoryChart({
           style={{
             marginTop: "5px",
             color: "#64748b",
-            fontSize: "0.8rem",
+            fontSize: "0.75rem",
           }}
         >
           Unfinished seasons are
