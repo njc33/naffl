@@ -10,6 +10,7 @@ import LeagueHistory from "./pages/LeagueHistory";
 import OwnerHistory from "./pages/OwnerHistory";
 import TeamRosterHistory from "./pages/TeamRosterHistory";
 import DraftHistory from "./pages/DraftHistory";
+import FaceOfFranchise from "./pages/FaceOfFranchise";
 import Records from "./pages/Records";
 
 import "./App.css";
@@ -86,6 +87,15 @@ function App() {
             </NavLink>
 
             <NavLink
+              to="/franchise"
+              className={
+                getNavLinkClass
+              }
+            >
+              Face of the Franchise
+            </NavLink>
+
+            <NavLink
               to="/records"
               className={
                 getNavLinkClass
@@ -128,6 +138,13 @@ function App() {
               path="/drafts"
               element={
                 <DraftHistory />
+              }
+            />
+
+            <Route
+              path="/franchise"
+              element={
+                <FaceOfFranchise />
               }
             />
 
