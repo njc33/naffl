@@ -1,7 +1,12 @@
-import { useMemo, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import {
   CartesianGrid,
+  Legend,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -64,34 +69,38 @@ function formatNumber(
 
 
 function getOrdinal(number) {
-  const numericValue = Number(number);
+  const numericValue =
+    Number(number);
+
+  const roundedValue =
+    Math.round(numericValue);
 
   const lastTwoDigits =
-    numericValue % 100;
+    roundedValue % 100;
 
   if (
     lastTwoDigits >= 11 &&
     lastTwoDigits <= 13
   ) {
-    return `${numericValue}th`;
+    return `${roundedValue}th`;
   }
 
   const lastDigit =
-    numericValue % 10;
+    roundedValue % 10;
 
   if (lastDigit === 1) {
-    return `${numericValue}st`;
+    return `${roundedValue}st`;
   }
 
   if (lastDigit === 2) {
-    return `${numericValue}nd`;
+    return `${roundedValue}nd`;
   }
 
   if (lastDigit === 3) {
-    return `${numericValue}rd`;
+    return `${roundedValue}rd`;
   }
 
-  return `${numericValue}th`;
+  return `${roundedValue}th`;
 }
 
 
@@ -100,6 +109,7 @@ function CustomTooltip({
   payload,
   label,
   metric,
+  ownerName,
 }) {
   if (
     !active ||
@@ -109,22 +119,61 @@ function CustomTooltip({
     return null;
   }
 
-  const value =
-    payload[0]?.value;
+  const ownerEntry =
+    payload.find(
+      (entry) =>
+        entry.dataKey ===
+        "ownerValue"
+    );
 
-  const formattedValue =
-    metric.field === "finalStanding"
-      ? getOrdinal(value)
-      : formatNumber(
-          value,
-          metric.decimals
-        );
+  const averageEntry =
+    payload.find(
+      (entry) =>
+        entry.dataKey ===
+        "leagueAverage"
+    );
+
+  const formatTooltipValue = (
+    value,
+    isAverage = false
+  ) => {
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return "N/A";
+    }
+
+    if (
+      metric.field ===
+      "finalStanding"
+    ) {
+      if (isAverage) {
+        return Number(
+          value
+        ).toFixed(2);
+      }
+
+      return getOrdinal(value);
+    }
+
+    const decimals =
+      isAverage
+        ? 2
+        : metric.decimals;
+
+    return formatNumber(
+      value,
+      decimals
+    );
+  };
 
   return (
     <div
       style={{
         padding: "10px 12px",
-        border: "1px solid #cbd5e1",
+        border:
+          "1px solid #cbd5e1",
         borderRadius: "6px",
         backgroundColor: "#ffffff",
         boxShadow:
@@ -133,7 +182,7 @@ function CustomTooltip({
     >
       <div
         style={{
-          marginBottom: "4px",
+          marginBottom: "6px",
           color: "#475569",
           fontSize: "0.8rem",
           fontWeight: 700,
@@ -142,16 +191,37 @@ function CustomTooltip({
         {label}
       </div>
 
-      <div
-        style={{
-          color: metric.color,
-          fontSize: "0.9rem",
-          fontWeight: 700,
-        }}
-      >
-        {metric.label}:{" "}
-        {formattedValue}
-      </div>
+      {ownerEntry && (
+        <div
+          style={{
+            marginBottom: "4px",
+            color: metric.color,
+            fontSize: "0.9rem",
+            fontWeight: 700,
+          }}
+        >
+          {ownerName}:{" "}
+          {formatTooltipValue(
+            ownerEntry.value
+          )}
+        </div>
+      )}
+
+      {averageEntry && (
+        <div
+          style={{
+            color: "#64748b",
+            fontSize: "0.9rem",
+            fontWeight: 700,
+          }}
+        >
+          League Average:{" "}
+          {formatTooltipValue(
+            averageEntry.value,
+            true
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -163,6 +233,28 @@ function OwnerHistoryChart({
 }) {
   const [metricKey, setMetricKey] =
     useState("pointsFor");
+
+  const [allTeams, setAllTeams] =
+    useState([]);
+
+  useEffect(() => {
+    fetch("/data/team-seasons.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            "Could not load league data for graph averages."
+          );
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        setAllTeams(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   const metric =
     METRICS[metricKey];
@@ -188,41 +280,108 @@ function OwnerHistoryChart({
           ) > 0
         );
       })
-      .map((team) => ({
-        season: Number(
-          team.season
-        ),
+      .map((team) => {
+        const season =
+          Number(team.season);
 
-        value: Number(
-          team[metric.field] || 0
-        ),
+        const leagueTeamsForSeason =
+          allTeams.filter(
+            (leagueTeam) =>
+              Number(
+                leagueTeam.season
+              ) === season
+          );
 
-        teamName:
-          team.teamName,
-      }));
+        const validLeagueValues =
+          leagueTeamsForSeason
+            .map((leagueTeam) =>
+              Number(
+                leagueTeam[
+                  metric.field
+                ]
+              )
+            )
+            .filter((value) => {
+              if (
+                !Number.isFinite(
+                  value
+                )
+              ) {
+                return false;
+              }
+
+              if (
+                metric.field ===
+                "finalStanding"
+              ) {
+                return value > 0;
+              }
+
+              return true;
+            });
+
+        const leagueAverage =
+          validLeagueValues.length > 0
+            ? validLeagueValues.reduce(
+                (sum, value) =>
+                  sum + value,
+                0
+              ) /
+              validLeagueValues.length
+            : null;
+
+        return {
+          season,
+
+          ownerValue: Number(
+            team[metric.field] || 0
+          ),
+
+          leagueAverage,
+
+          teamName:
+            team.teamName,
+        };
+      });
   }, [
     ownerTeams,
+    allTeams,
     metric.field,
   ]);
 
-  const finishValues =
-    chartData.map(
-      (record) =>
-        Number(record.value)
-    );
+  const allChartValues =
+    chartData
+      .flatMap((record) => [
+        record.ownerValue,
+        record.leagueAverage,
+      ])
+      .filter(
+        (value) =>
+          value !== null &&
+          value !== undefined &&
+          Number.isFinite(
+            Number(value)
+          )
+      )
+      .map(Number);
 
   const finishMaximum =
-    finishValues.length > 0
+    allChartValues.length > 0
       ? Math.max(
-          ...finishValues
+          ...allChartValues
         )
       : 10;
 
   const finishDomain =
-  metric.field ===
-  "finalStanding"
-    ? [1, finishMaximum]
-    : [0, "auto"];
+    metric.field ===
+    "finalStanding"
+      ? [
+          1,
+          Math.ceil(
+            finishMaximum
+          ),
+        ]
+      : [0, "auto"];
 
   const yAxisFormatter = (
     value
@@ -250,7 +409,12 @@ function OwnerHistoryChart({
       );
     }
 
-    return value;
+    return Number(value).toLocaleString(
+      undefined,
+      {
+        maximumFractionDigits: 1,
+      }
+    );
   };
 
   if (ownerTeams.length === 0) {
@@ -324,7 +488,7 @@ function OwnerHistoryChart({
       <div
         style={{
           width: "100%",
-          height: "360px",
+          height: "380px",
           minHeight: "300px",
         }}
       >
@@ -367,9 +531,10 @@ function OwnerHistoryChart({
               reversed={
                 metric.field ===
                 "finalStanding"
-            }
+              }
               allowDecimals={
-                metric.decimals > 0
+                metric.field !==
+                "finalStanding"
               }
               tickFormatter={
                 yAxisFormatter
@@ -394,14 +559,33 @@ function OwnerHistoryChart({
               content={
                 <CustomTooltip
                   metric={metric}
+                  ownerName={
+                    ownerName
+                  }
                 />
               }
             />
 
+            <Legend
+              verticalAlign="top"
+              height={36}
+              iconType="line"
+              formatter={(value) => {
+                if (
+                  value ===
+                  "Owner"
+                ) {
+                  return ownerName;
+                }
+
+                return value;
+              }}
+            />
+
             <Line
               type="monotone"
-              dataKey="value"
-              name={metric.label}
+              dataKey="ownerValue"
+              name="Owner"
               stroke={metric.color}
               strokeWidth={3}
               dot={{
@@ -412,6 +596,21 @@ function OwnerHistoryChart({
               }}
               activeDot={{
                 r: 6,
+              }}
+              connectNulls={false}
+            />
+
+            <Line
+              type="monotone"
+              dataKey="leagueAverage"
+              name="League Average"
+              stroke="#64748b"
+              strokeWidth={2}
+              strokeDasharray="7 5"
+              dot={false}
+              activeDot={{
+                r: 5,
+                fill: "#64748b",
               }}
               connectNulls={false}
             />
@@ -430,8 +629,10 @@ function OwnerHistoryChart({
         >
           Unfinished seasons are
           excluded. A higher point on
-          the graph represents a
-          better finish.
+          the graph represents a better
+          finish. The league-average
+          line excludes unfinished
+          teams.
         </p>
       )}
     </section>
