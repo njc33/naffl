@@ -1,12 +1,24 @@
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
+
+import LeagueHistoryChart from "../components/LeagueHistoryChart";
+
 
 function LeagueHistory() {
-  const [teams, setTeams] = useState([]);
-  const [season, setSeason] = useState(2025);
+  const [teams, setTeams] =
+    useState([]);
+
+  const [season, setSeason] =
+    useState(2025);
+
   const [sortField, setSortField] =
     useState("finalStanding");
+
   const [sortDirection, setSortDirection] =
     useState("asc");
+
 
   useEffect(() => {
     fetch("/data/team-seasons.json")
@@ -25,7 +37,8 @@ function LeagueHistory() {
         const availableSeasons = [
           ...new Set(
             data.map(
-              (team) => team.season
+              (team) =>
+                Number(team.season)
             )
           ),
         ].sort((a, b) => b - a);
@@ -43,13 +56,16 @@ function LeagueHistory() {
       });
   }, []);
 
+
   const availableSeasons = [
     ...new Set(
       teams.map(
-        (team) => team.season
+        (team) =>
+          Number(team.season)
       )
     ),
   ].sort((a, b) => b - a);
+
 
   const handleSort = (field) => {
     if (field === sortField) {
@@ -59,23 +75,26 @@ function LeagueHistory() {
             ? "desc"
             : "asc"
       );
-    } else {
-      setSortField(field);
 
-      const descendingFields = [
-        "wins",
-        "losses",
-        "pointsFor",
-        "pointsAgainst",
-      ];
-
-      setSortDirection(
-        descendingFields.includes(field)
-          ? "desc"
-          : "asc"
-      );
+      return;
     }
+
+    setSortField(field);
+
+    const descendingFields = [
+      "wins",
+      "losses",
+      "pointsFor",
+      "pointsAgainst",
+    ];
+
+    setSortDirection(
+      descendingFields.includes(field)
+        ? "desc"
+        : "asc"
+    );
   };
+
 
   const compareValues = (
     valueA,
@@ -102,22 +121,25 @@ function LeagueHistory() {
     );
   };
 
-  const seasonTeams = teams
-    .filter(
-      (team) =>
-        team.season === season
-    )
-    .sort((teamA, teamB) => {
-      const comparison =
-        compareValues(
-          teamA[sortField],
-          teamB[sortField]
-        );
 
-      return sortDirection === "asc"
-        ? comparison
-        : -comparison;
-    });
+  const seasonTeams = [
+    ...teams.filter(
+      (team) =>
+        Number(team.season) ===
+        Number(season)
+    ),
+  ].sort((teamA, teamB) => {
+    const comparison =
+      compareValues(
+        teamA[sortField],
+        teamB[sortField]
+      );
+
+    return sortDirection === "asc"
+      ? comparison
+      : -comparison;
+  });
+
 
   const sortIndicator = (field) => {
     if (sortField !== field) {
@@ -129,6 +151,7 @@ function LeagueHistory() {
       : " ▼";
   };
 
+
   const formatPoints = (points) =>
     Number(points || 0).toLocaleString(
       undefined,
@@ -137,6 +160,7 @@ function LeagueHistory() {
         maximumFractionDigits: 2,
       }
     );
+
 
   const formatFinish = (finish) => {
     const numericFinish =
@@ -174,6 +198,7 @@ function LeagueHistory() {
     return `${numericFinish}th`;
   };
 
+
   const sortableHeaderStyle = {
     cursor: "pointer",
     userSelect: "none",
@@ -182,10 +207,12 @@ function LeagueHistory() {
     paddingBottom: "8px",
   };
 
+
   const cellStyle = {
     paddingRight: "16px",
     paddingBottom: "6px",
   };
+
 
   return (
     <div>
@@ -249,7 +276,9 @@ function LeagueHistory() {
 
             <th
               onClick={() =>
-                handleSort("teamName")
+                handleSort(
+                  "teamName"
+                )
               }
               style={
                 sortableHeaderStyle
@@ -419,6 +448,10 @@ function LeagueHistory() {
           )}
         </tbody>
       </table>
+
+      <LeagueHistoryChart
+        teams={teams}
+      />
     </div>
   );
 }
