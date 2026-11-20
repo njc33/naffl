@@ -119,8 +119,9 @@ function DraftHistory() {
 
           const seasonMatches =
             season === "all" ||
-            Number(record.season) ===
-              Number(season);
+            Number(
+              record.season
+            ) === Number(season);
 
           return (
             ownerMatches &&
@@ -191,6 +192,7 @@ function DraftHistory() {
 
     const descendingFields = [
       "points",
+      "netPointsVsRoundAverage",
       "bidAmount",
     ];
 
@@ -205,6 +207,36 @@ function DraftHistory() {
     valueA,
     valueB
   ) => {
+    if (
+      typeof valueA === "string" ||
+      typeof valueB === "string"
+    ) {
+      return String(
+        valueA ?? ""
+      ).localeCompare(
+        String(valueB ?? ""),
+        undefined,
+        {
+          sensitivity: "base",
+        }
+      );
+    }
+
+    return (
+      Number(valueA || 0) -
+      Number(valueB || 0)
+    );
+  };
+
+  const sortedDraftPicks = [
+    ...filteredDraftPicks,
+  ].sort((pickA, pickB) => {
+    const valueA =
+      pickA[sortField];
+
+    const valueB =
+      pickB[sortField];
+
     const valueAIsMissing =
       valueA === null ||
       valueA === undefined;
@@ -213,6 +245,10 @@ function DraftHistory() {
       valueB === null ||
       valueB === undefined;
 
+    /*
+      Missing values always stay at the bottom,
+      regardless of sorting direction.
+    */
     if (
       valueAIsMissing &&
       valueBIsMissing
@@ -228,71 +264,16 @@ function DraftHistory() {
       return -1;
     }
 
-    if (
-      typeof valueA === "string" ||
-      typeof valueB === "string"
-    ) {
-      return String(
-        valueA
-      ).localeCompare(
-        String(valueB),
-        undefined,
-        {
-          sensitivity: "base",
-        }
+    const comparison =
+      compareValues(
+        valueA,
+        valueB
       );
-    }
 
-    return (
-      Number(valueA) -
-      Number(valueB)
-    );
-  };
-
-  const sortedDraftPicks = [
-  ...filteredDraftPicks,
-    ].sort((pickA, pickB) => {
-  const valueA =
-    pickA[sortField];
-
-  const valueB =
-    pickB[sortField];
-
-  const valueAIsMissing =
-    valueA === null ||
-    valueA === undefined;
-
-  const valueBIsMissing =
-    valueB === null ||
-    valueB === undefined;
-
-  // Missing values always stay at the bottom,
-  // regardless of sort direction.
-  if (
-    valueAIsMissing &&
-    valueBIsMissing
-  ) {
-    return 0;
-  }
-
-  if (valueAIsMissing) {
-    return 1;
-  }
-
-  if (valueBIsMissing) {
-    return -1;
-  }
-
-  const comparison =
-    compareValues(
-      valueA,
-      valueB
-    );
-
-  return sortDirection === "asc"
-    ? comparison
-    : -comparison;
-    });
+    return sortDirection === "asc"
+      ? comparison
+      : -comparison;
+  });
 
   const sortIndicator = (field) => {
     if (sortField !== field) {
@@ -302,7 +283,7 @@ function DraftHistory() {
     return sortDirection === "asc"
       ? " ▲"
       : " ▼";
-    };
+  };
 
   const formatBid = (amount) =>
     Number(amount || 0).toLocaleString(
@@ -332,6 +313,39 @@ function DraftHistory() {
         maximumFractionDigits: 2,
       }
     );
+  };
+
+  const formatNetPoints = (value) => {
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return "N/A";
+    }
+
+    const numericValue =
+      Number(value);
+
+    const formattedValue =
+      Math.abs(
+        numericValue
+      ).toLocaleString(
+        undefined,
+        {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }
+      );
+
+    if (numericValue > 0) {
+      return `+${formattedValue}`;
+    }
+
+    if (numericValue < 0) {
+      return `-${formattedValue}`;
+    }
+
+    return "0.00";
   };
 
   const selectedOwner =
@@ -367,6 +381,40 @@ function DraftHistory() {
       0
     );
 
+  const averageNetPoints =
+    filteredDraftPicks.reduce(
+      (summary, record) => {
+        const value =
+          record
+            .netPointsVsRoundAverage;
+
+        if (
+          value === null ||
+          value === undefined
+        ) {
+          return summary;
+        }
+
+        return {
+          total:
+            summary.total +
+            Number(value),
+          count:
+            summary.count + 1,
+        };
+      },
+      {
+        total: 0,
+        count: 0,
+      }
+    );
+
+  const selectedAverageNetPoints =
+    averageNetPoints.count > 0
+      ? averageNetPoints.total /
+        averageNetPoints.count
+      : null;
+
   const sortableHeaderStyle = {
     cursor: "pointer",
     userSelect: "none",
@@ -378,6 +426,30 @@ function DraftHistory() {
   const cellStyle = {
     paddingRight: "16px",
     paddingBottom: "6px",
+  };
+
+  const getNetPointsColor = (
+    value
+  ) => {
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return undefined;
+    }
+
+    const numericValue =
+      Number(value);
+
+    if (numericValue > 0) {
+      return "#15803d";
+    }
+
+    if (numericValue < 0) {
+      return "#b91c1c";
+    }
+
+    return undefined;
   };
 
   return (
@@ -478,6 +550,15 @@ function DraftHistory() {
         {formatBid(totalBidAmount)}
       </p>
 
+      <p>
+        <strong>
+          Average Net Points vs Rd Avg:
+        </strong>{" "}
+        {formatNetPoints(
+          selectedAverageNetPoints
+        )}
+      </p>
+
       <table
         style={{
           marginTop: "20px",
@@ -538,6 +619,22 @@ function DraftHistory() {
               Points
               {sortIndicator(
                 "points"
+              )}
+            </th>
+
+            <th
+              onClick={() =>
+                handleSort(
+                  "netPointsVsRoundAverage"
+                )
+              }
+              style={
+                sortableHeaderStyle
+              }
+            >
+              Net Points vs Rd Avg
+              {sortIndicator(
+                "netPointsVsRoundAverage"
               )}
             </th>
 
@@ -638,6 +735,31 @@ function DraftHistory() {
                 <td style={cellStyle}>
                   {formatPoints(
                     record.points
+                  )}
+                </td>
+
+                <td
+                  style={{
+                    ...cellStyle,
+                    color:
+                      getNetPointsColor(
+                        record
+                          .netPointsVsRoundAverage
+                      ),
+                    fontWeight:
+                      record
+                        .netPointsVsRoundAverage !==
+                        null &&
+                      record
+                        .netPointsVsRoundAverage !==
+                        undefined
+                        ? 600
+                        : undefined,
+                  }}
+                >
+                  {formatNetPoints(
+                    record
+                      .netPointsVsRoundAverage
                   )}
                 </td>
 

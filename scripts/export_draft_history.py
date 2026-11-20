@@ -56,12 +56,12 @@ def clean_number(value):
         return 0.0
 
 
-def clean_points(value):
+def clean_optional_number(value):
     """
-    Convert numeric point values to decimals.
+    Convert a numeric value to a rounded decimal.
 
-    Text values such as "Not on End of Season Roster"
-    become None so the website can display N/A.
+    Blank cells and non-numeric text become None,
+    which is exported to JSON as null.
     """
 
     if pd.isna(value) or value == "":
@@ -71,6 +71,17 @@ def clean_points(value):
         return round(float(value), 2)
     except (TypeError, ValueError):
         return None
+
+
+def clean_points(value):
+    """
+    Convert numeric point values to decimals.
+
+    Text values such as "Not on End of Season Roster"
+    become None so the website can display N/A.
+    """
+
+    return clean_optional_number(value)
 
 
 def clean_keeper(value):
@@ -139,8 +150,8 @@ for team in team_seasons:
         ] = team
 
 
-# These two workbook sheets already contain the
-# points associated with each draft record.
+# Load the two workbook sheets containing
+# the points associated with each draft record.
 draft_points_frames = []
 
 for sheet_name in [
@@ -152,7 +163,7 @@ for sheet_name in [
         sheet_name=sheet_name,
     )
 
-    # Removes the trailing space from "Points ".
+    # Removes trailing spaces from headers such as "Points ".
     sheet_df.columns = [
         clean_text(column)
         for column in sheet_df.columns
@@ -169,11 +180,11 @@ draft_points_df = pd.concat(
 )
 
 
-# Primary lookup:
+# Primary points lookup:
 # Season + Player ID
 points_by_player_id = {}
 
-# Fallback lookup:
+# Fallback points lookup:
 # Season + normalized Player name
 points_by_player_name = {}
 
@@ -220,7 +231,56 @@ for _, row in draft_points_df.iterrows():
         ] = points
 
 
-# Load the authoritative draft export.
+# Load the draft-performance calculations.
+#
+# "Net vs Avg R" represents the player's points
+# compared with the average points for that draft round.
+cda_df = pd.read_excel(
+    EXCEL_FILE,
+    sheet_name="CDA_All",
+)
+
+cda_df.columns = [
+    clean_text(column)
+    for column in cda_df.columns
+]
+
+
+net_vs_round_average_lookup = {}
+
+
+for _, row in cda_df.iterrows():
+    season = clean_integer(
+        row["Season"]
+    )
+
+    round_number = clean_integer(
+        row["Round"]
+    )
+
+    pick = clean_integer(
+        row["Pick"]
+    )
+
+    player_name_key = normalize_text(
+        row["Player"]
+    )
+
+    lookup_key = (
+        season,
+        round_number,
+        pick,
+        player_name_key,
+    )
+
+    net_vs_round_average_lookup[
+        lookup_key
+    ] = clean_optional_number(
+        row["Net vs Avg R"]
+    )
+
+
+# Load the authoritative raw draft export.
 df = pd.read_excel(
     EXCEL_FILE,
     sheet_name="Draft_Export",
@@ -236,14 +296,26 @@ records = []
 
 unmatched_team_records = []
 unmatched_point_records = []
+unmatched_net_value_records = []
 
 points_matched_by_id = 0
 points_matched_by_name = 0
+
+net_values_matched = 0
+net_values_unavailable = 0
 
 
 for _, row in df.iterrows():
     season = clean_integer(
         row["Season"]
+    )
+
+    round_number = clean_integer(
+        row["Round"]
+    )
+
+    pick = clean_integer(
+        row["Pick"]
     )
 
     player = clean_text(
@@ -265,6 +337,40 @@ for _, row in df.iterrows():
     excel_owner_display = clean_text(
         row["Owner Display"]
     )
+
+    net_lookup_key = (
+        season,
+        round_number,
+        pick,
+        player_name_key,
+    )
+
+    net_points_vs_round_average = (
+        net_vs_round_average_lookup.get(
+            net_lookup_key
+        )
+    )
+
+    if (
+        net_lookup_key
+        in net_vs_round_average_lookup
+    ):
+        if (
+            net_points_vs_round_average
+            is None
+        ):
+            net_values_unavailable += 1
+        else:
+            net_values_matched += 1
+    else:
+        unmatched_net_value_records.append(
+            {
+                "season": season,
+                "round": round_number,
+                "pick": pick,
+                "player": player,
+            }
+        )
 
     canonical_team = team_lookup.get(
         (
@@ -354,8 +460,8 @@ for _, row in df.iterrows():
     )
 
     if (
-        player_id and
-        player_id_key
+        player_id
+        and player_id_key
         in points_by_player_id
     ):
         points = points_by_player_id[
@@ -369,8 +475,8 @@ for _, row in df.iterrows():
         points_matched_by_id += 1
 
     elif (
-        player_name_key and
-        player_name_lookup_key
+        player_name_key
+        and player_name_lookup_key
         in points_by_player_name
     ):
         points = points_by_player_name[
@@ -395,15 +501,14 @@ for _, row in df.iterrows():
     record = {
         "season": season,
 
-        "round": clean_integer(
-            row["Round"]
-        ),
+        "round": round_number,
 
-        "pick": clean_integer(
-            row["Pick"]
-        ),
+        "pick": pick,
 
         "points": points,
+
+        "netPointsVsRoundAverage":
+            net_points_vs_round_average,
 
         "pointsMatchMethod":
             points_match_method,
@@ -474,6 +579,22 @@ exported_unavailable_points = sum(
     if record["points"] is None
 )
 
+exported_numeric_net_values = sum(
+    1
+    for record in records
+    if record[
+        "netPointsVsRoundAverage"
+    ] is not None
+)
+
+exported_unavailable_net_values = sum(
+    1
+    for record in records
+    if record[
+        "netPointsVsRoundAverage"
+    ] is None
+)
+
 
 print(
     f"Exported {len(records)} "
@@ -510,13 +631,42 @@ print(
 )
 
 print(
-    f"Exported records displaying N/A: "
+    f"Exported records displaying "
+    f"N/A for points: "
     f"{exported_unavailable_points}"
+)
+
+print(
+    f"Net-vs-round values matched: "
+    f"{net_values_matched}"
+)
+
+print(
+    f"Net-vs-round source values "
+    f"unavailable: "
+    f"{net_values_unavailable}"
+)
+
+print(
+    f"Exported records with "
+    f"net-vs-round values: "
+    f"{exported_numeric_net_values}"
+)
+
+print(
+    f"Exported records displaying "
+    f"N/A for net-vs-round: "
+    f"{exported_unavailable_net_values}"
 )
 
 print(
     f"Unmatched point records: "
     f"{len(unmatched_point_records)}"
+)
+
+print(
+    f"Unmatched net-vs-round records: "
+    f"{len(unmatched_net_value_records)}"
 )
 
 print(
@@ -539,6 +689,26 @@ if unmatched_point_records:
             f"{unmatched['season']}: "
             f"{unmatched['player']} "
             f"({unmatched['playerId']})"
+        )
+
+
+if unmatched_net_value_records:
+    print(
+        "Draft records with no "
+        "matching Net vs Avg R record:"
+    )
+
+    for unmatched in (
+        unmatched_net_value_records[:25]
+    ):
+        print(
+            "- "
+            f"{unmatched['season']}: "
+            f"Round "
+            f"{unmatched['round']}, "
+            f"Pick "
+            f"{unmatched['pick']}, "
+            f"{unmatched['player']}"
         )
 
 
