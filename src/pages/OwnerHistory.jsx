@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import OwnerHistoryChart from "../components/OwnerHistoryChart";
 function OwnerHistory() {
   const [teams, setTeams] = useState([]);
   const [ownerId, setOwnerId] = useState(
@@ -807,6 +807,11 @@ function OwnerHistory() {
           )}
         </tbody>
       </table>
+      
+      <OwnerHistoryChart
+        ownerTeams={ownerTeams}
+        ownerName={ownerName}
+      />
     </div>
   );
 }
