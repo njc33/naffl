@@ -102,9 +102,7 @@ function DraftHistory() {
         ...new Set(
           relevantRecords.map(
             (record) =>
-              Number(
-                record.season
-              )
+              Number(record.season)
           )
         ),
       ].sort((a, b) => b - a);
@@ -121,9 +119,8 @@ function DraftHistory() {
 
           const seasonMatches =
             season === "all" ||
-            Number(
-              record.season
-            ) === Number(season);
+            Number(record.season) ===
+              Number(season);
 
           return (
             ownerMatches &&
@@ -193,6 +190,7 @@ function DraftHistory() {
     setSortField(field);
 
     const descendingFields = [
+      "points",
       "bidAmount",
     ];
 
@@ -207,14 +205,37 @@ function DraftHistory() {
     valueA,
     valueB
   ) => {
+    const valueAIsMissing =
+      valueA === null ||
+      valueA === undefined;
+
+    const valueBIsMissing =
+      valueB === null ||
+      valueB === undefined;
+
+    if (
+      valueAIsMissing &&
+      valueBIsMissing
+    ) {
+      return 0;
+    }
+
+    if (valueAIsMissing) {
+      return 1;
+    }
+
+    if (valueBIsMissing) {
+      return -1;
+    }
+
     if (
       typeof valueA === "string" ||
       typeof valueB === "string"
     ) {
       return String(
-        valueA ?? ""
+        valueA
       ).localeCompare(
-        String(valueB ?? ""),
+        String(valueB),
         undefined,
         {
           sensitivity: "base",
@@ -223,8 +244,8 @@ function DraftHistory() {
     }
 
     return (
-      Number(valueA || 0) -
-      Number(valueB || 0)
+      Number(valueA) -
+      Number(valueB)
     );
   };
 
@@ -262,6 +283,25 @@ function DraftHistory() {
         maximumFractionDigits: 0,
       }
     );
+
+  const formatPoints = (points) => {
+    if (
+      points === null ||
+      points === undefined
+    ) {
+      return "N/A";
+    }
+
+    return Number(
+      points
+    ).toLocaleString(
+      undefined,
+      {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }
+    );
+  };
 
   const selectedOwner =
     owners.find(
@@ -458,6 +498,20 @@ function DraftHistory() {
 
             <th
               onClick={() =>
+                handleSort("points")
+              }
+              style={
+                sortableHeaderStyle
+              }
+            >
+              Points
+              {sortIndicator(
+                "points"
+              )}
+            </th>
+
+            <th
+              onClick={() =>
                 handleSort("player")
               }
               style={
@@ -548,6 +602,12 @@ function DraftHistory() {
 
                 <td style={cellStyle}>
                   {record.pick}
+                </td>
+
+                <td style={cellStyle}>
+                  {formatPoints(
+                    record.points
+                  )}
                 </td>
 
                 <td style={cellStyle}>
