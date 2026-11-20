@@ -150,6 +150,9 @@ player_weeks_df.columns = [
 weekly_points = defaultdict(float)
 weekly_record_counts = defaultdict(int)
 player_names = {}
+position_by_player_season = {}
+latest_position_by_player = {}
+latest_position_season_by_player = {}
 
 
 for _, row in (
@@ -207,6 +210,26 @@ for _, row in (
     player_names[
         player_key
     ] = player
+
+    position = clean_text(
+        row.get("Position", "")
+    ).upper()
+
+    if position:
+        position_by_player_season[
+            (player_key, season)
+        ] = position
+
+        if season >= latest_position_season_by_player.get(
+            player_key,
+            -1,
+        ):
+            latest_position_season_by_player[
+                player_key
+            ] = season
+            latest_position_by_player[
+                player_key
+            ] = position
 
 
 # Season rosters provide fallback season points and
@@ -278,6 +301,27 @@ for _, row in (
     player_names[
         player_key
     ] = player
+
+    position = clean_text(
+        row.get("Position", "")
+    ).upper()
+
+    if position:
+        position_by_player_season.setdefault(
+            (player_key, season),
+            position,
+        )
+
+        if season >= latest_position_season_by_player.get(
+            player_key,
+            -1,
+        ):
+            latest_position_season_by_player[
+                player_key
+            ] = season
+            latest_position_by_player[
+                player_key
+            ] = position
 
 
 # Add all weekly ownership combinations.
@@ -471,6 +515,15 @@ for (
 
             records.append(
                 {
+                    "position":
+                        position_by_player_season.get(
+                            (player_key, season),
+                            latest_position_by_player.get(
+                                player_key,
+                                "N/A",
+                            ),
+                        ),
+
                     "player":
                         player_names.get(
                             player_key,
@@ -534,6 +587,15 @@ for (
     else:
         records.append(
             {
+                "position":
+                    position_by_player_season.get(
+                        (player_key, season),
+                        latest_position_by_player.get(
+                            player_key,
+                            "N/A",
+                        ),
+                    ),
+
                 "player":
                     player_names.get(
                         player_key,
@@ -585,6 +647,146 @@ for (
                     ),
             }
         )
+
+
+# Build one career total per player. Points are summed once for each
+# unique player-season-owner combination, so repeated draft-detail
+# rows cannot duplicate a player's career total.
+career_points_by_player = defaultdict(float)
+seen_point_records = set()
+
+for record in records:
+    point_record_key = (
+        record["playerKey"],
+        record["season"],
+        record["ownerId"],
+    )
+
+    if point_record_key in seen_point_records:
+        continue
+
+    seen_point_records.add(
+        point_record_key
+    )
+
+    if record["points"] is not None:
+        career_points_by_player[
+            record["playerKey"]
+        ] += float(record["points"])
+
+
+def competition_ranks(items):
+    ranks = {}
+    previous_value = None
+    current_rank = 0
+
+    for index, (item_key, value) in enumerate(
+        items,
+        start=1,
+    ):
+        rounded_value = round(
+            float(value),
+            2,
+        )
+
+        if (
+            previous_value is None
+            or rounded_value != previous_value
+        ):
+            current_rank = index
+
+        ranks[item_key] = current_rank
+        previous_value = rounded_value
+
+    return ranks
+
+
+overall_rank_items = sorted(
+    career_points_by_player.items(),
+    key=lambda item: (
+        -item[1],
+        player_names.get(
+            item[0],
+            item[0],
+        ),
+    ),
+)
+
+overall_rank_by_player = competition_ranks(
+    overall_rank_items
+)
+
+player_keys_by_position = defaultdict(list)
+
+for player_key, career_points in (
+    career_points_by_player.items()
+):
+    position = latest_position_by_player.get(
+        player_key,
+        "N/A",
+    )
+
+    if position and position != "N/A":
+        player_keys_by_position[
+            position
+        ].append(
+            (player_key, career_points)
+        )
+
+position_rank_by_player = {}
+
+for position, position_items in (
+    player_keys_by_position.items()
+):
+    sorted_position_items = sorted(
+        position_items,
+        key=lambda item: (
+            -item[1],
+            player_names.get(
+                item[0],
+                item[0],
+            ),
+        ),
+    )
+
+    position_rank_by_player.update(
+        competition_ranks(
+            sorted_position_items
+        )
+    )
+
+for record in records:
+    player_key = record["playerKey"]
+    career_position = (
+        latest_position_by_player.get(
+            player_key,
+            record.get(
+                "position",
+                "N/A",
+            ),
+        )
+    )
+
+    record["careerPosition"] = (
+        career_position
+    )
+    record["careerPoints"] = round(
+        career_points_by_player.get(
+            player_key,
+            0.0,
+        ),
+        2,
+    )
+    record["overallCareerRank"] = (
+        overall_rank_by_player.get(
+            player_key
+        )
+    )
+    record["positionCareerRank"] = (
+        position_rank_by_player.get(
+            player_key
+        )
+    )
 
 
 records.sort(
