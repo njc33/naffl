@@ -4,6 +4,7 @@ import {
   useState,
 } from "react";
 
+
 function TeamRosterHistory() {
   const [rosters, setRosters] =
     useState([]);
@@ -17,11 +18,16 @@ function TeamRosterHistory() {
   const [sortField, setSortField] =
     useState("totalPoints");
 
-  const [sortDirection, setSortDirection] =
-    useState("desc");
+  const [
+    sortDirection,
+    setSortDirection,
+  ] = useState("desc");
+
 
   useEffect(() => {
-    fetch("/data/roster-history.json")
+    fetch(
+      "/data/roster-history.json"
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error(
@@ -44,22 +50,28 @@ function TeamRosterHistory() {
         const initialOwnerId =
           defaultOwnerExists
             ? "nick-ceraso"
-            : data[0]?.ownerId ?? "";
+            : data[0]?.ownerId ??
+              "";
 
         setOwnerId(initialOwnerId);
 
-        const ownerSeasons = data
-          .filter(
-            (record) =>
-              record.ownerId ===
-              initialOwnerId
-          )
-          .map(
-            (record) =>
-              Number(record.season)
-          );
+        const ownerSeasons =
+          data
+            .filter(
+              (record) =>
+                record.ownerId ===
+                initialOwnerId
+            )
+            .map(
+              (record) =>
+                Number(
+                  record.season
+                )
+            );
 
-        if (ownerSeasons.length > 0) {
+        if (
+          ownerSeasons.length > 0
+        ) {
           setSeason(
             String(
               Math.max(
@@ -74,8 +86,10 @@ function TeamRosterHistory() {
       });
   }, []);
 
+
   const owners = useMemo(() => {
-    const ownerMap = new Map();
+    const ownerMap =
+      new Map();
 
     rosters.forEach((record) => {
       if (
@@ -98,16 +112,23 @@ function TeamRosterHistory() {
           mappedOwnerId,
           ownerName,
         ]) => ({
-          ownerId: mappedOwnerId,
+          ownerId:
+            mappedOwnerId,
+
           ownerName,
         })
       )
-      .sort((ownerA, ownerB) =>
-        ownerA.ownerName.localeCompare(
-          ownerB.ownerName
-        )
+      .sort(
+        (
+          ownerA,
+          ownerB,
+        ) =>
+          ownerA.ownerName.localeCompare(
+            ownerB.ownerName
+          )
       );
   }, [rosters]);
+
 
   const availableSeasons =
     useMemo(() => {
@@ -126,8 +147,15 @@ function TeamRosterHistory() {
                 )
             )
         ),
-      ].sort((a, b) => b - a);
-    }, [rosters, ownerId]);
+      ].sort(
+        (seasonA, seasonB) =>
+          seasonB - seasonA
+      );
+    }, [
+      rosters,
+      ownerId,
+    ]);
+
 
   const selectedRoster =
     useMemo(() => {
@@ -135,8 +163,9 @@ function TeamRosterHistory() {
         (record) =>
           record.ownerId ===
             ownerId &&
-          Number(record.season) ===
-            Number(season)
+          Number(
+            record.season
+          ) === Number(season)
       );
     }, [
       rosters,
@@ -144,15 +173,18 @@ function TeamRosterHistory() {
       season,
     ]);
 
+
   const selectedOwner =
     owners.find(
       (owner) =>
         owner.ownerId === ownerId
     );
 
+
   const selectedTeamName =
-    selectedRoster[0]?.teamName ??
-    "";
+    selectedRoster[0]
+      ?.teamName ?? "";
+
 
   const handleOwnerChange = (
     event
@@ -171,7 +203,9 @@ function TeamRosterHistory() {
         )
         .map(
           (record) =>
-            Number(record.season)
+            Number(
+              record.season
+            )
         );
 
     if (
@@ -184,17 +218,28 @@ function TeamRosterHistory() {
           )
         )
       );
+    } else {
+      setSeason("");
     }
 
-    setSortField("totalPoints");
+    setSortField(
+      "totalPoints"
+    );
+
     setSortDirection("desc");
   };
 
-  const handleSort = (field) => {
+
+  const handleSort = (
+    field
+  ) => {
     if (field === sortField) {
       setSortDirection(
-        (currentDirection) =>
-          currentDirection === "asc"
+        (
+          currentDirection
+        ) =>
+          currentDirection ===
+          "asc"
             ? "desc"
             : "asc"
       );
@@ -206,43 +251,36 @@ function TeamRosterHistory() {
 
     const descendingFields = [
       "totalPoints",
-      "averagePoints",
-      "projectedTotalPoints",
+      "netPointsVsRoundAverage",
+      "pointsAboveProjected",
     ];
 
     setSortDirection(
-      descendingFields.includes(field)
+      descendingFields.includes(
+        field
+      )
         ? "desc"
         : "asc"
     );
   };
+
 
   const compareValues = (
     valueA,
     valueB
   ) => {
     if (
-      valueA === null ||
-      valueA === undefined
-    ) {
-      return 1;
-    }
-
-    if (
-      valueB === null ||
-      valueB === undefined
-    ) {
-      return -1;
-    }
-
-    if (
-      typeof valueA === "string" ||
-      typeof valueB === "string"
+      typeof valueA ===
+        "string" ||
+      typeof valueB ===
+        "string"
     ) {
       return String(
-        valueA
+        valueA ?? ""
       ).localeCompare(
-        String(valueB),
+        String(
+          valueB ?? ""
+        ),
         undefined,
         {
           sensitivity: "base",
@@ -256,51 +294,176 @@ function TeamRosterHistory() {
     );
   };
 
+
   const sortedRoster = [
     ...selectedRoster,
-  ].sort((playerA, playerB) => {
-    const comparison =
-      compareValues(
-        playerA[sortField],
-        playerB[sortField]
+  ].sort(
+    (
+      playerA,
+      playerB,
+    ) => {
+      const valueA =
+        playerA[sortField];
+
+      const valueB =
+        playerB[sortField];
+
+      const valueAIsMissing =
+        valueA === null ||
+        valueA === undefined;
+
+      const valueBIsMissing =
+        valueB === null ||
+        valueB === undefined;
+
+      /*
+        Missing values remain at
+        the bottom regardless of
+        sorting direction.
+      */
+      if (
+        valueAIsMissing &&
+        valueBIsMissing
+      ) {
+        return 0;
+      }
+
+      if (valueAIsMissing) {
+        return 1;
+      }
+
+      if (valueBIsMissing) {
+        return -1;
+      }
+
+      const comparison =
+        compareValues(
+          valueA,
+          valueB
+        );
+
+      return (
+        sortDirection ===
+        "asc"
+          ? comparison
+          : -comparison
       );
+    }
+  );
 
-    return sortDirection === "asc"
-      ? comparison
-      : -comparison;
-  });
 
-  const sortIndicator = (field) => {
+  const sortIndicator = (
+    field
+  ) => {
     if (sortField !== field) {
       return "";
     }
 
-    return sortDirection === "asc"
-      ? " ▲"
-      : " ▼";
+    return (
+      sortDirection === "asc"
+        ? " ▲"
+        : " ▼"
+    );
   };
 
-  const formatPoints = (points) =>
-    Number(points || 0).toLocaleString(
+
+  const formatPoints = (
+    value
+  ) => {
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return "N/A";
+    }
+
+    return Number(
+      value
+    ).toLocaleString(
       undefined,
       {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       }
     );
+  };
+
+
+  const formatSignedPoints = (
+    value
+  ) => {
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return "N/A";
+    }
+
+    const numericValue =
+      Number(value);
+
+    const absoluteValue =
+      Math.abs(
+        numericValue
+      ).toLocaleString(
+        undefined,
+        {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }
+      );
+
+    if (numericValue > 0) {
+      return `+${absoluteValue}`;
+    }
+
+    if (numericValue < 0) {
+      return `-${absoluteValue}`;
+    }
+
+    return "0.00";
+  };
+
+
+  const getSignedColor = (
+    value
+  ) => {
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return undefined;
+    }
+
+    const numericValue =
+      Number(value);
+
+    if (numericValue > 0) {
+      return "#15803d";
+    }
+
+    if (numericValue < 0) {
+      return "#b91c1c";
+    }
+
+    return undefined;
+  };
+
 
   const selectedSummary = {
-    drafted: selectedRoster.filter(
-      (record) =>
-        record.acquisitionType ===
-        "draft"
-    ).length,
+    drafted:
+      selectedRoster.filter(
+        (record) =>
+          record.acquisitionType ===
+          "draft"
+      ).length,
 
-    keepers: selectedRoster.filter(
-      (record) =>
-        record.acquisitionType ===
-        "keeper"
-    ).length,
+    keepers:
+      selectedRoster.filter(
+        (record) =>
+          record.acquisitionType ===
+          "keeper"
+      ).length,
 
     differentOwner:
       selectedRoster.filter(
@@ -309,29 +472,126 @@ function TeamRosterHistory() {
           "differentDraftOwner"
       ).length,
 
-    inSeason: selectedRoster.filter(
-      (record) =>
-        record.acquisitionType ===
-        "inSeasonAcquisition"
-    ).length,
+    inSeason:
+      selectedRoster.filter(
+        (record) =>
+          record.acquisitionType ===
+          "inSeasonAcquisition"
+      ).length,
   };
+
+
+  const totalPoints =
+    selectedRoster.reduce(
+      (sum, record) =>
+        sum +
+        Number(
+          record.totalPoints ??
+          0
+        ),
+      0
+    );
+
+
+  const totalNetValue =
+    selectedRoster.reduce(
+      (summary, record) => {
+        const value =
+          record
+            .netPointsVsRoundAverage;
+
+        if (
+          value === null ||
+          value === undefined
+        ) {
+          return summary;
+        }
+
+        return {
+          total:
+            summary.total +
+            Number(value),
+
+          count:
+            summary.count + 1,
+        };
+      },
+      {
+        total: 0,
+        count: 0,
+      }
+    );
+
+
+  const totalAboveProjected =
+    selectedRoster.reduce(
+      (summary, record) => {
+        const value =
+          record
+            .pointsAboveProjected;
+
+        if (
+          value === null ||
+          value === undefined
+        ) {
+          return summary;
+        }
+
+        return {
+          total:
+            summary.total +
+            Number(value),
+
+          count:
+            summary.count + 1,
+        };
+      },
+      {
+        total: 0,
+        count: 0,
+      }
+    );
+
 
   const sortableHeaderStyle = {
     cursor: "pointer",
     userSelect: "none",
+    padding: "7px 8px",
+    fontSize: "0.76rem",
+    lineHeight: 1.2,
     textAlign: "left",
-    paddingRight: "16px",
-    paddingBottom: "8px",
+    whiteSpace: "nowrap",
   };
+
 
   const cellStyle = {
-    paddingRight: "16px",
-    paddingBottom: "6px",
+    padding: "7px 8px",
+    fontSize: "0.78rem",
+    lineHeight: 1.25,
+    whiteSpace: "nowrap",
   };
 
+
+  const numericCellStyle = {
+    ...cellStyle,
+
+    textAlign: "right",
+
+    fontVariantNumeric:
+      "tabular-nums",
+  };
+
+
   return (
-    <div>
-      <h2>Team Roster History</h2>
+    <div
+      style={{
+        width: "100%",
+        minWidth: 0,
+      }}
+    >
+      <h2>
+        Team Roster History
+      </h2>
 
       <div
         style={{
@@ -343,25 +603,33 @@ function TeamRosterHistory() {
       >
         <label>
           Owner:{" "}
+
           <select
             value={ownerId}
             onChange={
               handleOwnerChange
             }
           >
-            {owners.map((owner) => (
-              <option
-                key={owner.ownerId}
-                value={owner.ownerId}
-              >
-                {owner.ownerName}
-              </option>
-            ))}
+            {owners.map(
+              (owner) => (
+                <option
+                  key={
+                    owner.ownerId
+                  }
+                  value={
+                    owner.ownerId
+                  }
+                >
+                  {owner.ownerName}
+                </option>
+              )
+            )}
           </select>
         </label>
 
         <label>
           Season:{" "}
+
           <select
             value={season}
             onChange={(event) => {
@@ -393,206 +661,385 @@ function TeamRosterHistory() {
       </div>
 
       <h3>
-        {selectedOwner?.ownerName ??
+        {selectedOwner
+          ?.ownerName ??
           "Owner"}
       </h3>
 
       {selectedTeamName && (
         <p>
-          <strong>Team:</strong>{" "}
+          <strong>
+            Team:
+          </strong>{" "}
           {selectedTeamName}
         </p>
       )}
 
-      <p>
-        <strong>
-          Rostered Players:
-        </strong>{" "}
-        {selectedRoster.length}
-      </p>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "4px 20px",
+          alignItems: "center",
+        }}
+      >
+        <p>
+          <strong>
+            Rostered Players:
+          </strong>{" "}
+          {
+            selectedRoster.length
+          }
+        </p>
 
-      <p>
-        <strong>Drafted:</strong>{" "}
+        <p>
+          <strong>
+            Total Points:
+          </strong>{" "}
+          {formatPoints(
+            totalPoints
+          )}
+        </p>
+
+        <p>
+          <strong>
+            Sum Net Pts vs Avg Rd:
+          </strong>{" "}
+
+          <span
+            style={{
+              color:
+                getSignedColor(
+                  totalNetValue.count >
+                    0
+                    ? totalNetValue.total
+                    : null
+                ),
+
+              fontWeight: 700,
+            }}
+          >
+            {formatSignedPoints(
+              totalNetValue.count >
+                0
+                ? totalNetValue.total
+                : null
+            )}
+          </span>
+        </p>
+
+        <p>
+          <strong>
+            Total Pts Above Proj:
+          </strong>{" "}
+
+          <span
+            style={{
+              color:
+                getSignedColor(
+                  totalAboveProjected
+                    .count > 0
+                    ? totalAboveProjected
+                        .total
+                    : null
+                ),
+
+              fontWeight: 700,
+            }}
+          >
+            {formatSignedPoints(
+              totalAboveProjected
+                .count > 0
+                ? totalAboveProjected
+                    .total
+                : null
+            )}
+          </span>
+        </p>
+      </div>
+
+      <p
+        style={{
+          color: "#64748b",
+          fontSize: "0.78rem",
+        }}
+      >
+        Drafted:{" "}
         {selectedSummary.drafted}
-        {" | "}
-        <strong>Keepers:</strong>{" "}
+        {" · "}
+        Keepers:{" "}
         {selectedSummary.keepers}
-        {" | "}
-        <strong>
-          Drafted by Another Owner:
-        </strong>{" "}
-        {selectedSummary.differentOwner}
-        {" | "}
-        <strong>
-          Undrafted/In-Season:
-        </strong>{" "}
+        {" · "}
+        Drafted by Another Owner:{" "}
+        {
+          selectedSummary
+            .differentOwner
+        }
+        {" · "}
+        Undrafted/In-Season:{" "}
         {selectedSummary.inSeason}
       </p>
 
-      <table
+      <div
         style={{
-          marginTop: "20px",
-          borderCollapse:
-            "collapse",
+          width: "100%",
+          overflowX: "auto",
+          WebkitOverflowScrolling:
+            "touch",
         }}
       >
-        <thead>
-          <tr>
-            <th
-              onClick={() =>
-                handleSort("player")
-              }
-              style={
-                sortableHeaderStyle
-              }
-            >
-              Player
-              {sortIndicator("player")}
-            </th>
-
-            <th
-              onClick={() =>
-                handleSort("position")
-              }
-              style={
-                sortableHeaderStyle
-              }
-            >
-              Pos
-              {sortIndicator(
-                "position"
-              )}
-            </th>
-
-            <th
-              onClick={() =>
-                handleSort("nflTeam")
-              }
-              style={
-                sortableHeaderStyle
-              }
-            >
-              NFL Team
-              {sortIndicator(
-                "nflTeam"
-              )}
-            </th>
-
-            <th
-              onClick={() =>
-                handleSort(
-                  "totalPoints"
-                )
-              }
-              style={
-                sortableHeaderStyle
-              }
-            >
-              Total Points
-              {sortIndicator(
-                "totalPoints"
-              )}
-            </th>
-
-            <th
-              onClick={() =>
-                handleSort(
-                  "averagePoints"
-                )
-              }
-              style={
-                sortableHeaderStyle
-              }
-            >
-              Avg. Points
-              {sortIndicator(
-                "averagePoints"
-              )}
-            </th>
-
-            <th
-              onClick={() =>
-                handleSort(
-                  "projectedTotalPoints"
-                )
-              }
-              style={
-                sortableHeaderStyle
-              }
-            >
-              Projected Total
-              {sortIndicator(
-                "projectedTotalPoints"
-              )}
-            </th>
-
-            <th
-              onClick={() =>
-                handleSort(
-                  "howAcquired"
-                )
-              }
-              style={
-                sortableHeaderStyle
-              }
-            >
-              How Acquired
-              {sortIndicator(
-                "howAcquired"
-              )}
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {sortedRoster.map(
-            (player) => (
-              <tr
-                key={`${player.season}-${player.ownerId}-${player.playerId}-${player.player}`}
+        <table
+          style={{
+            width: "max-content",
+            minWidth: "100%",
+            marginTop: "17px",
+            borderCollapse:
+              "collapse",
+          }}
+        >
+          <thead>
+            <tr>
+              <th
+                onClick={() =>
+                  handleSort(
+                    "player"
+                  )
+                }
+                style={
+                  sortableHeaderStyle
+                }
               >
-                <td style={cellStyle}>
-                  {player.player}
-                </td>
+                Player
+                {sortIndicator(
+                  "player"
+                )}
+              </th>
 
-                <td style={cellStyle}>
-                  {player.position}
-                </td>
+              <th
+                onClick={() =>
+                  handleSort(
+                    "position"
+                  )
+                }
+                style={
+                  sortableHeaderStyle
+                }
+              >
+                Pos
+                {sortIndicator(
+                  "position"
+                )}
+              </th>
 
-                <td style={cellStyle}>
-                  {player.nflTeam}
-                </td>
+              <th
+                onClick={() =>
+                  handleSort(
+                    "nflTeam"
+                  )
+                }
+                style={
+                  sortableHeaderStyle
+                }
+              >
+                NFL Team
+                {sortIndicator(
+                  "nflTeam"
+                )}
+              </th>
 
-                <td style={cellStyle}>
-                  {formatPoints(
-                    player.totalPoints
-                  )}
-                </td>
+              <th
+                onClick={() =>
+                  handleSort(
+                    "totalPoints"
+                  )
+                }
+                style={
+                  sortableHeaderStyle
+                }
+              >
+                Total Points
+                {sortIndicator(
+                  "totalPoints"
+                )}
+              </th>
 
-                <td style={cellStyle}>
-                  {formatPoints(
-                    player.averagePoints
-                  )}
-                </td>
+              <th
+                onClick={() =>
+                  handleSort(
+                    "netPointsVsRoundAverage"
+                  )
+                }
+                style={
+                  sortableHeaderStyle
+                }
+                title={
+                  "Player points minus the average points for the player's original draft round"
+                }
+              >
+                Net Pts vs Avg Rd
+                {sortIndicator(
+                  "netPointsVsRoundAverage"
+                )}
+              </th>
 
-                <td style={cellStyle}>
-                  {formatPoints(
-                    player.projectedTotalPoints
-                  )}
-                </td>
+              <th
+                onClick={() =>
+                  handleSort(
+                    "pointsAboveProjected"
+                  )
+                }
+                style={
+                  sortableHeaderStyle
+                }
+                title={
+                  "Sum of the player's weekly actual points minus projected points for this owner and season"
+                }
+              >
+                Pts Above Projected
+                {sortIndicator(
+                  "pointsAboveProjected"
+                )}
+              </th>
 
-                <td style={cellStyle}>
-                  {player.howAcquired}
-                </td>
-              </tr>
-            )
-          )}
-        </tbody>
-      </table>
+              <th
+                onClick={() =>
+                  handleSort(
+                    "howAcquired"
+                  )
+                }
+                style={
+                  sortableHeaderStyle
+                }
+              >
+                How Acquired
+                {sortIndicator(
+                  "howAcquired"
+                )}
+              </th>
+            </tr>
+          </thead>
 
-      {selectedRoster.length === 0 && (
+          <tbody>
+            {sortedRoster.map(
+              (
+                player,
+                index,
+              ) => (
+                <tr
+                  key={`${player.season}-${player.ownerId}-${player.playerId}-${player.player}-${index}`}
+                >
+                  <td
+                    style={
+                      cellStyle
+                    }
+                  >
+                    {player.player}
+                  </td>
+
+                  <td
+                    style={
+                      cellStyle
+                    }
+                  >
+                    {
+                      player.position
+                    }
+                  </td>
+
+                  <td
+                    style={
+                      cellStyle
+                    }
+                  >
+                    {player.nflTeam}
+                  </td>
+
+                  <td
+                    style={
+                      numericCellStyle
+                    }
+                  >
+                    {formatPoints(
+                      player.totalPoints
+                    )}
+                  </td>
+
+                  <td
+                    style={{
+                      ...numericCellStyle,
+
+                      color:
+                        getSignedColor(
+                          player
+                            .netPointsVsRoundAverage
+                        ),
+
+                      fontWeight:
+                        player
+                          .netPointsVsRoundAverage !==
+                          null &&
+                        player
+                          .netPointsVsRoundAverage !==
+                          undefined
+                          ? 700
+                          : undefined,
+                    }}
+                  >
+                    {formatSignedPoints(
+                      player
+                        .netPointsVsRoundAverage
+                    )}
+                  </td>
+
+                  <td
+                    style={{
+                      ...numericCellStyle,
+
+                      color:
+                        getSignedColor(
+                          player
+                            .pointsAboveProjected
+                        ),
+
+                      fontWeight:
+                        player
+                          .pointsAboveProjected !==
+                          null &&
+                        player
+                          .pointsAboveProjected !==
+                          undefined
+                          ? 700
+                          : undefined,
+                    }}
+                  >
+                    {formatSignedPoints(
+                      player
+                        .pointsAboveProjected
+                    )}
+                  </td>
+
+                  <td
+                    style={
+                      cellStyle
+                    }
+                  >
+                    {
+                      player.howAcquired
+                    }
+                  </td>
+                </tr>
+              )
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {selectedRoster.length ===
+        0 && (
         <p>
-          No roster records were found
-          for this owner and season.
+          No roster records were
+          found for this owner and
+          season.
         </p>
       )}
 
@@ -600,17 +1047,19 @@ function TeamRosterHistory() {
         style={{
           marginTop: "14px",
           color: "#64748b",
-          fontSize: "0.8rem",
+          fontSize: "0.76rem",
+          lineHeight: 1.45,
         }}
       >
-        Version 1 uses draft history.
-        “Drafted by another owner”
-        means the player finished the
-        season on this roster but was
-        originally drafted by someone
-        else. That could represent a
-        trade, waiver claim, or another
-        in-season transaction.
+        Net Pts vs Avg Rd uses the
+        player’s original draft round,
+        even when another owner
+        drafted the player. Pts Above
+        Projected sums weekly actual
+        points minus projected points
+        for the player while associated
+        with the selected owner during
+        that season.
       </p>
     </div>
   );
